@@ -82,14 +82,10 @@
 		7A1AEE562562BC1700BFBA5C /* RSSReader */ = {
 			isa = PBXGroup;
 			children = (
-				7A1AEE572562BC1700BFBA5C /* AppDelegate.h */,
-				7A1AEE582562BC1700BFBA5C /* AppDelegate.m */,
+				7A5530DB256300E3001797D2 /* Application */,
 				7A1AEE5D2562BC1700BFBA5C /* ViewController.h */,
 				7A1AEE5E2562BC1700BFBA5C /* ViewController.m */,
-				7A1AEE632562BC1A00BFBA5C /* Assets.xcassets */,
-				7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */,
 				7A1AEE682562BC1A00BFBA5C /* Info.plist */,
-				7A1AEE692562BC1A00BFBA5C /* main.m */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -109,6 +105,18 @@
 				7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */,
 			);
 			path = ROADMAP;
+			sourceTree = "<group>";
+		};
+		7A5530DB256300E3001797D2 /* Application */ = {
+			isa = PBXGroup;
+			children = (
+				7A1AEE572562BC1700BFBA5C /* AppDelegate.h */,
+				7A1AEE582562BC1700BFBA5C /* AppDelegate.m */,
+				7A1AEE632562BC1A00BFBA5C /* Assets.xcassets */,
+				7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */,
+				7A1AEE692562BC1A00BFBA5C /* main.m */,
+			);
+			path = Application;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
