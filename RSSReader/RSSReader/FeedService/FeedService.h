@@ -6,11 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "FeedServiceType.h"
 
-NS_ASSUME_NONNULL_BEGIN
+@protocol NetworkServiceType;
 
-@interface FeedService : NSObject
-
+@interface FeedService : NSObject <FeedServiceType>
+@property (nonatomic, retain) id<NetworkServiceType> network;
+- (instancetype)initWith:(id<NetworkServiceType>)networkService;
 @end
-
-NS_ASSUME_NONNULL_END

@@ -7,9 +7,10 @@
 
 #import "AppDelegate.h"
 #import "ViewController.h"
+#import "MainCoordinator.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, retain) MainCoordinator *coordinator;
 @end
 
 @implementation AppDelegate
@@ -20,10 +21,13 @@
   UIWindow *window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
   self.window = window;
   [window release];
-  ViewController *vc = [ViewController new];
-  vc.view.backgroundColor = UIColor.grayColor;
-  self.window.rootViewController = vc;
-  [vc release];
+  UINavigationController *navigationController = [UINavigationController new];
+  MainCoordinator *coordinator = [[MainCoordinator alloc] initWithNavigation:navigationController];
+  self.coordinator = coordinator;
+  [coordinator release];
+  [navigationController release];
+  self.window.rootViewController = navigationController;
+  [self.coordinator start];
   [self.window makeKeyAndVisible];
   return YES;
 }
@@ -32,6 +36,7 @@
 
 - (void)dealloc {
   [_window release];
+  [_coordinator release];
   [super dealloc];
 }
 

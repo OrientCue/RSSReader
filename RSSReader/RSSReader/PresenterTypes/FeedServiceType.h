@@ -7,6 +7,7 @@
 
 #import <Foundation/Foundation.h>
 
+@class Article;
 typedef void(^FeedServiceCompletion)(NSArray<Article *> *articles);
 
 @protocol FeedServiceType <NSObject>
