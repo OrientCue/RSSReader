@@ -29,9 +29,9 @@
 - (void)fetchFeed:(FeedServiceCompletion)completion {
   NSURL *rssUrl = [NSURL URLWithString:@"https://news.tut.by/rss/index.rss"];
   [self.network fetchFeedFromUrl:rssUrl
-                      completion:^(NSArray<Article *> *articles, NSError *error) {
+                      completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
     NSLog(@"%@", error.localizedDescription);
-    completion(articles);
+    completion(items);
   }];
 }
 

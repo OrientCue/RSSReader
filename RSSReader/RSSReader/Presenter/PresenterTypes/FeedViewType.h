@@ -7,11 +7,11 @@
 
 #import <Foundation/Foundation.h>
 
-@class Article;
+@class AtomFeedItem;
 
 @protocol FeedViewType <NSObject>
 
-- (void)appendArticles:(NSArray<Article *> *)articles;
+- (void)appendItems:(NSArray<AtomFeedItem *> *)items;
 - (void)showLoading;
 - (void)hideLoading;
 

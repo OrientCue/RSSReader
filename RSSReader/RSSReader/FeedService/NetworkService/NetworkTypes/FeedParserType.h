@@ -7,8 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class Article;
-typedef void(^FeedParserCompletion)(NSArray<Article *> *articles, NSError *error);
+@class AtomFeedItem;
+typedef void(^FeedParserCompletion)(NSArray<AtomFeedItem *> *items, NSError *error);
 
 @protocol FeedParserType <NSObject>
 - (void)parse:(NSData *)data completion:(FeedParserCompletion)completion;

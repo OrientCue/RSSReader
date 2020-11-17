@@ -9,9 +9,9 @@
 #import "FeedViewType.h"
 #import "FeedPresenterType.h"
 
-@class Article;
+@class AtomFeedItem;
 @interface FeedTableViewController : UITableViewController <FeedViewType>
-@property (nonatomic, retain) NSArray<Article *> *articles;
+@property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
 @property (nonatomic, retain) id<FeedPresenterType> presenter;
 @property (nonatomic, assign) id coordinator;
 

@@ -6,6 +6,7 @@
 //
 
 #import "FeedTableViewController.h"
+#import "AtomFeedItem.h"
 
 @interface FeedTableViewController ()
 
@@ -24,7 +25,7 @@
 
 - (void)dealloc {
   [_presenter release];
-  [_articles release];
+  [_items release];
   [super dealloc];
 }
 
@@ -32,21 +33,21 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.view.backgroundColor = UIColor.yellowColor;
+  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"reuseId"];
   self.title = @"Tut.by rss feed";
   [self.presenter fetch];
-
 }
 
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-  return self.articles.count;
+  return self.items.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseIdentifier" forIndexPath:indexPath];
-
+  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseId" forIndexPath:indexPath];
+  AtomFeedItem *item = self.items[indexPath.row];
+  cell.textLabel.text = item.title;
   return cell;
 }
 
@@ -54,10 +55,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
   NSLog(@"%s", __PRETTY_FUNCTION__);
+  [self.coordinator displayURL:self.items[indexPath.row].link];
 }
 
-- (void)appendArticles:(NSArray<Article *> *)articles {
-  self.articles = articles;
+- (void)appendItems:(NSArray<AtomFeedItem *> *)items {
+  self.items = items;
   [self.tableView reloadData];
 }
 

@@ -6,11 +6,13 @@
 //
 
 #import "AtomParser.h"
+#import "AtomFeedItem.h"
 
 @interface AtomParser () <NSXMLParserDelegate>
 
 @property (nonatomic, copy) FeedParserCompletion completion;
-@property (nonatomic, retain) NSMutableDictionary *parsingDictionary;;
+@property (nonatomic, retain) NSMutableDictionary *parsingDictionary;
+@property (nonatomic, retain) NSMutableDictionary *itemsDictionary;;
 @property (nonatomic, retain) NSMutableString *parsingString;
 @property (nonatomic, retain) NSMutableArray *items;
 
@@ -23,6 +25,7 @@
   [_items release];
   [_parsingString release];
   [_parsingDictionary release];
+  [_itemsDictionary release];
   [super dealloc];
 }
 
@@ -31,7 +34,6 @@
   NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
   parser.delegate = self;
   [parser parse];
-  NSLog(@"%s", __PRETTY_FUNCTION__);
 }
 
 #pragma mark - NSXMLParserDelegate
@@ -44,7 +46,7 @@
 }
 
 - (void)parserDidStartDocument:(NSXMLParser *)parser {
-  self.items = [NSMutableArray new];
+  self.items = [NSMutableArray array];
 }
 
 - (void)parser:(NSXMLParser *)parser
@@ -52,32 +54,22 @@ didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName
     attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
-  NSLog(@"\n\n%s", __PRETTY_FUNCTION__);
-  NSLog(@"elementName: %@\nnamespaceURI: %@\nqName: %@\nattributeDict: %@\n", elementName, namespaceURI, qName, attributeDict);
-//  if ([elementName isEqualToString:kTitleKey]) {
-//    self.parsingString = [NSMutableString new];
-//  } else if ([elementName isEqualToString:kLinkKey]) {
-//    self.parsingString = [NSMutableString new];
-//  } else if ([elementName isEqualToString:kPubDateKey]) {
-//    self.parsingString = [NSMutableString new];
-//  } else if ([elementName isEqualToString:kDesciptionKey]) {
-//    self.parsingString = [NSMutableString new];
-//  } else if ([elementName isEqualToString:kImageKey]) {
-//    self.parsingDictionary[elementName] = attributeDict;
-//  } else if ([elementName isEqualToString:kDurationKey]) {
-//    self.parsingString = [NSMutableString new];
-//  } else if ([elementName isEqualToString:kEnclosureKey]) {
-//    self.parsingDictionary[elementName] = attributeDict;
-//  } else if ([elementName isEqualToString:kMediaCreditKey]) {
-//    self.parsingString = [NSMutableString new];
-//  } else if ([elementName isEqualToString:kMediaThumbnailKey]) {
-//    self.parsingDictionary[elementName] = attributeDict;
-//  }
+//  NSLog(@"\n\n%s", __PRETTY_FUNCTION__);
+//  NSLog(@"elementName: %@\nnamespaceURI: %@\nqName: %@\nattributeDict: %@\n", elementName, namespaceURI, qName, attributeDict);
+  if ([elementName isEqualToString:kTitleKey]) {
+    self.parsingString = [NSMutableString string];
+  } else if ([elementName isEqualToString:kLinkKey]) {
+    self.parsingString = [NSMutableString string];
+  } else if ([elementName isEqualToString:kPubDateKey]) {
+    self.parsingString = [NSMutableString string];
+  } else if ([elementName isEqualToString:kDescriptionKey]) {
+    self.parsingString = [NSMutableString string];
+  }
 }
 
 - (void)parser:(NSXMLParser *)parser foundCharacters:(NSString *)string {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
-  NSLog(@"%@", string);
+//  NSLog(@"%s", __PRETTY_FUNCTION__);
+//  NSLog(@"%@", string);
   [self.parsingString appendString:string];
 }
 
@@ -85,28 +77,25 @@ didStartElement:(NSString *)elementName
  didEndElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
-  NSLog(@"elementName: %@\nnamespaceURI: %@\nqName: %@\n\n", elementName, namespaceURI, qName);
-//  if (self.parsingString) {
-//    if ([elementName isEqualToString:kMediaCreditKey]) {
-//      [self.mediaCreditArray addObject:self.parsingString];
-//    } else {
-//      [self.parsingDictionary setObject:self.parsingString forKey:elementName];
-//    }
-//    self.parsingString = nil;
-//  }
-//  if ([elementName isEqualToString:@"item"]) {
-//    self.metadataDictionary[kSpeakersKey] = self.mediaCreditArray;
-//    self.mediaCreditArray = nil;
-//    VideoMetadata *item = [[VideoMetadata alloc] initWithDictionary:self.metadataDictionary];
-//    [self.items addObject:item];
-//    self.metadataDictionary = nil;
-//    self.parsingDictionary = nil;
-//  } else if ([elementName isEqualToString:kImageKey] ||
-//             [elementName isEqualToString:kMediaThumbnailKey] ||
-//             [elementName isEqualToString:kEnclosureKey]) {
-//    [self.metadataDictionary addEntriesFromDictionary:self.parsingDictionary];
-//  }
+//  NSLog(@"%s", __PRETTY_FUNCTION__);
+//  NSLog(@"elementName: %@\nnamespaceURI: %@\nqName: %@\n\n", elementName, namespaceURI, qName);
+  if (self.parsingString) {
+    [self.parsingDictionary setObject:self.parsingString forKey:elementName];
+    [_parsingString release];
+    _parsingString = nil;
+  }
+  if ([elementName isEqualToString:@"item"]) {
+    AtomFeedItem *item = [[AtomFeedItem alloc] initWithDictionary:self.itemsDictionary];
+    [self.items addObject:item];
+    [item release];
+    [_itemsDictionary release];
+    _itemsDictionary = nil;
+    [_parsingDictionary release];
+    _parsingDictionary = nil;
+  } else {
+//    NSLog(@"%@", elementName);
+    [self.itemsDictionary addEntriesFromDictionary:self.parsingDictionary];
+  }
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
@@ -136,6 +125,13 @@ didStartElement:(NSString *)elementName
     _parsingDictionary = [NSMutableDictionary new];
   }
   return _parsingDictionary;
+}
+
+- (NSMutableDictionary *)itemsDictionary {
+  if (!_itemsDictionary) {
+    _itemsDictionary = [NSMutableDictionary new];
+  }
+  return _itemsDictionary;
 }
 
 @end

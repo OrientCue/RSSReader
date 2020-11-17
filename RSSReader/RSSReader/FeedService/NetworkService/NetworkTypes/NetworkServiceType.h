@@ -7,8 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class Article;
-typedef void(^NetworkServiceCompletion)(NSArray<Article *> *articles, NSError *error);
+@class AtomFeedItem;
+typedef void(^NetworkServiceCompletion)(NSArray<AtomFeedItem *> *items, NSError *error);
 
 @protocol NetworkServiceType <NSObject>
 

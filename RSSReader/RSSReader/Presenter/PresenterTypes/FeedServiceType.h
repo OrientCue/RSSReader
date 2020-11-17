@@ -7,8 +7,8 @@
 
 #import <Foundation/Foundation.h>
 
-@class Article;
-typedef void(^FeedServiceCompletion)(NSArray<Article *> *articles);
+@class AtomFeedItem;
+typedef void(^FeedServiceCompletion)(NSArray<AtomFeedItem *> *items);
 
 @protocol FeedServiceType <NSObject>
 

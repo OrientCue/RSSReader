@@ -44,12 +44,12 @@
       weakSelf.completion(nil, error);
       return;
     }
-    [weakSelf.parser parse:data completion:^(NSArray<Article *> *articles, NSError *err) {
+    [weakSelf.parser parse:data completion:^(NSArray<AtomFeedItem *> *items, NSError *err) {
       if (err) {
         weakSelf.completion(nil, err);
         return;
       }
-      weakSelf.completion(articles, nil);
+      weakSelf.completion(items, nil);
     }];
   }];
 }
