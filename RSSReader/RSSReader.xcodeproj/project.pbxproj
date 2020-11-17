@@ -14,6 +14,9 @@
 		7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE692562BC1A00BFBA5C /* main.m */; };
 		7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */; };
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
+		7A98447A2563FC66009F6AC0 /* Article.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* Article.m */; };
+		7A98448A2563FE2F009F6AC0 /* FeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844892563FE2F009F6AC0 /* FeedPresenter.m */; };
+		7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844932563FE9C009F6AC0 /* FeedService.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -40,6 +43,15 @@
 		7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSReaderTests.m; sourceTree = "<group>"; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
+		7A9844762563FBDD009F6AC0 /* FeedPresenterType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedPresenterType.h; sourceTree = "<group>"; };
+		7A9844772563FC13009F6AC0 /* FeedViewType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewType.h; sourceTree = "<group>"; };
+		7A9844782563FC66009F6AC0 /* Article.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Article.h; sourceTree = "<group>"; };
+		7A9844792563FC66009F6AC0 /* Article.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Article.m; sourceTree = "<group>"; };
+		7A9844832563FD59009F6AC0 /* FeedServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedServiceType.h; sourceTree = "<group>"; };
+		7A9844882563FE2F009F6AC0 /* FeedPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedPresenter.h; sourceTree = "<group>"; };
+		7A9844892563FE2F009F6AC0 /* FeedPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedPresenter.m; sourceTree = "<group>"; };
+		7A9844922563FE9C009F6AC0 /* FeedService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedService.h; sourceTree = "<group>"; };
+		7A9844932563FE9C009F6AC0 /* FeedService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedService.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +95,13 @@
 			isa = PBXGroup;
 			children = (
 				7A5530DB256300E3001797D2 /* Application */,
+				7A98448F2563FE77009F6AC0 /* FeedPresenter */,
+				7A9844972563FEA4009F6AC0 /* FeedService */,
+				7A1AEE682562BC1A00BFBA5C /* Info.plist */,
+				7A9844872563FE09009F6AC0 /* Model */,
+				7A9844862563FDF4009F6AC0 /* PresenterTypes */,
 				7A1AEE5D2562BC1700BFBA5C /* ViewController.h */,
 				7A1AEE5E2562BC1700BFBA5C /* ViewController.m */,
-				7A1AEE682562BC1A00BFBA5C /* Info.plist */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -117,6 +133,43 @@
 				7A1AEE692562BC1A00BFBA5C /* main.m */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7A9844862563FDF4009F6AC0 /* PresenterTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844762563FBDD009F6AC0 /* FeedPresenterType.h */,
+				7A9844772563FC13009F6AC0 /* FeedViewType.h */,
+				7A9844832563FD59009F6AC0 /* FeedServiceType.h */,
+			);
+			path = PresenterTypes;
+			sourceTree = "<group>";
+		};
+		7A9844872563FE09009F6AC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844782563FC66009F6AC0 /* Article.h */,
+				7A9844792563FC66009F6AC0 /* Article.m */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A98448F2563FE77009F6AC0 /* FeedPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844882563FE2F009F6AC0 /* FeedPresenter.h */,
+				7A9844892563FE2F009F6AC0 /* FeedPresenter.m */,
+			);
+			path = FeedPresenter;
+			sourceTree = "<group>";
+		};
+		7A9844972563FEA4009F6AC0 /* FeedService */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844922563FE9C009F6AC0 /* FeedService.h */,
+				7A9844932563FE9C009F6AC0 /* FeedService.m */,
+			);
+			path = FeedService;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -218,9 +271,12 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A98447A2563FC66009F6AC0 /* Article.m in Sources */,
 				7A1AEE5F2562BC1700BFBA5C /* ViewController.m in Sources */,
 				7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */,
+				7A98448A2563FE2F009F6AC0 /* FeedPresenter.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
+				7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
