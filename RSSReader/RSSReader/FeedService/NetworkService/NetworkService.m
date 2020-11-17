@@ -7,6 +7,12 @@
 
 #import "NetworkService.h"
 
+@interface NetworkService ()
+
+@property (nonatomic, copy) NetworkServiceCompletion completion;
+
+@end
+
 @implementation NetworkService
 
 #pragma mark - NSObject
@@ -23,25 +29,27 @@
 - (void)dealloc {
   [_downloader release];
   [_parser release];
+  [_completion release];
   [super dealloc];
 }
 
 #pragma mark - NetworkServiceType
 
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion {
-  __weak typeof(self) weakSelf = self;
+  self.completion = completion;
+  __block typeof(self) weakSelf = self;
   [self.downloader downloadFromUrl:url
                         completion:^(NSData *data, NSError *error) {
     if (error) {
-      completion(nil, error);
+      weakSelf.completion(nil, error);
       return;
     }
     [weakSelf.parser parse:data completion:^(NSArray<Article *> *articles, NSError *err) {
       if (err) {
-        completion(nil, err);
+        weakSelf.completion(nil, err);
         return;
       }
-      completion(articles, nil);
+      weakSelf.completion(articles, nil);
     }];
   }];
 }

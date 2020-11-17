@@ -33,7 +33,7 @@
 
 - (void)fetch {
   [self.view showLoading];
-  __weak typeof(self) weakSelf = self;
+  __block typeof(self) weakSelf = self;
   [self.service fetchFeed:^(NSArray<Article *> *articles) {
     [weakSelf.view hideLoading];
     dispatch_async(dispatch_get_main_queue(), ^{

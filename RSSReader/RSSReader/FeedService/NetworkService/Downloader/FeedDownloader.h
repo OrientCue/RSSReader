@@ -10,4 +10,9 @@
 
 @interface FeedDownloader : NSObject <FeedDownloaderType>
 
+- (instancetype)initWithURLSession:(NSURLSession *)session NS_DESIGNATED_INITIALIZER;
+
+/// Downloader with URLSession.sharedSession
+- (instancetype)init;
+
 @end
