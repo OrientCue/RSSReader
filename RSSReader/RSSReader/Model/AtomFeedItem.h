@@ -18,8 +18,10 @@ extern NSString *const kPubDateKey;
 @interface AtomFeedItem : NSObject
 @property (nonatomic, readonly, copy) NSString *title;
 @property (nonatomic, readonly, copy) NSString *articleDescription;
-@property (nonatomic, readonly) NSURL *link;
-@property (nonatomic, readonly) NSDate *pubDate;
+@property (nonatomic, readonly, retain) NSURL *link;
+@property (nonatomic, readonly, retain) NSDate *pubDate;
+
+- (NSString *)pubDateString;
 
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary;
 @end

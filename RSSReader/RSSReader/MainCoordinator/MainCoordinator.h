@@ -6,12 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-//#import "ContainerViewControllerType.h"
 #import <UIKit/UIKit.h>
+#import "DisplayURLProtocol.h"
 
-@interface MainCoordinator : NSObject
-//@property (nonatomic, retain) id<ContainerViewControllerType> container;
-//- (instancetype)initWith:(id<ContainerViewControllerType>)container;
+@interface MainCoordinator : NSObject <DisplayURLProtocol>
 @property (nonatomic, retain) UINavigationController *navigation;
 - (instancetype)initWithNavigation:(UINavigationController *)navigation;
 - (void)start;

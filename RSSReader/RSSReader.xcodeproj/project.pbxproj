@@ -13,6 +13,8 @@
 		7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE692562BC1A00BFBA5C /* main.m */; };
 		7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */; };
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
+		7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */; };
+		7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A799859256565E0004EE025 /* AtomItemTableViewCell.m */; };
 		7A92153D256404C0003430CD /* FeedViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92153C256404C0003430CD /* FeedViewControllerFactory.m */; };
 		7A92154625640A65003430CD /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* NetworkService.m */; };
 		7A92155425641317003430CD /* FeedDownloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154E2564121D003430CD /* FeedDownloader.m */; };
@@ -20,7 +22,6 @@
 		7A92156A25642050003430CD /* FeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844892563FE2F009F6AC0 /* FeedPresenter.m */; };
 		7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844932563FE9C009F6AC0 /* FeedService.m */; };
 		7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A98449925640007009F6AC0 /* FeedTableViewController.m */; };
-		7A98449C25640007009F6AC0 /* FeedTableViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A98449A25640007009F6AC0 /* FeedTableViewController.xib */; };
 		7A9844A825640258009F6AC0 /* MainCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* MainCoordinator.m */; };
 		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
 /* End PBXBuildFile section */
@@ -47,6 +48,10 @@
 		7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSReaderTests.m; sourceTree = "<group>"; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
+		7A799858256565E0004EE025 /* AtomItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomItemTableViewCell.h; sourceTree = "<group>"; };
+		7A799859256565E0004EE025 /* AtomItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomItemTableViewCell.m; sourceTree = "<group>"; };
+		7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtomItemTableViewCell.xib; sourceTree = "<group>"; };
+		7A79986E25657185004EE025 /* DisplayURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayURLProtocol.h; sourceTree = "<group>"; };
 		7A92153B256404C0003430CD /* FeedViewControllerFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewControllerFactory.h; sourceTree = "<group>"; };
 		7A92153C256404C0003430CD /* FeedViewControllerFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewControllerFactory.m; sourceTree = "<group>"; };
 		7A9215412564073A003430CD /* NetworkServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkServiceType.h; sourceTree = "<group>"; };
@@ -69,10 +74,8 @@
 		7A9844932563FE9C009F6AC0 /* FeedService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedService.m; sourceTree = "<group>"; };
 		7A98449825640007009F6AC0 /* FeedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		7A98449925640007009F6AC0 /* FeedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
-		7A98449A25640007009F6AC0 /* FeedTableViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FeedTableViewController.xib; sourceTree = "<group>"; };
 		7A9844A625640258009F6AC0 /* MainCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainCoordinator.h; sourceTree = "<group>"; };
 		7A9844A725640258009F6AC0 /* MainCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainCoordinator.m; sourceTree = "<group>"; };
-		7A9844AE256402CE009F6AC0 /* ContainerViewControllerType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ContainerViewControllerType.h; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -153,6 +156,16 @@
 				7A1AEE692562BC1A00BFBA5C /* main.m */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7A79985F256565E8004EE025 /* AtomItemTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7A799858256565E0004EE025 /* AtomItemTableViewCell.h */,
+				7A799859256565E0004EE025 /* AtomItemTableViewCell.m */,
+				7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */,
+			);
+			path = AtomItemTableViewCell;
 			sourceTree = "<group>";
 		};
 		7A92154925640AA0003430CD /* NetworkService */ = {
@@ -236,10 +249,10 @@
 		7A9844A125640018009F6AC0 /* FeedTableViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7AAD274C25646FEE00270FE9 /* FeedViewControllerFactory */,
+				7A79985F256565E8004EE025 /* AtomItemTableViewCell */,
 				7A98449825640007009F6AC0 /* FeedTableViewController.h */,
 				7A98449925640007009F6AC0 /* FeedTableViewController.m */,
-				7A98449A25640007009F6AC0 /* FeedTableViewController.xib */,
+				7AAD274C25646FEE00270FE9 /* FeedViewControllerFactory */,
 			);
 			path = FeedTableViewController;
 			sourceTree = "<group>";
@@ -247,7 +260,7 @@
 		7A9844AB25640264009F6AC0 /* MainCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				7A9844AE256402CE009F6AC0 /* ContainerViewControllerType.h */,
+				7A79986E25657185004EE025 /* DisplayURLProtocol.h */,
 				7A9844A625640258009F6AC0 /* MainCoordinator.h */,
 				7A9844A725640258009F6AC0 /* MainCoordinator.m */,
 			);
@@ -351,10 +364,10 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */,
 				7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */,
 				7A1AEE642562BC1A00BFBA5C /* Assets.xcassets in Resources */,
 				7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */,
-				7A98449C25640007009F6AC0 /* FeedTableViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -381,6 +394,7 @@
 				7A9844A825640258009F6AC0 /* MainCoordinator.m in Sources */,
 				7A92155425641317003430CD /* FeedDownloader.m in Sources */,
 				7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */,
+				7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
 				7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */,
 			);
@@ -467,7 +481,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -520,7 +534,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -571,7 +585,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -591,7 +605,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

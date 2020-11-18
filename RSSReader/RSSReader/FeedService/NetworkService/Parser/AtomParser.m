@@ -34,6 +34,7 @@
   NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
   parser.delegate = self;
   [parser parse];
+  [parser release];
 }
 
 #pragma mark - NSXMLParserDelegate

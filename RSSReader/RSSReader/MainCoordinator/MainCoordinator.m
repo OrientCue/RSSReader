@@ -9,14 +9,8 @@
 #import "FeedViewControllerFactory.h"
 
 @implementation MainCoordinator
-//
-//- (instancetype)initWith:(id<ContainerViewControllerType>)container {
-//  if (self = [super init]) {
-//    _container = [container retain];
-//  }
-//  return self;
-//}
 
+#pragma mark - NSObject
 
 - (instancetype)initWithNavigation:(UINavigationController *)navigation {
   if (self = [super init]) {
@@ -25,12 +19,20 @@
   return self;
 }
 
+- (void)dealloc {
+  [_navigation release];
+  [super dealloc];
+}
+
+#pragma mark - Coordinator
+
 - (void)start {
   FeedTableViewController *feed = [FeedViewControllerFactory make];
   feed.coordinator = self;
   [self.navigation pushViewController:feed animated:false];
 }
 
+#pragma mark - DisplayURLProtocol
 
 - (void)displayURL:(NSURL *)url {
   [[UIApplication sharedApplication] openURL:url
@@ -38,11 +40,6 @@
                            completionHandler:^(BOOL success) {
     NSLog(@"%@", success ? @"success" : @"failure");
   }];
-}
-
-- (void)dealloc {
-  [_navigation release];
-  [super dealloc];
 }
 
 @end

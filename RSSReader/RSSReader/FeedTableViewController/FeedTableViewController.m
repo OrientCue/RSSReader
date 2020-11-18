@@ -7,6 +7,7 @@
 
 #import "FeedTableViewController.h"
 #import "AtomFeedItem.h"
+#import "AtomItemTableViewCell.h"
 
 @interface FeedTableViewController ()
 
@@ -33,8 +34,12 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"reuseId"];
-  self.title = @"Tut.by rss feed";
+  UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
+  [self.tableView registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
+  self.title = @"Tut.by";
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 60.0;
+  self.tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
   [self.presenter fetch];
 }
 
@@ -45,18 +50,20 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"reuseId" forIndexPath:indexPath];
+  AtomItemTableViewCell *cell = (AtomItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AtomItemTableViewCell.identifier
+                                                                                         forIndexPath:indexPath];
   AtomFeedItem *item = self.items[indexPath.row];
-  cell.textLabel.text = item.title;
+  [cell configureWithItem:item];
   return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
   [self.coordinator displayURL:self.items[indexPath.row].link];
 }
+
+#pragma mark - FeedViewType
 
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items {
   self.items = items;
