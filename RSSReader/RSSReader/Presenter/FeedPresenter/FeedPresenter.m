@@ -36,9 +36,7 @@
   __block typeof(self) weakSelf = self;
   [self.service fetchFeed:^(NSArray<AtomFeedItem *> *items) {
     [weakSelf.view hideLoading];
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.view appendItems:items];
-    });
+    [weakSelf.view appendItems:items];
   }];
   
 }

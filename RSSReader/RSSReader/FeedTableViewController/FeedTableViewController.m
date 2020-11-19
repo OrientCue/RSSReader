@@ -9,6 +9,8 @@
 #import "AtomFeedItem.h"
 #import "AtomItemTableViewCell.h"
 
+NSString *const kFeedTitle = @"Tut.by";
+
 @interface FeedTableViewController ()
 
 @end
@@ -34,13 +36,24 @@
 
 - (void)viewDidLoad {
   [super viewDidLoad];
+  self.title = kFeedTitle;
+  [self configureTableView];
   UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
-  self.title = @"Tut.by";
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight = 60.0;
   self.tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
   [self.presenter fetch];
+}
+
+#pragma mark - Configure Table View
+
+- (void)configureTableView {
+  UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
+  [self.tableView registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
+  self.tableView.rowHeight = UITableViewAutomaticDimension;
+  self.tableView.estimatedRowHeight = 60.0;
+  self.tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
 }
 
 #pragma mark - Table view data source
@@ -66,8 +79,10 @@
 #pragma mark - FeedViewType
 
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items {
-  self.items = items;
-  [self.tableView reloadData];
+  dispatch_async(dispatch_get_main_queue(), ^{
+    self.items = items;
+    [self.tableView reloadData];
+  });
 }
 
 - (void)hideLoading {
