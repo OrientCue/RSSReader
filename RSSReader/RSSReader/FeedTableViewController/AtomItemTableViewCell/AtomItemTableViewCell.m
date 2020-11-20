@@ -15,8 +15,8 @@
 
 - (void)configureWithItem:(AtomFeedItem *)item {
   self.item = item;
-  self.titleLabel.text = item.title;
-  self.pubDateLabel.text = [item pubDateString];
+  self.titleLabel.text = self.item.title;
+  self.pubDateLabel.text = [self.item pubDateString];
 }
 
 - (void)dealloc {
@@ -25,4 +25,5 @@
   [_pubDateLabel release];
   [super dealloc];
 }
+
 @end

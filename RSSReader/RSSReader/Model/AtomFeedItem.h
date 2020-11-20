@@ -9,9 +9,7 @@
 
 extern NSString *const kItemKey;
 extern NSString *const kTitleKey;
-extern NSString *const kEnclosureKey;
 extern NSString *const kDescriptionKey;
-extern NSString *const kURLKey;
 extern NSString *const kLinkKey;
 extern NSString *const kPubDateKey;
 

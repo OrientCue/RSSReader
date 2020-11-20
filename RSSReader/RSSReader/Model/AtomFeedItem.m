@@ -9,9 +9,7 @@
 
 NSString *const kItemKey = @"item";
 NSString *const kTitleKey = @"title";
-NSString *const kEnclosureKey = @"enclosure";
 NSString *const kDescriptionKey = @"description";
-NSString *const kURLKey = @"url";
 NSString *const kLinkKey = @"link";
 NSString *const kPubDateKey = @"pubDate";
 
@@ -22,10 +20,7 @@ NSString *const kPubDateKey = @"pubDate";
 - (instancetype)initWithDictionary:(NSDictionary *)dictionary {
   if (!dictionary || !dictionary.count) { return nil; }
   if (self = [super init]) {
-    _title = dictionary[kTitleKey] ? [dictionary[kTitleKey] copy] : [@"" copy];
-    _articleDescription = dictionary[kDescriptionKey] ? [dictionary[kDescriptionKey] copy] : [@"" copy];
-    _link = [[NSURL URLWithString:dictionary[kLinkKey]] retain];
-    _pubDate = [[self dateFrom:dictionary[kPubDateKey]] retain];
+    [self setupIvarsFrom:dictionary];
   }
   return self;
 }
@@ -53,6 +48,13 @@ NSString *const kPubDateKey = @"pubDate";
 }
 
 #pragma mark - Private Methods
+
+- (void)setupIvarsFrom:(NSDictionary *)dictionary {
+  _title = dictionary[kTitleKey] ? [dictionary[kTitleKey] copy] : [@"" copy];
+  _articleDescription = dictionary[kDescriptionKey] ? [dictionary[kDescriptionKey] copy] : [@"" copy];
+  _link = [[NSURL URLWithString:dictionary[kLinkKey]] retain];
+  _pubDate = [[self dateFrom:dictionary[kPubDateKey]] retain];
+}
 
 - (NSDate *)dateFrom:(NSString *)string {
   NSDateFormatter *df = [NSDateFormatter new];

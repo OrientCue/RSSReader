@@ -13,5 +13,4 @@
 @property (nonatomic, retain) UINavigationController *navigation;
 - (instancetype)initWithNavigation:(UINavigationController *)navigation;
 - (void)start;
-- (void)displayURL:(NSURL *)url;
 @end

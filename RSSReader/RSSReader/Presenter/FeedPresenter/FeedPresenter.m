@@ -38,7 +38,6 @@
     [weakSelf.view hideLoading];
     [weakSelf.view appendItems:items];
   }];
-  
 }
 
 @end

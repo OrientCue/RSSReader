@@ -38,11 +38,6 @@ NSString *const kFeedTitle = @"Tut.by";
   [super viewDidLoad];
   self.title = kFeedTitle;
   [self configureTableView];
-  UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
-  [self.tableView registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
-  self.tableView.rowHeight = UITableViewAutomaticDimension;
-  self.tableView.estimatedRowHeight = 60.0;
-  self.tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
   [self.presenter fetch];
 }
 
@@ -65,8 +60,7 @@ NSString *const kFeedTitle = @"Tut.by";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   AtomItemTableViewCell *cell = (AtomItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AtomItemTableViewCell.identifier
                                                                                          forIndexPath:indexPath];
-  AtomFeedItem *item = self.items[indexPath.row];
-  [cell configureWithItem:item];
+  [cell configureWithItem:self.items[indexPath.row]];
   return cell;
 }
 
