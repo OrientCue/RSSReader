@@ -44,7 +44,8 @@
       weakSelf.completion(nil, error);
       return;
     }
-    [weakSelf.parser parse:data completion:^(NSArray<AtomFeedItem *> *items, NSError *err) {
+    [weakSelf.parser parse:data
+                completion:^(NSArray<AtomFeedItem *> *items, NSError *err) {
       if (err) {
         weakSelf.completion(nil, err);
         return;

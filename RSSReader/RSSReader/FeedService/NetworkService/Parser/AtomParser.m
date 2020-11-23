@@ -9,6 +9,7 @@
 #import "AtomFeedItem.h"
 
 @interface AtomParser () <NSXMLParserDelegate>
+@property (nonatomic, retain) NSXMLParser *parser;
 @property (nonatomic, copy) FeedParserCompletion completion;
 @property (nonatomic, retain) NSMutableDictionary *itemsDictionary;;
 @property (nonatomic, retain) NSMutableString *parsingString;
@@ -17,7 +18,10 @@
 
 @implementation AtomParser
 
+#pragma mark - Lifecycle
+
 - (void)dealloc {
+  [_parser release];
   [_completion release];
   [_items release];
   [_parsingString release];
@@ -25,13 +29,13 @@
   [super dealloc];
 }
 
+#pragma mark - FeedParserType
+
 - (void)parse:(NSData *)data completion:(FeedParserCompletion)completion {
   assert(completion);
   self.completion = completion;
-  NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-  parser.delegate = self;
-  [parser parse];
-  [parser release];
+  self.parser = [self configuredParserWith:data];
+  [self.parser parse];
 }
 
 #pragma mark - NSXMLParserDelegate
@@ -80,6 +84,12 @@ didStartElement:(NSString *)elementName
 }
 
 #pragma mark - Private methods
+
+- (NSXMLParser *)configuredParserWith:(NSData *)data {
+  NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+  parser.delegate = self;
+  return [parser autorelease];
+}
 
 - (void)addItem {
   AtomFeedItem *item = [[AtomFeedItem alloc] initWithDictionary:self.itemsDictionary];

@@ -27,8 +27,7 @@
 #pragma mark - Coordinator
 
 - (void)start {
-  FeedTableViewController *feed = [FeedViewControllerFactory make];
-  feed.coordinator = self;
+  FeedTableViewController *feed = [FeedViewControllerFactory controllerWithCoordinator:self];
   [self.navigation pushViewController:feed animated:false];
 }
 

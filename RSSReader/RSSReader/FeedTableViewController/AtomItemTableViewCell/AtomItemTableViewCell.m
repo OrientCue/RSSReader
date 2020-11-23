@@ -7,6 +7,10 @@
 
 #import "AtomItemTableViewCell.h"
 
+@interface AtomItemTableViewCell ()
+@property (retain, nonatomic) AtomFeedItem *item;
+@end
+
 @implementation AtomItemTableViewCell
 
 + (NSString *)identifier {

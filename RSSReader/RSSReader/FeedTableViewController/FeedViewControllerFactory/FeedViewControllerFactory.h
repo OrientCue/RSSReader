@@ -10,6 +10,6 @@
 
 @interface FeedViewControllerFactory : NSObject
 
-+ (FeedTableViewController *)make;
++ (FeedTableViewController *)controllerWithCoordinator:(id<DisplayURLProtocol>)coordinator;
 
 @end

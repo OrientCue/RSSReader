@@ -12,7 +12,7 @@
 NSString *const kFeedTitle = @"Tut.by";
 
 @interface FeedTableViewController ()
-
+@property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
 @end
 
 @implementation FeedTableViewController

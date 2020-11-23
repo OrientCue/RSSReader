@@ -14,7 +14,7 @@
 
 @implementation FeedViewControllerFactory
 
-+ (FeedTableViewController *)make {
++ (FeedTableViewController *)controllerWithCoordinator:(id<DisplayURLProtocol>)coordinator {
   FeedDownloader *downloader = [FeedDownloader new];
   AtomParser *parser = [AtomParser new];
   NetworkService *network = [[NetworkService alloc] initWithDownloader:downloader
@@ -28,6 +28,7 @@
   FeedTableViewController *view = [[FeedTableViewController alloc] initWithPresenter:presenter];
   [presenter release];
   presenter.view = view;
+  view.coordinator = coordinator;
   return [view autorelease];
 }
 

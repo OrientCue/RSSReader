@@ -34,17 +34,16 @@ NSString *const kPubDateKey = @"pubDate";
 }
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Title: %@\nLink: %@\nPubDate: %@", self.title, self.link.absoluteString, self.pubDate];
+  return [NSString stringWithFormat:@"Title: %@\nLink: %@\nPubDate: %@",
+          self.title,
+          self.link.absoluteString,
+          self.pubDate];
 }
 
 #pragma mark - Interface
 
 - (NSString *)pubDateString {
-  NSDateFormatter *df = [NSDateFormatter new];
-  df.dateFormat = @"MM.dd.yyyy HH:mm";
-  NSString *rv = [df stringFromDate:self.pubDate];
-  [df release];
-  return rv;
+  return [[self formatterForPubDateOutput] stringFromDate:self.pubDate];
 }
 
 #pragma mark - Private Methods
@@ -57,11 +56,21 @@ NSString *const kPubDateKey = @"pubDate";
 }
 
 - (NSDate *)dateFrom:(NSString *)string {
+  return [[self formatterForPubDateInput] dateFromString:string];
+}
+
+#pragma mark - NSDateFormatter
+
+- (NSDateFormatter *)formatterForPubDateOutput {
+  NSDateFormatter *df = [NSDateFormatter new];
+  df.dateFormat = @"MM.dd.yyyy HH:mm";
+  return [df autorelease];
+}
+
+- (NSDateFormatter *)formatterForPubDateInput {
   NSDateFormatter *df = [NSDateFormatter new];
   df.dateFormat = @"EE, d MMM yyyy HH:mm:ss Z";
-  NSDate *date = [df dateFromString:string];
-  [df release];
-  return date;
+  return [df autorelease];
 }
 
 @end
