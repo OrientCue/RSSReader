@@ -10,6 +10,7 @@
 #import "AtomItemTableViewCell.h"
 
 NSString *const kFeedTitle = @"Tut.by";
+CGFloat const kEstimatedRowHeight = 60.0;
 
 @interface FeedTableViewController ()
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
@@ -47,8 +48,8 @@ NSString *const kFeedTitle = @"Tut.by";
   UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
   [self.tableView registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
   self.tableView.rowHeight = UITableViewAutomaticDimension;
-  self.tableView.estimatedRowHeight = 60.0;
-  self.tableView.separatorInset = UIEdgeInsetsMake(0.0, 0.0, 0.0, 0.0);
+  self.tableView.estimatedRowHeight = kEstimatedRowHeight;
+  self.tableView.separatorInset = UIEdgeInsetsZero;
 }
 
 #pragma mark - Table view data source
