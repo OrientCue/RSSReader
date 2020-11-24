@@ -7,6 +7,7 @@
 
 #import "AtomParser.h"
 #import "AtomFeedItem.h"
+#import "NSXMLParser+AtomParser.h"
 
 @interface AtomParser () <NSXMLParserDelegate>
 @property (nonatomic, retain) NSXMLParser *parser;
@@ -14,6 +15,7 @@
 @property (nonatomic, retain) NSMutableDictionary *itemsDictionary;;
 @property (nonatomic, retain) NSMutableString *parsingString;
 @property (nonatomic, retain) NSMutableArray<AtomFeedItem *> *items;
+@property (nonatomic, retain) NSArray<NSString *> *keysArray;
 @end
 
 @implementation AtomParser
@@ -26,6 +28,7 @@
   [_items release];
   [_parsingString release];
   [_itemsDictionary release];
+  [_keysArray release];
   [super dealloc];
 }
 
@@ -34,7 +37,7 @@
 - (void)parse:(NSData *)data completion:(FeedParserCompletion)completion {
   assert(completion);
   self.completion = completion;
-  self.parser = [self configuredParserWith:data];
+  self.parser = [NSXMLParser parserWith:data delegate:self];
   [self.parser parse];
 }
 
@@ -49,8 +52,7 @@ didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName
     attributes:(NSDictionary<NSString *,NSString *> *)attributeDict {
-  NSArray<NSString *> *keysArray = @[kTitleKey, kLinkKey, kPubDateKey, kDescriptionKey];
-  if ([keysArray containsObject:elementName]) {
+  if ([self.keysArray containsObject:elementName]) {
     self.parsingString = [NSMutableString string];
   }
 }
@@ -64,8 +66,7 @@ didStartElement:(NSString *)elementName
   namespaceURI:(NSString *)namespaceURI
  qualifiedName:(NSString *)qName {
   if (self.parsingString) {
-    self.itemsDictionary[elementName] = self.parsingString;
-    [self resetParsingString];
+    [self addElementToItemsDictionary:elementName];
   }
   if ([elementName isEqualToString:kItemKey]) {
     [self addItem];
@@ -84,16 +85,15 @@ didStartElement:(NSString *)elementName
 
 #pragma mark - Private methods
 
-- (NSXMLParser *)configuredParserWith:(NSData *)data {
-  NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-  parser.delegate = self;
-  return [parser autorelease];
-}
-
 - (void)addItem {
   AtomFeedItem *item = [AtomFeedItem itemFromDictionary:self.itemsDictionary];
   [self.items addObject:item];
   [self resetItemsDictionary];
+}
+
+- (void)addElementToItemsDictionary:(NSString *)elementName {
+  self.itemsDictionary[elementName] = self.parsingString;
+  [self resetParsingString];
 }
 
 - (void)resetParserState {
@@ -120,6 +120,13 @@ didStartElement:(NSString *)elementName
     _itemsDictionary = [NSMutableDictionary new];
   }
   return _itemsDictionary;
+}
+
+- (NSArray<NSString *> *)keysArray {
+  if (!_keysArray) {
+    _keysArray = [@[kTitleKey, kLinkKey, kPubDateKey, kDescriptionKey] retain];
+  }
+  return _keysArray;
 }
 
 @end
