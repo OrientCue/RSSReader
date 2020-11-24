@@ -36,6 +36,7 @@
 #pragma mark - FeedDownloaderType
 
 - (void)downloadFromUrl:(NSURL *)url completion:(FeedDownloaderCompletion)completion {
+  assert(completion);
   self.completion = completion;
   __block typeof(self) weakSelf = self;
   NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url

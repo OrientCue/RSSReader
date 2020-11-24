@@ -34,6 +34,7 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
 #pragma mark - FeedServiceType
 
 - (void)fetchFeed:(FeedServiceCompletion)completion {
+  assert(completion);
   NSURL *rssUrl = [NSURL URLWithString:kRssURLString];
   self.completion = completion;
   __block typeof(self) weakSelf = self;

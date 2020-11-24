@@ -36,6 +36,7 @@
 #pragma mark - NetworkServiceType
 
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion {
+  assert(completion);
   self.completion = completion;
   __block typeof(self) weakSelf = self;
   [self.downloader downloadFromUrl:url

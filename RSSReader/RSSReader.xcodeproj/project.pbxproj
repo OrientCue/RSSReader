@@ -11,7 +11,6 @@
 		7A1AEE642562BC1A00BFBA5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE632562BC1A00BFBA5C /* Assets.xcassets */; };
 		7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */; };
 		7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE692562BC1A00BFBA5C /* main.m */; };
-		7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */; };
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
 		7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */; };
 		7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A799859256565E0004EE025 /* AtomItemTableViewCell.m */; };
@@ -53,7 +52,6 @@
 		7A1AEE682562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE692562BC1A00BFBA5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A1AEE6F2562BC1A00BFBA5C /* RSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSReaderTests.m; sourceTree = "<group>"; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
 		7A799858256565E0004EE025 /* AtomItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomItemTableViewCell.h; sourceTree = "<group>"; };
@@ -154,7 +152,6 @@
 			isa = PBXGroup;
 			children = (
 				7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */,
-				7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */,
 				7A1AEE752562BC1A00BFBA5C /* Info.plist */,
 			);
 			path = RSSReaderTests;
@@ -231,14 +228,14 @@
 			path = Downloader;
 			sourceTree = "<group>";
 		};
-		7A9844862563FDF4009F6AC0 /* PresenterTypes */ = {
+		7A9844862563FDF4009F6AC0 /* FeedPresenterTypes */ = {
 			isa = PBXGroup;
 			children = (
 				7A9844762563FBDD009F6AC0 /* FeedPresenterType.h */,
 				7A9844772563FC13009F6AC0 /* FeedViewType.h */,
 				7A9844832563FD59009F6AC0 /* FeedServiceType.h */,
 			);
-			path = PresenterTypes;
+			path = FeedPresenterTypes;
 			sourceTree = "<group>";
 		};
 		7A9844872563FE09009F6AC0 /* Model */ = {
@@ -306,7 +303,7 @@
 			isa = PBXGroup;
 			children = (
 				7A98448F2563FE77009F6AC0 /* FeedPresenter */,
-				7A9844862563FDF4009F6AC0 /* PresenterTypes */,
+				7A9844862563FDF4009F6AC0 /* FeedPresenterTypes */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -476,7 +473,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */,
 				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
 				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 			);
