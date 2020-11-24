@@ -8,6 +8,7 @@
 #import "FeedTableViewController.h"
 #import "AtomFeedItem.h"
 #import "AtomItemTableViewCell.h"
+#import "UITableView+RegisterCell.h"
 
 NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
@@ -45,8 +46,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - Configure Table View
 
 - (void)configureTableView {
-  UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
-  [self.tableView registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
+  [self.tableView registerAtomItemTableViewCell];
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight = kEstimatedRowHeight;
   self.tableView.separatorInset = UIEdgeInsetsZero;

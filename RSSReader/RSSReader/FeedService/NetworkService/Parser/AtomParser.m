@@ -69,7 +69,6 @@ didStartElement:(NSString *)elementName
   }
   if ([elementName isEqualToString:kItemKey]) {
     [self addItem];
-    [self resetItemsDictionary];
   }
 }
 
@@ -92,11 +91,9 @@ didStartElement:(NSString *)elementName
 }
 
 - (void)addItem {
-  AtomFeedItem *item = [[AtomFeedItem alloc] initWithDictionary:self.itemsDictionary];
-  if (item) {
-    [self.items addObject:item];
-  }
-  [item release];
+  AtomFeedItem *item = [AtomFeedItem itemFromDictionary:self.itemsDictionary];
+  [self.items addObject:item];
+  [self resetItemsDictionary];
 }
 
 - (void)resetParserState {

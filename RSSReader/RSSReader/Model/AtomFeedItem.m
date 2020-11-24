@@ -6,6 +6,8 @@
 //
 
 #import "AtomFeedItem.h"
+#import "NSDate+AtomItemPubDate.h"
+#import "NSString+AtomItemPubDate.h"
 
 NSString *const kItemKey = @"item";
 NSString *const kTitleKey = @"title";
@@ -15,14 +17,49 @@ NSString *const kPubDateKey = @"pubDate";
 
 @implementation AtomFeedItem
 
-#pragma mark - NSObject
-
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary {
-  if (!dictionary || !dictionary.count) { return nil; }
+- (instancetype)initWithTitle:(NSString *)title
+           articleDescription:(NSString *)articleDescription
+                         link:(NSURL *)link
+                      pubDate:(NSDate *)pubDate {
   if (self = [super init]) {
-    [self setupIvarsFrom:dictionary];
+    _title = title ? [title copy] : [@"" copy];
+    _articleDescription = articleDescription ? [articleDescription copy] : [@"" copy];
+    _link = link ? [link retain] : [NSURL new];
+    _pubDate = pubDate ? [pubDate retain] : [[NSDate date] retain];
   }
   return self;
+}
+
+- (instancetype)initWithTitle:(NSString *)title
+           articleDescription:(NSString *)articleDescription
+                   linkString:(NSString *)linkString
+                pubDateString:(NSString *)pubDateString {
+  return [self initWithTitle:title
+          articleDescription:articleDescription
+                        link:[NSURL URLWithString:linkString]
+                     pubDate:pubDateString.dateForPubDateString];
+}
+
++ (instancetype)itemFromDictionary:(NSDictionary *)dictionary {
+  if (!dictionary) {
+    [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be nil!"];
+  }
+  if (!dictionary.count) {
+    [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be empty!"];
+  }
+  return [[[AtomFeedItem alloc] initWithTitle:dictionary[kTitleKey]
+                           articleDescription:dictionary[kDescriptionKey]
+                                   linkString:dictionary[kLinkKey]
+                                pubDateString:dictionary[kPubDateKey]] autorelease];
+}
+
+#pragma mark - Lifecycle
+
+- (instancetype)init {
+  return [self initWithTitle:nil
+          articleDescription:nil
+                        link:nil
+                     pubDate:nil];
 }
 
 - (void)dealloc {
@@ -32,6 +69,8 @@ NSString *const kPubDateKey = @"pubDate";
   [_pubDate release];
   [super dealloc];
 }
+
+#pragma mark - NSObject
 
 - (NSString *)description {
   return [NSString stringWithFormat:@"Title: %@\nLink: %@\nPubDate: %@",
@@ -43,34 +82,7 @@ NSString *const kPubDateKey = @"pubDate";
 #pragma mark - Interface
 
 - (NSString *)pubDateString {
-  return [[self formatterForPubDateOutput] stringFromDate:self.pubDate];
-}
-
-#pragma mark - Private Methods
-
-- (void)setupIvarsFrom:(NSDictionary *)dictionary {
-  _title = dictionary[kTitleKey] ? [dictionary[kTitleKey] copy] : [@"" copy];
-  _articleDescription = dictionary[kDescriptionKey] ? [dictionary[kDescriptionKey] copy] : [@"" copy];
-  _link = [[NSURL URLWithString:dictionary[kLinkKey]] retain];
-  _pubDate = [[self dateFrom:dictionary[kPubDateKey]] retain];
-}
-
-- (NSDate *)dateFrom:(NSString *)string {
-  return [[self formatterForPubDateInput] dateFromString:string];
-}
-
-#pragma mark - NSDateFormatter
-
-- (NSDateFormatter *)formatterForPubDateOutput {
-  NSDateFormatter *df = [NSDateFormatter new];
-  df.dateFormat = @"MM.dd.yyyy HH:mm";
-  return [df autorelease];
-}
-
-- (NSDateFormatter *)formatterForPubDateInput {
-  NSDateFormatter *df = [NSDateFormatter new];
-  df.dateFormat = @"EE, d MMM yyyy HH:mm:ss Z";
-  return [df autorelease];
+  return self.pubDate.stringForPubDate;
 }
 
 @end

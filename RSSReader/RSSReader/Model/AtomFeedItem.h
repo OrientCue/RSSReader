@@ -19,7 +19,14 @@ extern NSString *const kPubDateKey;
 @property (nonatomic, readonly, retain) NSURL *link;
 @property (nonatomic, readonly, retain) NSDate *pubDate;
 
-- (NSString *)pubDateString;
+@property (nonatomic, readonly) NSString *pubDateString;
 
-- (instancetype)initWithDictionary:(NSDictionary *)dictionary;
+- (instancetype)initWithTitle:(NSString *)title
+           articleDescription:(NSString *)articleDescription
+                         link:(NSURL *)link
+                      pubDate:(NSDate *)pubDate NS_DESIGNATED_INITIALIZER;
+
+/// Creates AtomFeedItem from dictionary with AtomFeedItem string keys.  Will raise invalidArgumentException for nil or empty dictionary.
+/// @param dictionary NSDictionary with AtomFeedItems keys.
++ (instancetype)itemFromDictionary:(NSDictionary *)dictionary;
 @end

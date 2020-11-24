@@ -24,6 +24,12 @@
 		7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A98449925640007009F6AC0 /* FeedTableViewController.m */; };
 		7A9844A825640258009F6AC0 /* MainCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* MainCoordinator.m */; };
 		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
+		7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */; };
+		7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */; };
+		7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; };
+		7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */; };
+		7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
+		7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -76,6 +82,15 @@
 		7A98449925640007009F6AC0 /* FeedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		7A9844A625640258009F6AC0 /* MainCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainCoordinator.h; sourceTree = "<group>"; };
 		7A9844A725640258009F6AC0 /* MainCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainCoordinator.m; sourceTree = "<group>"; };
+		7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+AtomItemPubDate.h"; sourceTree = "<group>"; };
+		7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AtomItemPubDate.m"; sourceTree = "<group>"; };
+		7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+AtomItemPubDate.h"; sourceTree = "<group>"; };
+		7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+AtomItemPubDate.m"; sourceTree = "<group>"; };
+		7AB2A525256D0D7100E38106 /* NSString+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AtomItemPubDate.h"; sourceTree = "<group>"; };
+		7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AtomItemPubDate.m"; sourceTree = "<group>"; };
+		7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomFeedItemTests.m; sourceTree = "<group>"; };
+		7AB2A534256D30A000E38106 /* UITableView+RegisterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+RegisterCell.h"; sourceTree = "<group>"; };
+		7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RegisterCell.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -132,6 +147,7 @@
 		7A1AEE722562BC1A00BFBA5C /* RSSReaderTests */ = {
 			isa = PBXGroup;
 			children = (
+				7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */,
 				7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */,
 				7A1AEE752562BC1A00BFBA5C /* Info.plist */,
 			);
@@ -221,6 +237,7 @@
 		7A9844872563FE09009F6AC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				7AB2A52A256D0F1500E38106 /* PubDateHelpers */,
 				7A9844782563FC66009F6AC0 /* AtomFeedItem.h */,
 				7A9844792563FC66009F6AC0 /* AtomFeedItem.m */,
 			);
@@ -253,6 +270,7 @@
 				7A98449825640007009F6AC0 /* FeedTableViewController.h */,
 				7A98449925640007009F6AC0 /* FeedTableViewController.m */,
 				7AAD274C25646FEE00270FE9 /* FeedViewControllerFactory */,
+				7AB2A542256D35E500E38106 /* UITableView Helpers */,
 			);
 			path = FeedTableViewController;
 			sourceTree = "<group>";
@@ -283,6 +301,28 @@
 				7A9844862563FDF4009F6AC0 /* PresenterTypes */,
 			);
 			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7AB2A52A256D0F1500E38106 /* PubDateHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */,
+				7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */,
+				7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */,
+				7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */,
+				7AB2A525256D0D7100E38106 /* NSString+AtomItemPubDate.h */,
+				7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */,
+			);
+			path = PubDateHelpers;
+			sourceTree = "<group>";
+		};
+		7AB2A542256D35E500E38106 /* UITableView Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7AB2A534256D30A000E38106 /* UITableView+RegisterCell.h */,
+				7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */,
+			);
+			path = "UITableView Helpers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -387,14 +427,18 @@
 			files = (
 				7A92155A256414FC003430CD /* AtomParser.m in Sources */,
 				7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */,
+				7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */,
 				7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */,
 				7A92154625640A65003430CD /* NetworkService.m in Sources */,
 				7A92156A25642050003430CD /* FeedPresenter.m in Sources */,
+				7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */,
+				7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */,
 				7A92153D256404C0003430CD /* FeedViewControllerFactory.m in Sources */,
 				7A9844A825640258009F6AC0 /* MainCoordinator.m in Sources */,
 				7A92155425641317003430CD /* FeedDownloader.m in Sources */,
 				7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */,
 				7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */,
+				7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
 				7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */,
 			);
@@ -405,6 +449,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */,
+				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
+				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
