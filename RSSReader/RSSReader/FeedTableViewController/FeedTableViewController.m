@@ -74,10 +74,8 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - FeedViewType
 
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items {
-  dispatch_async(dispatch_get_main_queue(), ^{
-    self.items = items;
-    [self.tableView reloadData];
-  });
+  self.items = items;
+  [self.tableView reloadData];
 }
 
 - (void)hideLoading {

@@ -35,8 +35,10 @@
   [self.view showLoading];
   __block typeof(self) weakSelf = self;
   [self.service fetchFeed:^(NSArray<AtomFeedItem *> *items) {
-    [weakSelf.view hideLoading];
-    [weakSelf.view appendItems:items];
+    dispatch_async(dispatch_get_main_queue(), ^{
+      [weakSelf.view hideLoading];
+      [weakSelf.view appendItems:items];
+    });
   }];
 }
 
