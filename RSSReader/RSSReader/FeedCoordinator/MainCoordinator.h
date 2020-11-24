@@ -1,5 +1,5 @@
 //
-//  MainCoordinator.h
+//  FeedCoordinator.h
 //  RSSReader
 //
 //  Created by Arseniy Strakh on 17.11.2020.
@@ -9,7 +9,7 @@
 #import <UIKit/UIKit.h>
 #import "DisplayURLProtocol.h"
 
-@interface MainCoordinator : NSObject <DisplayURLProtocol>
+@interface FeedCoordinator : NSObject <DisplayURLProtocol>
 @property (nonatomic, retain) UINavigationController *navigation;
 - (instancetype)initWithNavigation:(UINavigationController *)navigation;
 - (void)start;

@@ -1,26 +1,26 @@
 //
-//  MainCoordinator.m
+//  FeedCoordinator.m
 //  RSSReader
 //
 //  Created by Arseniy Strakh on 17.11.2020.
 //
 
-#import "MainCoordinator.h"
+#import "FeedCoordinator.h"
 #import "FeedViewControllerFactory.h"
 
-@implementation MainCoordinator
+@implementation FeedCoordinator
 
 #pragma mark - NSObject
 
-- (instancetype)initWithNavigation:(UINavigationController *)navigation {
+- (instancetype)initWithNavigationController:(UINavigationController *)navigationController {
   if (self = [super init]) {
-    _navigation = [navigation retain];
+    _navigationController = [navigationController retain];
   }
   return self;
 }
 
 - (void)dealloc {
-  [_navigation release];
+  [_navigationController release];
   [super dealloc];
 }
 
@@ -28,7 +28,7 @@
 
 - (void)start {
   FeedTableViewController *feed = [FeedViewControllerFactory controllerWithCoordinator:self];
-  [self.navigation pushViewController:feed animated:false];
+  [self.navigationController pushViewController:feed animated:false];
 }
 
 #pragma mark - DisplayURLProtocol
