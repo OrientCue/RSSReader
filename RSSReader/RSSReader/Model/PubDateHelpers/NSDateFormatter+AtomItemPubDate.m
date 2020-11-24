@@ -7,18 +7,26 @@
 
 #import "NSDateFormatter+AtomItemPubDate.h"
 
+NSString *const kDateFormatAtomOutput = @"dd.MM.yyyy HH:mm";
+NSString *const kDateFormatAtomInput = @"EE, d MMM yyyy HH:mm:ss Z";
+
 @implementation NSDateFormatter (AtomItemPubDate)
 
-+ (NSDateFormatter *)formatterForPubDateOutput {
++ (instancetype)formatterWithDateFormat:(NSString *)dateFormat {
   NSDateFormatter *df = [NSDateFormatter new];
-  df.dateFormat = @"MM.dd.yyyy HH:mm";
+  df.dateFormat = dateFormat;
   return [df autorelease];
 }
 
++ (NSDateFormatter *)formatterForPubDateOutput {
+  NSString *localizedDateFormat = [self dateFormatFromTemplate:kDateFormatAtomOutput
+                                                       options:0
+                                                        locale:NSLocale.currentLocale];
+  return [self formatterWithDateFormat:localizedDateFormat];
+}
+
 + (NSDateFormatter *)formatterForPubDateInput {
-  NSDateFormatter *df = [NSDateFormatter new];
-  df.dateFormat = @"EE, d MMM yyyy HH:mm:ss Z";
-  return [df autorelease];
+  return [self formatterWithDateFormat:kDateFormatAtomInput];
 }
 
 @end
