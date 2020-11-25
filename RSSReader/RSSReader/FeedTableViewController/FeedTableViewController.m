@@ -46,7 +46,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - Configure Table View
 
 - (void)configureTableView {
-  [self.tableView registerAtomItemTableViewCell];
+  [self.tableView registerNibForCellClasses:@[[AtomItemTableViewCell class]]];
   self.tableView.rowHeight = UITableViewAutomaticDimension;
   self.tableView.estimatedRowHeight = kEstimatedRowHeight;
   self.tableView.separatorInset = UIEdgeInsetsZero;
@@ -59,8 +59,8 @@ CGFloat const kEstimatedRowHeight = 60.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  AtomItemTableViewCell *cell = (AtomItemTableViewCell *)[tableView dequeueReusableCellWithIdentifier:AtomItemTableViewCell.identifier
-                                                                                         forIndexPath:indexPath];
+  AtomItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AtomItemTableViewCell.identifier
+                                                                forIndexPath:indexPath];
   [cell configureWithItem:self.items[indexPath.row]];
   return cell;
 }

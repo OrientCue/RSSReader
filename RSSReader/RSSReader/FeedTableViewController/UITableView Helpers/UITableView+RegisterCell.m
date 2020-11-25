@@ -6,13 +6,14 @@
 //
 
 #import "UITableView+RegisterCell.h"
-#import "AtomItemTableViewCell.h"
 
 @implementation UITableView (RegisterCell)
 
-- (void)registerAtomItemTableViewCell {
-  UINib *nib = [UINib nibWithNibName:NSStringFromClass([AtomItemTableViewCell class]) bundle:nil];
-  [self registerNib:nib forCellReuseIdentifier:AtomItemTableViewCell.identifier];
+- (void)registerNibForCellClasses:(NSArray<Class> *)cellClasses {
+  for (Class cellClass in cellClasses) {
+    UINib *nib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
+    [self registerNib:nib forCellReuseIdentifier:NSStringFromClass(cellClass)];
+  }
 }
 
 @end
