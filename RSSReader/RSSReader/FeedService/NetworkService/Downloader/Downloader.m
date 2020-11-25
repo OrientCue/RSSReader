@@ -1,20 +1,20 @@
 //
-//  FeedDownloader.m
+//  Downloader.m
 //  RSSReader
 //
 //  Created by Arseniy Strakh on 17.11.2020.
 //
 
-#import "FeedDownloader.h"
+#import "Downloader.h"
 
-@interface FeedDownloader ()
+@interface Downloader ()
 
 @property (nonatomic, retain) NSURLSession *session;
-@property (nonatomic, copy) FeedDownloaderCompletion completion;
+@property (nonatomic, copy) DownloaderCompletion completion;
 
 @end
 
-@implementation FeedDownloader
+@implementation Downloader
 
 - (instancetype)initWithURLSession:(NSURLSession *)session {
   if (self = [super init]) {
@@ -35,7 +35,7 @@
 
 #pragma mark - FeedDownloaderType
 
-- (void)downloadFromUrl:(NSURL *)url completion:(FeedDownloaderCompletion)completion {
+- (void)downloadFromUrl:(NSURL *)url completion:(DownloaderCompletion)completion {
   assert(completion);
   self.completion = completion;
   __block typeof(self) weakSelf = self;

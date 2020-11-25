@@ -9,13 +9,13 @@
 #import "FeedPresenter.h"
 #import "FeedService.h"
 #import "NetworkService.h"
-#import "FeedDownloader.h"
+#import "Downloader.h"
 #import "AtomParser.h"
 
 @implementation FeedViewControllerFactory
 
 + (FeedTableViewController *)controllerWithCoordinator:(id<DisplayURLProtocol>)coordinator {
-  FeedDownloader *downloader = [FeedDownloader new];
+  Downloader *downloader = [Downloader new];
   AtomParser *parser = [AtomParser new];
   NetworkService *network = [[NetworkService alloc] initWithDownloader:downloader
                                                                 parser:parser];

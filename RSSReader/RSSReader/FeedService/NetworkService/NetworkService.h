@@ -7,12 +7,12 @@
 
 #import <Foundation/Foundation.h>
 #import "NetworkServiceType.h"
-#import "FeedDownloaderType.h"
+#import "DownloaderType.h"
 #import "FeedParserType.h"
 
 @interface NetworkService : NSObject <NetworkServiceType>
-@property (nonatomic, retain) id<FeedDownloaderType> downloader;
+@property (nonatomic, retain) id<DownloaderType> downloader;
 @property (nonatomic, retain) id<FeedParserType> parser;
-- (instancetype)initWithDownloader:(id<FeedDownloaderType>)downloader
+- (instancetype)initWithDownloader:(id<DownloaderType>)downloader
                             parser:(id<FeedParserType>)parser;
 @end

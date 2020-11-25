@@ -17,7 +17,7 @@
 
 #pragma mark - NSObject
 
-- (instancetype)initWithDownloader:(id<FeedDownloaderType>)downloader
+- (instancetype)initWithDownloader:(id<DownloaderType>)downloader
                             parser:(id<FeedParserType>)parser {
   if (self = [super init]) {
     _downloader = [downloader retain];
