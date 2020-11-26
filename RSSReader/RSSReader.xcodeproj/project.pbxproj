@@ -31,6 +31,7 @@
 		7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */; };
 		7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */; };
 		7AB2A559256D44FD00E38106 /* FeedCoordinatorFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A558256D44FD00E38106 /* FeedCoordinatorFactory.m */; };
+		7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -473,6 +474,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */,
 				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
 				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 			);

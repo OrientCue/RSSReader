@@ -15,18 +15,13 @@
 @implementation FeedViewControllerFactory
 
 + (FeedTableViewController *)controllerWithCoordinator:(id<DisplayURLProtocol>)coordinator {
-  Downloader *downloader = [Downloader new];
-  AtomParser *parser = [AtomParser new];
-  NetworkService *network = [[NetworkService alloc] initWithDownloader:downloader
-                                                                parser:parser];
-  [downloader release];
-  [parser release];
-  FeedService *service = [[FeedService alloc] initWith:network];
-  [network release];
-  FeedPresenter *presenter = [[FeedPresenter alloc] initWith:service];
-  [service release];
+  Downloader *downloader = [[Downloader new] autorelease];
+  AtomParser *parser = [[AtomParser new] autorelease];
+  NetworkService *network = [[[NetworkService alloc] initWithDownloader:downloader
+                                                                 parser:parser] autorelease];
+  FeedService *service = [[[FeedService alloc] initWith:network] autorelease];
+  FeedPresenter *presenter = [[[FeedPresenter alloc] initWith:service] autorelease];
   FeedTableViewController *view = [[FeedTableViewController alloc] initWithPresenter:presenter];
-  [presenter release];
   presenter.view = view;
   view.coordinator = coordinator;
   return [view autorelease];

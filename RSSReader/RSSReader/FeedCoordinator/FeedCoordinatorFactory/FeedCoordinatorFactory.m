@@ -10,9 +10,8 @@
 @implementation FeedCoordinatorFactory
 
 + (FeedCoordinator *)makeCoordinator {
-  UINavigationController *navigationController = [UINavigationController new];
+  UINavigationController *navigationController = [[UINavigationController new] autorelease];
   FeedCoordinator *coordinator = [[FeedCoordinator alloc] initWithNavigationController:navigationController];
-  [navigationController release];
   return [coordinator autorelease];
 }
 

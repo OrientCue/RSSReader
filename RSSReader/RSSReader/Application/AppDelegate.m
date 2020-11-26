@@ -17,9 +17,7 @@
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  UIWindow *window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-  self.window = window;
-  [window release];
+  self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
   self.coordinator = [FeedCoordinatorFactory makeCoordinator];
   self.window.rootViewController = self.coordinator.navigationController;
   [self.coordinator start];

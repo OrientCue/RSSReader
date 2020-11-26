@@ -21,6 +21,9 @@ extern NSString *const kPubDateKey;
 
 @property (nonatomic, readonly) NSString *pubDateString;
 
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
+
 - (instancetype)initWithTitle:(NSString *)title
            articleDescription:(NSString *)articleDescription
                          link:(NSURL *)link

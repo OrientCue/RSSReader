@@ -13,9 +13,9 @@ NSString *const kDateFormatAtomInput = @"EE, d MMM yyyy HH:mm:ss Z";
 @implementation NSDateFormatter (AtomItemPubDate)
 
 + (instancetype)formatterWithDateFormat:(NSString *)dateFormat {
-  NSDateFormatter *df = [NSDateFormatter new];
-  df.dateFormat = dateFormat;
-  return [df autorelease];
+  NSDateFormatter *dateFormatter = [NSDateFormatter new];
+  dateFormatter.dateFormat = dateFormat;
+  return [dateFormatter autorelease];
 }
 
 + (NSDateFormatter *)formatterForPubDateOutput {
