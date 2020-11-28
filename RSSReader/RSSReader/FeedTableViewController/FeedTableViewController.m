@@ -13,7 +13,8 @@
 NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
 
-@interface FeedTableViewController ()
+@interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
 @end
 
@@ -22,7 +23,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - NSObject
 
 - (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter {
-  if (self = [super initWithStyle:UITableViewStylePlain]) {
+  if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
   }
   return self;
@@ -31,6 +32,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 - (void)dealloc {
   [_presenter release];
   [_items release];
+  [_tableView release];
   [super dealloc];
 }
 
@@ -39,17 +41,36 @@ CGFloat const kEstimatedRowHeight = 60.0;
 - (void)viewDidLoad {
   [super viewDidLoad];
   self.title = kFeedTitle;
-  [self configureTableView];
+  [self layoutTableView];
   [self.presenter fetch];
 }
 
-#pragma mark - Configure Table View
+#pragma mark - Layout
 
-- (void)configureTableView {
-  [self.tableView registerNibForCellClasses:@[[AtomItemTableViewCell class]]];
-  self.tableView.rowHeight = UITableViewAutomaticDimension;
-  self.tableView.estimatedRowHeight = kEstimatedRowHeight;
-  self.tableView.separatorInset = UIEdgeInsetsZero;
+- (void)layoutTableView {
+  [self.view addSubview:self.tableView];
+  [NSLayoutConstraint activateConstraints:@[
+    [self.tableView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+    [self.tableView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+    [self.tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+    [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+  ]
+   ];
+}
+
+#pragma mark - Lazy Properties
+
+- (UITableView *)tableView {
+  if (!_tableView) {
+    _tableView = [[UITableView alloc] initWithFrame:CGRectZero style:UITableViewStylePlain];
+    _tableView.delegate = self;
+    _tableView.dataSource = self;
+    _tableView.estimatedRowHeight = kEstimatedRowHeight;
+    _tableView.separatorInset = UIEdgeInsetsZero;
+    _tableView.translatesAutoresizingMaskIntoConstraints = false;
+    [_tableView registerNibForCellClasses:@[[AtomItemTableViewCell class]]];
+  }
+  return _tableView;
 }
 
 #pragma mark - Table view data source

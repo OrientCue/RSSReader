@@ -11,7 +11,7 @@
 #import "DisplayURLProtocol.h"
 
 @class AtomFeedItem;
-@interface FeedTableViewController : UITableViewController <FeedViewType>
+@interface FeedTableViewController : UIViewController <FeedViewType>
 @property (nonatomic, retain) id<FeedPresenterType> presenter;
 @property (nonatomic, assign) id<DisplayURLProtocol> coordinator;
 
