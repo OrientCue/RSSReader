@@ -8,14 +8,12 @@
 #import "AtomItemTableViewCell.h"
 
 @interface AtomItemTableViewCell ()
+@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
+@property (retain, nonatomic) IBOutlet UILabel *pubDateLabel;
 @property (retain, nonatomic) AtomFeedItem *item;
 @end
 
 @implementation AtomItemTableViewCell
-
-+ (NSString *)identifier {
-  return NSStringFromClass(self);
-}
 
 - (void)configureWithItem:(AtomFeedItem *)item {
   self.item = item;

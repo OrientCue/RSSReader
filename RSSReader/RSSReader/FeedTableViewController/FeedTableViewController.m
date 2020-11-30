@@ -22,9 +22,12 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 #pragma mark - NSObject
 
-- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter {
+- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter
+                      coordinator:(id<FeedCoordinatorType>)coordinator {
   if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
+    _presenter.view = self;
+    _coordinator = coordinator;
   }
   return self;
 }
@@ -80,7 +83,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-  AtomItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:AtomItemTableViewCell.identifier
+  AtomItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AtomItemTableViewCell class])
                                                                 forIndexPath:indexPath];
   [cell configureWithItem:self.items[indexPath.row]];
   return cell;

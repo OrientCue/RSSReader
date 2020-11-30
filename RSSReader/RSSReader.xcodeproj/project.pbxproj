@@ -83,6 +83,8 @@
 		7A98449925640007009F6AC0 /* FeedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		7A9844A625640258009F6AC0 /* FeedCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCoordinator.h; sourceTree = "<group>"; };
 		7A9844A725640258009F6AC0 /* FeedCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCoordinator.m; sourceTree = "<group>"; };
+		7A9C99222575906E00EC76E6 /* FeedCoordinatorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCoordinatorType.h; sourceTree = "<group>"; };
+		7A9C99282575973400EC76E6 /* CoordinatorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoordinatorType.h; sourceTree = "<group>"; };
 		7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+AtomItemPubDate.h"; sourceTree = "<group>"; };
 		7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AtomItemPubDate.m"; sourceTree = "<group>"; };
 		7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+AtomItemPubDate.h"; sourceTree = "<group>"; };
@@ -283,12 +285,22 @@
 		7A9844AB25640264009F6AC0 /* FeedCoordinator */ = {
 			isa = PBXGroup;
 			children = (
-				7A79986E25657185004EE025 /* DisplayURLProtocol.h */,
+				7A9C9923257590A400EC76E6 /* CoordinatorTypes */,
 				7A9844A625640258009F6AC0 /* FeedCoordinator.h */,
 				7A9844A725640258009F6AC0 /* FeedCoordinator.m */,
 				7AB2A55C256D46F000E38106 /* FeedCoordinatorFactory */,
 			);
 			path = FeedCoordinator;
+			sourceTree = "<group>";
+		};
+		7A9C9923257590A400EC76E6 /* CoordinatorTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C99282575973400EC76E6 /* CoordinatorType.h */,
+				7A79986E25657185004EE025 /* DisplayURLProtocol.h */,
+				7A9C99222575906E00EC76E6 /* FeedCoordinatorType.h */,
+			);
+			path = CoordinatorTypes;
 			sourceTree = "<group>";
 		};
 		7AAD274C25646FEE00270FE9 /* FeedViewControllerFactory */ = {

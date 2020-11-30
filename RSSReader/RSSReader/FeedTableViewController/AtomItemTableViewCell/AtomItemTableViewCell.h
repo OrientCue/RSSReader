@@ -9,9 +9,5 @@
 #import "AtomFeedItem.h"
 
 @interface AtomItemTableViewCell : UITableViewCell
-@property (nonatomic, class, readonly) NSString *identifier;
-@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
-@property (retain, nonatomic) IBOutlet UILabel *pubDateLabel;
-
 - (void)configureWithItem:(AtomFeedItem *)item;
 @end

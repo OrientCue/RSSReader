@@ -8,12 +8,13 @@
 #import <UIKit/UIKit.h>
 #import "FeedViewType.h"
 #import "FeedPresenterType.h"
-#import "DisplayURLProtocol.h"
+#import "FeedCoordinatorType.h"
 
 @class AtomFeedItem;
 @interface FeedTableViewController : UIViewController <FeedViewType>
-@property (nonatomic, retain) id<FeedPresenterType> presenter;
-@property (nonatomic, assign) id<DisplayURLProtocol> coordinator;
+@property (nonatomic, readonly, retain) id<FeedPresenterType> presenter;
+@property (nonatomic, readonly, assign) id<FeedCoordinatorType> coordinator;
 
-- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter;
+- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter
+                      coordinator:(id<FeedCoordinatorType>)coordinator;
 @end

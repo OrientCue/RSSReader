@@ -11,7 +11,5 @@
 typedef void(^NetworkServiceCompletion)(NSArray<AtomFeedItem *> *items, NSError *error);
 
 @protocol NetworkServiceType <NSObject>
-
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion;
-
 @end

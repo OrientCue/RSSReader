@@ -7,8 +7,9 @@
 
 #import <Foundation/Foundation.h>
 
+@protocol FeedViewType;
+
 @protocol FeedPresenterType <NSObject>
-
+@property (nonatomic, assign) id<FeedViewType> view;
 - (void)fetch;
-
 @end

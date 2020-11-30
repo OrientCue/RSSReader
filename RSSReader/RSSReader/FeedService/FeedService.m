@@ -11,6 +11,7 @@
 NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
 
 @interface FeedService ()
+@property (nonatomic, readonly, retain) id<NetworkServiceType> network;
 @property (nonatomic, copy) FeedServiceCompletion completion;
 @end
 

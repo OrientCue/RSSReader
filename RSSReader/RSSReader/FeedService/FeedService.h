@@ -11,6 +11,5 @@
 @protocol NetworkServiceType;
 
 @interface FeedService : NSObject <FeedServiceType>
-@property (nonatomic, retain) id<NetworkServiceType> network;
 - (instancetype)initWith:(id<NetworkServiceType>)networkService;
 @end

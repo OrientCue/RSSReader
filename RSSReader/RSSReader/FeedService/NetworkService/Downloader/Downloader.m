@@ -8,10 +8,8 @@
 #import "Downloader.h"
 
 @interface Downloader ()
-
 @property (nonatomic, retain) NSURLSession *session;
 @property (nonatomic, copy) DownloaderCompletion completion;
-
 @end
 
 @implementation Downloader
@@ -41,14 +39,7 @@
   __block typeof(self) weakSelf = self;
   NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url
                                                completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
-    [weakSelf retain];
-    if (error) {
-      weakSelf.completion(nil, error);
-      [weakSelf release];
-      return;
-    }
-    weakSelf.completion(data, nil);
-    [weakSelf release];
+    weakSelf.completion(data, error);
   }];
   [dataTask resume];
 }

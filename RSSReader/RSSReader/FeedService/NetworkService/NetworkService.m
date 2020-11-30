@@ -8,9 +8,9 @@
 #import "NetworkService.h"
 
 @interface NetworkService ()
-
+@property (nonatomic, readonly, retain) id<DownloaderType> downloader;
+@property (nonatomic, readonly, retain) id<FeedParserType> parser;
 @property (nonatomic, copy) NetworkServiceCompletion completion;
-
 @end
 
 @implementation NetworkService
@@ -46,13 +46,7 @@
       return;
     }
     [weakSelf.parser parse:data
-                completion:^(NSArray<AtomFeedItem *> *items, NSError *err) {
-      if (err) {
-        weakSelf.completion(nil, err);
-        return;
-      }
-      weakSelf.completion(items, nil);
-    }];
+                completion:weakSelf.completion];
   }];
 }
 

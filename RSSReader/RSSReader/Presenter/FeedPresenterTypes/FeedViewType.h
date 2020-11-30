@@ -10,9 +10,7 @@
 @class AtomFeedItem;
 
 @protocol FeedViewType <NSObject>
-
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items;
 - (void)showLoading;
 - (void)hideLoading;
-
 @end

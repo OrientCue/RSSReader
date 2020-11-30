@@ -7,10 +7,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "DisplayURLProtocol.h"
+#import "FeedCoordinatorType.h"
 
-@interface FeedCoordinator : NSObject <DisplayURLProtocol>
-@property (nonatomic, retain) UINavigationController *navigationController;
+@interface FeedCoordinator : NSObject <FeedCoordinatorType>
+@property (nonatomic, readonly, retain) UINavigationController *navigationController;
 - (instancetype)initWithNavigationController:(UINavigationController *)navigationController;
-- (void)start;
 @end
