@@ -42,12 +42,10 @@ NSString *const kPubDateKey = @"pubDate";
 
 + (instancetype)itemFromDictionary:(NSDictionary *)dictionary {
   if (!dictionary) {
-    [self release];
     [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be nil!"];
     return nil;
   }
   if (!dictionary.count) {
-    [self release];
     [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be empty!"];
     return nil;
   }
