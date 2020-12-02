@@ -13,4 +13,5 @@
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items;
 - (void)showLoading;
 - (void)hideLoading;
+- (void)displayError:(NSError *)error;
 @end
