@@ -1,16 +1,16 @@
 //
-//  NetworkService.h
+//  FeedNetworkService.h
 //  RSSReader
 //
 //  Created by Arseniy Strakh on 17.11.2020.
 //
 
 #import <Foundation/Foundation.h>
-#import "NetworkServiceType.h"
-#import "DownloaderType.h"
-#import "FeedParserType.h"
+#import "FeedNetworkServiceType.h"
 
-@interface NetworkService : NSObject <NetworkServiceType>
+@protocol DownloaderType, FeedParserType;
+
+@interface FeedNetworkService : NSObject <FeedNetworkServiceType>
 - (instancetype)initWithDownloader:(id<DownloaderType>)downloader
                             parser:(id<FeedParserType>)parser;
 @end

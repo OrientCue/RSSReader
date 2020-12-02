@@ -1,5 +1,5 @@
 //
-//  NetworkServiceType.h
+//  FeedNetworkServiceType.h
 //  RSSReader
 //
 //  Created by Arseniy Strakh on 17.11.2020.
@@ -10,6 +10,6 @@
 @class AtomFeedItem;
 typedef void(^NetworkServiceCompletion)(NSArray<AtomFeedItem *> *items, NSError *error);
 
-@protocol NetworkServiceType <NSObject>
+@protocol FeedNetworkServiceType <NSObject>
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion;
 @end

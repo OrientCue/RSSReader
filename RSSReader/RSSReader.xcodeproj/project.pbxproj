@@ -15,11 +15,10 @@
 		7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */; };
 		7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A799859256565E0004EE025 /* AtomItemTableViewCell.m */; };
 		7A92153D256404C0003430CD /* FeedViewControllerFactory.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92153C256404C0003430CD /* FeedViewControllerFactory.m */; };
-		7A92154625640A65003430CD /* NetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* NetworkService.m */; };
+		7A92154625640A65003430CD /* FeedNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* FeedNetworkService.m */; };
 		7A92155425641317003430CD /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154E2564121D003430CD /* Downloader.m */; };
 		7A92155A256414FC003430CD /* AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A921559256414FC003430CD /* AtomParser.m */; };
 		7A92156A25642050003430CD /* FeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844892563FE2F009F6AC0 /* FeedPresenter.m */; };
-		7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844932563FE9C009F6AC0 /* FeedService.m */; };
 		7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A98449925640007009F6AC0 /* FeedTableViewController.m */; };
 		7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* FeedCoordinator.m */; };
 		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
@@ -61,9 +60,9 @@
 		7A79986E25657185004EE025 /* DisplayURLProtocol.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DisplayURLProtocol.h; sourceTree = "<group>"; };
 		7A92153B256404C0003430CD /* FeedViewControllerFactory.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewControllerFactory.h; sourceTree = "<group>"; };
 		7A92153C256404C0003430CD /* FeedViewControllerFactory.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedViewControllerFactory.m; sourceTree = "<group>"; };
-		7A9215412564073A003430CD /* NetworkServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkServiceType.h; sourceTree = "<group>"; };
-		7A92154425640A65003430CD /* NetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NetworkService.h; sourceTree = "<group>"; };
-		7A92154525640A65003430CD /* NetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NetworkService.m; sourceTree = "<group>"; };
+		7A9215412564073A003430CD /* FeedNetworkServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedNetworkServiceType.h; sourceTree = "<group>"; };
+		7A92154425640A65003430CD /* FeedNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedNetworkService.h; sourceTree = "<group>"; };
+		7A92154525640A65003430CD /* FeedNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedNetworkService.m; sourceTree = "<group>"; };
 		7A92154C25641170003430CD /* DownloaderType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloaderType.h; sourceTree = "<group>"; };
 		7A92154D2564121D003430CD /* Downloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
 		7A92154E2564121D003430CD /* Downloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
@@ -74,11 +73,8 @@
 		7A9844772563FC13009F6AC0 /* FeedViewType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewType.h; sourceTree = "<group>"; };
 		7A9844782563FC66009F6AC0 /* AtomFeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomFeedItem.h; sourceTree = "<group>"; };
 		7A9844792563FC66009F6AC0 /* AtomFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomFeedItem.m; sourceTree = "<group>"; };
-		7A9844832563FD59009F6AC0 /* FeedServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedServiceType.h; sourceTree = "<group>"; };
 		7A9844882563FE2F009F6AC0 /* FeedPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedPresenter.h; sourceTree = "<group>"; };
 		7A9844892563FE2F009F6AC0 /* FeedPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedPresenter.m; sourceTree = "<group>"; };
-		7A9844922563FE9C009F6AC0 /* FeedService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedService.h; sourceTree = "<group>"; };
-		7A9844932563FE9C009F6AC0 /* FeedService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedService.m; sourceTree = "<group>"; };
 		7A98449825640007009F6AC0 /* FeedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
 		7A98449925640007009F6AC0 /* FeedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
 		7A9844A625640258009F6AC0 /* FeedCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCoordinator.h; sourceTree = "<group>"; };
@@ -141,10 +137,10 @@
 			isa = PBXGroup;
 			children = (
 				7A5530DB256300E3001797D2 /* Application */,
-				7A9844972563FEA4009F6AC0 /* FeedService */,
+				7A9844AB25640264009F6AC0 /* FeedCoordinator */,
+				7A92154925640AA0003430CD /* FeedNetworkService */,
 				7A9844A125640018009F6AC0 /* FeedTableViewController */,
 				7A1AEE682562BC1A00BFBA5C /* Info.plist */,
-				7A9844AB25640264009F6AC0 /* FeedCoordinator */,
 				7A9844872563FE09009F6AC0 /* Model */,
 				7AAD274F256470B900270FE9 /* Presenter */,
 			);
@@ -190,22 +186,22 @@
 			path = AtomItemTableViewCell;
 			sourceTree = "<group>";
 		};
-		7A92154925640AA0003430CD /* NetworkService */ = {
+		7A92154925640AA0003430CD /* FeedNetworkService */ = {
 			isa = PBXGroup;
 			children = (
 				7A92155F25641544003430CD /* NetworkTypes */,
 				7A921562256418CC003430CD /* Parser */,
 				7A921563256418D8003430CD /* Downloader */,
-				7A92154425640A65003430CD /* NetworkService.h */,
-				7A92154525640A65003430CD /* NetworkService.m */,
+				7A92154425640A65003430CD /* FeedNetworkService.h */,
+				7A92154525640A65003430CD /* FeedNetworkService.m */,
 			);
-			path = NetworkService;
+			path = FeedNetworkService;
 			sourceTree = "<group>";
 		};
 		7A92155F25641544003430CD /* NetworkTypes */ = {
 			isa = PBXGroup;
 			children = (
-				7A9215412564073A003430CD /* NetworkServiceType.h */,
+				7A9215412564073A003430CD /* FeedNetworkServiceType.h */,
 				7A92154C25641170003430CD /* DownloaderType.h */,
 				7A92155725641437003430CD /* FeedParserType.h */,
 			);
@@ -236,7 +232,6 @@
 			children = (
 				7A9844762563FBDD009F6AC0 /* FeedPresenterType.h */,
 				7A9844772563FC13009F6AC0 /* FeedViewType.h */,
-				7A9844832563FD59009F6AC0 /* FeedServiceType.h */,
 			);
 			path = FeedPresenterTypes;
 			sourceTree = "<group>";
@@ -258,16 +253,6 @@
 				7A9844892563FE2F009F6AC0 /* FeedPresenter.m */,
 			);
 			path = FeedPresenter;
-			sourceTree = "<group>";
-		};
-		7A9844972563FEA4009F6AC0 /* FeedService */ = {
-			isa = PBXGroup;
-			children = (
-				7A9844922563FE9C009F6AC0 /* FeedService.h */,
-				7A9844932563FE9C009F6AC0 /* FeedService.m */,
-				7A92154925640AA0003430CD /* NetworkService */,
-			);
-			path = FeedService;
 			sourceTree = "<group>";
 		};
 		7A9844A125640018009F6AC0 /* FeedTableViewController */ = {
@@ -465,7 +450,7 @@
 				7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */,
 				7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */,
 				7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */,
-				7A92154625640A65003430CD /* NetworkService.m in Sources */,
+				7A92154625640A65003430CD /* FeedNetworkService.m in Sources */,
 				7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */,
 				7A92156A25642050003430CD /* FeedPresenter.m in Sources */,
 				7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */,
@@ -478,7 +463,6 @@
 				7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */,
 				7AB2A559256D44FD00E38106 /* FeedCoordinatorFactory.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
-				7A9844942563FE9C009F6AC0 /* FeedService.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

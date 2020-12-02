@@ -6,18 +6,20 @@
 //
 
 #import "FeedPresenter.h"
+#import "FeedViewType.h"
+#import "FeedNetworkServiceType.h"
+
+NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
 
 @interface FeedPresenter ()
-
-@property (nonatomic, retain) id<FeedServiceType> service;
-
+@property (nonatomic, retain) id<FeedNetworkServiceType> service;
 @end
 
 @implementation FeedPresenter
 
 #pragma mark - NSObject
 
-- (instancetype)initWith:(id<FeedServiceType>)service {
+- (instancetype)initWith:(id<FeedNetworkServiceType>)service {
   if (self = [super init]) {
     _service = [service retain];
   }
@@ -33,8 +35,12 @@
 
 - (void)fetch {
   [self.view showLoading];
+  NSURL *rssUrl = [NSURL URLWithString:kRssURLString];
   __block typeof(self) weakSelf = self;
-  [self.service fetchFeed:^(NSArray<AtomFeedItem *> *items) {
+  [self.service fetchFeedFromUrl:rssUrl completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
+    if (error) {
+      NSLog(@"%@", error.localizedDescription);
+    }
     dispatch_async(dispatch_get_main_queue(), ^{
       [weakSelf.view hideLoading];
       [weakSelf.view appendItems:items];

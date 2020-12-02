@@ -35,7 +35,7 @@
 #pragma mark - FeedParserType
 
 - (void)parse:(NSData *)data completion:(FeedParserCompletion)completion {
-  assert(completion);
+  assert(completion); // Completion will be called later, therefore it should not be nil.
   self.completion = completion;
   self.parser = [NSXMLParser parserWith:data delegate:self];
   [self.parser parse];

@@ -1,19 +1,21 @@
 //
-//  NetworkService.m
+//  FeedNetworkService.m
 //  RSSReader
 //
 //  Created by Arseniy Strakh on 17.11.2020.
 //
 
-#import "NetworkService.h"
+#import "FeedNetworkService.h"
+#import "DownloaderType.h"
+#import "FeedParserType.h"
 
-@interface NetworkService ()
+@interface FeedNetworkService ()
 @property (nonatomic, readonly, retain) id<DownloaderType> downloader;
 @property (nonatomic, readonly, retain) id<FeedParserType> parser;
 @property (nonatomic, copy) NetworkServiceCompletion completion;
 @end
 
-@implementation NetworkService
+@implementation FeedNetworkService
 
 #pragma mark - NSObject
 
@@ -36,7 +38,7 @@
 #pragma mark - NetworkServiceType
 
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion {
-  assert(completion);
+  assert(completion); // Completion will be called later, therefore it should not be nil.
   self.completion = completion;
   __block typeof(self) weakSelf = self;
   [self.downloader downloadFromUrl:url

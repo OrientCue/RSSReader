@@ -7,16 +7,15 @@
 
 #import "FeedViewControllerFactory.h"
 #import "FeedPresenter.h"
-#import "FeedService.h"
-#import "NetworkService.h"
+#import "FeedNetworkService.h"
 #import "Downloader.h"
 #import "AtomParser.h"
 
 @implementation FeedViewControllerFactory
 
 + (FeedTableViewController *)controllerWithCoordinator:(id<FeedCoordinatorType>)coordinator {
-  FeedPresenter *presenter = [self makeFeedPresenter];
-  FeedTableViewController *view = [[FeedTableViewController alloc] initWithPresenter:presenter
+  FeedPresenter *feedPresenter = [self makeFeedPresenter];
+  FeedTableViewController *view = [[FeedTableViewController alloc] initWithPresenter:feedPresenter
                                                                          coordinator:coordinator];
   return [view autorelease];
 }
@@ -24,11 +23,10 @@
 + (FeedPresenter *)makeFeedPresenter {
   Downloader *downloader = [[Downloader new] autorelease];
   AtomParser *parser = [[AtomParser new] autorelease];
-  NetworkService *network = [[[NetworkService alloc] initWithDownloader:downloader
+  FeedNetworkService *networkService = [[[FeedNetworkService alloc] initWithDownloader:downloader
                                                                  parser:parser] autorelease];
-  FeedService *service = [[[FeedService alloc] initWith:network] autorelease];
-  FeedPresenter *presenter = [[FeedPresenter alloc] initWith:service];
-  return [presenter autorelease];
+  FeedPresenter *feedPresenter = [[FeedPresenter alloc] initWith:networkService];
+  return [feedPresenter autorelease];
 }
 
 @end

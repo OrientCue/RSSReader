@@ -34,7 +34,7 @@
 #pragma mark - FeedDownloaderType
 
 - (void)downloadFromUrl:(NSURL *)url completion:(DownloaderCompletion)completion {
-  assert(completion);
+  assert(completion); // Completion will be called later, therefore it should not be nil.
   self.completion = completion;
   __block typeof(self) weakSelf = self;
   NSURLSessionDataTask *dataTask = [self.session dataTaskWithURL:url

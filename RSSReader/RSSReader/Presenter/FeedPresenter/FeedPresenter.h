@@ -7,13 +7,10 @@
 
 #import <Foundation/Foundation.h>
 #import "FeedPresenterType.h"
-#import "FeedViewType.h"
-#import "FeedServiceType.h"
+
+@protocol FeedNetworkServiceType, FeedViewType;
 
 @interface FeedPresenter : NSObject <FeedPresenterType>
-
 @property (nonatomic, assign) id<FeedViewType> view;
-
-- (instancetype)initWith:(id<FeedServiceType>)service;
-
+- (instancetype)initWith:(id<FeedNetworkServiceType>)service;
 @end
