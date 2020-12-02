@@ -19,7 +19,7 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
 
 #pragma mark - NSObject
 
-- (instancetype)initWith:(id<FeedNetworkServiceType>)service {
+- (instancetype)initWithNetworkService:(id<FeedNetworkServiceType>)service {
   if (self = [super init]) {
     _service = [service retain];
   }

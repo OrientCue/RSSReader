@@ -5,8 +5,8 @@
 //  Created by Arseniy Strakh on 01.12.2020.
 //
 
-#import <Foundation/Foundation.h>
+#import <UIKit/UIKit.h>
 
 @protocol CoordinatorType <NSObject>
-- (void)start;
+- (void)launch;
 @end

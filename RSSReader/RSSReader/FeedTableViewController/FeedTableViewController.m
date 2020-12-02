@@ -6,6 +6,7 @@
 //
 
 #import "FeedTableViewController.h"
+#import "FeedPresenterType.h"
 #import "AtomFeedItem.h"
 #import "AtomItemTableViewCell.h"
 #import "UITableView+RegisterCell.h"
@@ -14,20 +15,21 @@ NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
 
 @interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@property (nonatomic, readonly, retain) id<FeedPresenterType> presenter;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
+@property (nonatomic, copy) DisplayURLHandler displayURLHandler;
 @end
 
 @implementation FeedTableViewController
 
-#pragma mark - NSObject
+#pragma mark - Lifecycle
 
-- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter
-                      coordinator:(id<FeedCoordinatorType>)coordinator {
+- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter displayURLHandler:(DisplayURLHandler)displayURLHandler {
   if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
     _presenter.view = self;
-    _coordinator = coordinator;
+    _displayURLHandler = [displayURLHandler copy];
   }
   return self;
 }
@@ -36,6 +38,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_presenter release];
   [_items release];
   [_tableView release];
+  [_displayURLHandler release];
   [super dealloc];
 }
 
@@ -92,7 +95,9 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-  [self.coordinator displayURL:self.items[indexPath.row].link];
+  if (self.displayURLHandler) {
+    self.displayURLHandler(self.items[indexPath.row].link);
+  }
 }
 
 #pragma mark - FeedViewType

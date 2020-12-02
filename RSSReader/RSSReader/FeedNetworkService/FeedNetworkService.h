@@ -11,6 +11,6 @@
 @protocol DownloaderType, FeedParserType;
 
 @interface FeedNetworkService : NSObject <FeedNetworkServiceType>
-- (instancetype)initWithDownloader:(id<DownloaderType>)downloader
-                            parser:(id<FeedParserType>)parser;
+@property (nonatomic, readonly, retain) id<DownloaderType> downloader;
+- (instancetype)initWithParser:(id<FeedParserType>)parser;
 @end

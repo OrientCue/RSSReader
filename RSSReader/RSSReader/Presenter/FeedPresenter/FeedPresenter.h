@@ -12,5 +12,5 @@
 
 @interface FeedPresenter : NSObject <FeedPresenterType>
 @property (nonatomic, assign) id<FeedViewType> view;
-- (instancetype)initWith:(id<FeedNetworkServiceType>)service;
+- (instancetype)initWithNetworkService:(id<FeedNetworkServiceType>)service;
 @end

@@ -14,6 +14,8 @@
 
 @implementation Downloader
 
+#pragma mark - Lifecycle
+
 - (instancetype)initWithURLSession:(NSURLSession *)session {
   if (self = [super init]) {
     _session = [session retain];

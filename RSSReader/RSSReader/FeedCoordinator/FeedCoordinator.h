@@ -6,10 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <UIKit/UIKit.h>
-#import "FeedCoordinatorType.h"
+#import "CoordinatorType.h"
 
-@interface FeedCoordinator : NSObject <FeedCoordinatorType>
-@property (nonatomic, readonly, retain) UINavigationController *navigationController;
-- (instancetype)initWithNavigationController:(UINavigationController *)navigationController;
+@interface FeedCoordinator : NSObject <CoordinatorType>
++ (instancetype)new NS_UNAVAILABLE;
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)coordinatorWithNavigationController:(UINavigationController *)navigationController;
 @end

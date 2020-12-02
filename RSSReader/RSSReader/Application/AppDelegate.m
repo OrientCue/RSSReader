@@ -6,10 +6,10 @@
 //
 
 #import "AppDelegate.h"
-#import "FeedCoordinatorFactory.h"
+#import "FeedCoordinator.h"
 
 @interface AppDelegate ()
-@property (nonatomic, retain) FeedCoordinator *coordinator;
+@property (nonatomic, retain) id<CoordinatorType> coordinator;
 @end
 
 @implementation AppDelegate
@@ -18,9 +18,10 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
-  self.coordinator = [FeedCoordinatorFactory makeCoordinator];
-  self.window.rootViewController = self.coordinator.navigationController;
-  [self.coordinator start];
+  UINavigationController *navigationController = [[UINavigationController new] autorelease];
+  self.window.rootViewController = navigationController;
+  self.coordinator = [FeedCoordinator coordinatorWithNavigationController:navigationController];
+  [self.coordinator launch];
   [self.window makeKeyAndVisible];
   return YES;
 }

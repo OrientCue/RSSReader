@@ -6,23 +6,21 @@
 //
 
 #import "FeedNetworkService.h"
-#import "DownloaderType.h"
+#import "Downloader.h"
 #import "FeedParserType.h"
 
 @interface FeedNetworkService ()
-@property (nonatomic, readonly, retain) id<DownloaderType> downloader;
 @property (nonatomic, readonly, retain) id<FeedParserType> parser;
-@property (nonatomic, copy) NetworkServiceCompletion completion;
+@property (nonatomic, copy) FeedNetworkServiceCompletion completion;
 @end
 
 @implementation FeedNetworkService
 
 #pragma mark - NSObject
 
-- (instancetype)initWithDownloader:(id<DownloaderType>)downloader
-                            parser:(id<FeedParserType>)parser {
+- (instancetype)initWithParser:(id<FeedParserType>)parser {
   if (self = [super init]) {
-    _downloader = [downloader retain];
+    _downloader = [Downloader new];
     _parser = [parser retain];
   }
   return self;
@@ -37,7 +35,7 @@
 
 #pragma mark - NetworkServiceType
 
-- (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion {
+- (void)fetchFeedFromUrl:(NSURL *)url completion:(FeedNetworkServiceCompletion)completion {
   assert(completion); // Completion will be called later, therefore it should not be nil.
   self.completion = completion;
   __block typeof(self) weakSelf = self;

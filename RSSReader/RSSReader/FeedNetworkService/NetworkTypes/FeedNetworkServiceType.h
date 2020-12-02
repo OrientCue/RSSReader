@@ -8,8 +8,8 @@
 #import <Foundation/Foundation.h>
 
 @class AtomFeedItem;
-typedef void(^NetworkServiceCompletion)(NSArray<AtomFeedItem *> *items, NSError *error);
+typedef void(^FeedNetworkServiceCompletion)(NSArray<AtomFeedItem *> *items, NSError *error);
 
 @protocol FeedNetworkServiceType <NSObject>
-- (void)fetchFeedFromUrl:(NSURL *)url completion:(NetworkServiceCompletion)completion;
+- (void)fetchFeedFromUrl:(NSURL *)url completion:(FeedNetworkServiceCompletion)completion;
 @end
