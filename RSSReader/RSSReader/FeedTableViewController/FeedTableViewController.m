@@ -108,11 +108,11 @@ CGFloat const kEstimatedRowHeight = 60.0;
 }
 
 - (void)hideLoading {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
+  UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
 }
 
 - (void)showLoading {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
+  UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
 }
 
 @end

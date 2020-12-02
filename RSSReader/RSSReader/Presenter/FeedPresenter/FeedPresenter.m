@@ -42,8 +42,8 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
       NSLog(@"%@", error.localizedDescription);
     }
     dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.view hideLoading];
       [weakSelf.view appendItems:items];
+      [weakSelf.view hideLoading];
     });
   }];
 }
