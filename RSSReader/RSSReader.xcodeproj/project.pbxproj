@@ -14,6 +14,7 @@
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
 		7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* FeedNetworkService.m */; };
 		7A3C7A642577D9E9006C4CD7 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154E2564121D003430CD /* Downloader.m */; };
+		7A3C7A762577F4E6006C4CD7 /* DownloaderNSThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C7A752577F4E6006C4CD7 /* DownloaderNSThread.m */; };
 		7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */; };
 		7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A799859256565E0004EE025 /* AtomItemTableViewCell.m */; };
 		7A92155A256414FC003430CD /* AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A921559256414FC003430CD /* AtomParser.m */; };
@@ -52,6 +53,8 @@
 		7A1AEE6F2562BC1A00BFBA5C /* RSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
+		7A3C7A742577F4E6006C4CD7 /* DownloaderNSThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DownloaderNSThread.h; sourceTree = "<group>"; };
+		7A3C7A752577F4E6006C4CD7 /* DownloaderNSThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloaderNSThread.m; sourceTree = "<group>"; };
 		7A799858256565E0004EE025 /* AtomItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomItemTableViewCell.h; sourceTree = "<group>"; };
 		7A799859256565E0004EE025 /* AtomItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomItemTableViewCell.m; sourceTree = "<group>"; };
 		7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtomItemTableViewCell.xib; sourceTree = "<group>"; };
@@ -156,6 +159,15 @@
 			path = ROADMAP;
 			sourceTree = "<group>";
 		};
+		7A3C7A732577F4E6006C4CD7 /* DownloaderNSThread */ = {
+			isa = PBXGroup;
+			children = (
+				7A3C7A742577F4E6006C4CD7 /* DownloaderNSThread.h */,
+				7A3C7A752577F4E6006C4CD7 /* DownloaderNSThread.m */,
+			);
+			path = DownloaderNSThread;
+			sourceTree = "<group>";
+		};
 		7A5530DB256300E3001797D2 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -182,6 +194,7 @@
 			isa = PBXGroup;
 			children = (
 				7A921563256418D8003430CD /* Downloader */,
+				7A3C7A732577F4E6006C4CD7 /* DownloaderNSThread */,
 				7A92154425640A65003430CD /* FeedNetworkService.h */,
 				7A92154525640A65003430CD /* FeedNetworkService.m */,
 				7A92155F25641544003430CD /* NetworkTypes */,
@@ -415,6 +428,7 @@
 				7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */,
 				7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */,
 				7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */,
+				7A3C7A762577F4E6006C4CD7 /* DownloaderNSThread.m in Sources */,
 				7A92156A25642050003430CD /* FeedPresenter.m in Sources */,
 				7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */,
 				7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */,
