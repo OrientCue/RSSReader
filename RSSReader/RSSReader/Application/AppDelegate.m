@@ -6,10 +6,10 @@
 //
 
 #import "AppDelegate.h"
-#import "ViewController.h"
+#import "FeedCoordinator.h"
 
 @interface AppDelegate ()
-
+@property (nonatomic, retain) id<CoordinatorType> coordinator;
 @end
 
 @implementation AppDelegate
@@ -17,13 +17,11 @@
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  UIWindow *window = [[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds];
-  self.window = window;
-  [window release];
-  ViewController *vc = [ViewController new];
-  vc.view.backgroundColor = UIColor.grayColor;
-  self.window.rootViewController = vc;
-  [vc release];
+  self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
+  UINavigationController *navigationController = [[UINavigationController new] autorelease];
+  self.window.rootViewController = navigationController;
+  self.coordinator = [FeedCoordinator coordinatorWithNavigationController:navigationController];
+  [self.coordinator launch];
   [self.window makeKeyAndVisible];
   return YES;
 }
@@ -32,6 +30,7 @@
 
 - (void)dealloc {
   [_window release];
+  [_coordinator release];
   [super dealloc];
 }
 

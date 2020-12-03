@@ -8,12 +8,27 @@
 
 /* Begin PBXBuildFile section */
 		7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE582562BC1700BFBA5C /* AppDelegate.m */; };
-		7A1AEE5F2562BC1700BFBA5C /* ViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE5E2562BC1700BFBA5C /* ViewController.m */; };
 		7A1AEE642562BC1A00BFBA5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE632562BC1A00BFBA5C /* Assets.xcassets */; };
 		7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */; };
 		7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE692562BC1A00BFBA5C /* main.m */; };
-		7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */; };
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
+		7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* FeedNetworkService.m */; };
+		7A3C7A642577D9E9006C4CD7 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154E2564121D003430CD /* Downloader.m */; };
+		7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */; };
+		7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A799859256565E0004EE025 /* AtomItemTableViewCell.m */; };
+		7A92155A256414FC003430CD /* AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A921559256414FC003430CD /* AtomParser.m */; };
+		7A92156A25642050003430CD /* FeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844892563FE2F009F6AC0 /* FeedPresenter.m */; };
+		7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A98449925640007009F6AC0 /* FeedTableViewController.m */; };
+		7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* FeedCoordinator.m */; };
+		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
+		7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */; };
+		7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */; };
+		7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; };
+		7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */; };
+		7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
+		7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */; };
+		7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */; };
+		7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -30,16 +45,47 @@
 		7A1AEE542562BC1700BFBA5C /* RSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1AEE572562BC1700BFBA5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A1AEE582562BC1700BFBA5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		7A1AEE5D2562BC1700BFBA5C /* ViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = ViewController.h; sourceTree = "<group>"; };
-		7A1AEE5E2562BC1700BFBA5C /* ViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = ViewController.m; sourceTree = "<group>"; };
 		7A1AEE632562BC1A00BFBA5C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		7A1AEE662562BC1A00BFBA5C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A1AEE682562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE692562BC1A00BFBA5C /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		7A1AEE6F2562BC1A00BFBA5C /* RSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = RSSReaderTests.m; sourceTree = "<group>"; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
+		7A799858256565E0004EE025 /* AtomItemTableViewCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomItemTableViewCell.h; sourceTree = "<group>"; };
+		7A799859256565E0004EE025 /* AtomItemTableViewCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomItemTableViewCell.m; sourceTree = "<group>"; };
+		7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = AtomItemTableViewCell.xib; sourceTree = "<group>"; };
+		7A9215412564073A003430CD /* FeedNetworkServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedNetworkServiceType.h; sourceTree = "<group>"; };
+		7A92154425640A65003430CD /* FeedNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedNetworkService.h; sourceTree = "<group>"; };
+		7A92154525640A65003430CD /* FeedNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedNetworkService.m; sourceTree = "<group>"; };
+		7A92154C25641170003430CD /* DownloaderType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DownloaderType.h; sourceTree = "<group>"; };
+		7A92154D2564121D003430CD /* Downloader.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Downloader.h; sourceTree = "<group>"; };
+		7A92154E2564121D003430CD /* Downloader.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = Downloader.m; sourceTree = "<group>"; };
+		7A92155725641437003430CD /* FeedParserType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedParserType.h; sourceTree = "<group>"; };
+		7A921558256414FC003430CD /* AtomParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomParser.h; sourceTree = "<group>"; };
+		7A921559256414FC003430CD /* AtomParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomParser.m; sourceTree = "<group>"; };
+		7A9844762563FBDD009F6AC0 /* FeedPresenterType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedPresenterType.h; sourceTree = "<group>"; };
+		7A9844772563FC13009F6AC0 /* FeedViewType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedViewType.h; sourceTree = "<group>"; };
+		7A9844782563FC66009F6AC0 /* AtomFeedItem.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AtomFeedItem.h; sourceTree = "<group>"; };
+		7A9844792563FC66009F6AC0 /* AtomFeedItem.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomFeedItem.m; sourceTree = "<group>"; };
+		7A9844882563FE2F009F6AC0 /* FeedPresenter.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedPresenter.h; sourceTree = "<group>"; };
+		7A9844892563FE2F009F6AC0 /* FeedPresenter.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedPresenter.m; sourceTree = "<group>"; };
+		7A98449825640007009F6AC0 /* FeedTableViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedTableViewController.h; sourceTree = "<group>"; };
+		7A98449925640007009F6AC0 /* FeedTableViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedTableViewController.m; sourceTree = "<group>"; };
+		7A9844A625640258009F6AC0 /* FeedCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCoordinator.h; sourceTree = "<group>"; };
+		7A9844A725640258009F6AC0 /* FeedCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCoordinator.m; sourceTree = "<group>"; };
+		7A9C99282575973400EC76E6 /* CoordinatorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoordinatorType.h; sourceTree = "<group>"; };
+		7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+AtomItemPubDate.h"; sourceTree = "<group>"; };
+		7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AtomItemPubDate.m"; sourceTree = "<group>"; };
+		7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+AtomItemPubDate.h"; sourceTree = "<group>"; };
+		7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDateFormatter+AtomItemPubDate.m"; sourceTree = "<group>"; };
+		7AB2A525256D0D7100E38106 /* NSString+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSString+AtomItemPubDate.h"; sourceTree = "<group>"; };
+		7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSString+AtomItemPubDate.m"; sourceTree = "<group>"; };
+		7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AtomFeedItemTests.m; sourceTree = "<group>"; };
+		7AB2A534256D30A000E38106 /* UITableView+RegisterCell.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UITableView+RegisterCell.h"; sourceTree = "<group>"; };
+		7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RegisterCell.m"; sourceTree = "<group>"; };
+		7AB2A547256D410500E38106 /* NSXMLParser+AtomParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+AtomParser.h"; sourceTree = "<group>"; };
+		7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+AtomParser.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -83,9 +129,12 @@
 			isa = PBXGroup;
 			children = (
 				7A5530DB256300E3001797D2 /* Application */,
-				7A1AEE5D2562BC1700BFBA5C /* ViewController.h */,
-				7A1AEE5E2562BC1700BFBA5C /* ViewController.m */,
+				7A9844AB25640264009F6AC0 /* FeedCoordinator */,
+				7A92154925640AA0003430CD /* FeedNetworkService */,
+				7A9844A125640018009F6AC0 /* FeedTableViewController */,
 				7A1AEE682562BC1A00BFBA5C /* Info.plist */,
+				7A9844872563FE09009F6AC0 /* Model */,
+				7AAD274F256470B900270FE9 /* Presenter */,
 			);
 			path = RSSReader;
 			sourceTree = "<group>";
@@ -93,7 +142,7 @@
 		7A1AEE722562BC1A00BFBA5C /* RSSReaderTests */ = {
 			isa = PBXGroup;
 			children = (
-				7A1AEE732562BC1A00BFBA5C /* RSSReaderTests.m */,
+				7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */,
 				7A1AEE752562BC1A00BFBA5C /* Info.plist */,
 			);
 			path = RSSReaderTests;
@@ -117,6 +166,146 @@
 				7A1AEE692562BC1A00BFBA5C /* main.m */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7A79985F256565E8004EE025 /* AtomItemTableViewCell */ = {
+			isa = PBXGroup;
+			children = (
+				7A799858256565E0004EE025 /* AtomItemTableViewCell.h */,
+				7A799859256565E0004EE025 /* AtomItemTableViewCell.m */,
+				7A79985A256565E0004EE025 /* AtomItemTableViewCell.xib */,
+			);
+			path = AtomItemTableViewCell;
+			sourceTree = "<group>";
+		};
+		7A92154925640AA0003430CD /* FeedNetworkService */ = {
+			isa = PBXGroup;
+			children = (
+				7A921563256418D8003430CD /* Downloader */,
+				7A92154425640A65003430CD /* FeedNetworkService.h */,
+				7A92154525640A65003430CD /* FeedNetworkService.m */,
+				7A92155F25641544003430CD /* NetworkTypes */,
+				7A921562256418CC003430CD /* Parser */,
+			);
+			path = FeedNetworkService;
+			sourceTree = "<group>";
+		};
+		7A92155F25641544003430CD /* NetworkTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7A9215412564073A003430CD /* FeedNetworkServiceType.h */,
+				7A92154C25641170003430CD /* DownloaderType.h */,
+				7A92155725641437003430CD /* FeedParserType.h */,
+			);
+			path = NetworkTypes;
+			sourceTree = "<group>";
+		};
+		7A921562256418CC003430CD /* Parser */ = {
+			isa = PBXGroup;
+			children = (
+				7A921558256414FC003430CD /* AtomParser.h */,
+				7A921559256414FC003430CD /* AtomParser.m */,
+				7AB2A54C256D42B700E38106 /* NSXMLParser */,
+			);
+			path = Parser;
+			sourceTree = "<group>";
+		};
+		7A921563256418D8003430CD /* Downloader */ = {
+			isa = PBXGroup;
+			children = (
+				7A92154D2564121D003430CD /* Downloader.h */,
+				7A92154E2564121D003430CD /* Downloader.m */,
+			);
+			path = Downloader;
+			sourceTree = "<group>";
+		};
+		7A9844862563FDF4009F6AC0 /* FeedPresenterTypes */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844762563FBDD009F6AC0 /* FeedPresenterType.h */,
+				7A9844772563FC13009F6AC0 /* FeedViewType.h */,
+			);
+			path = FeedPresenterTypes;
+			sourceTree = "<group>";
+		};
+		7A9844872563FE09009F6AC0 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844782563FC66009F6AC0 /* AtomFeedItem.h */,
+				7A9844792563FC66009F6AC0 /* AtomFeedItem.m */,
+				7AB2A52A256D0F1500E38106 /* PubDateHelpers */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		7A98448F2563FE77009F6AC0 /* FeedPresenter */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844882563FE2F009F6AC0 /* FeedPresenter.h */,
+				7A9844892563FE2F009F6AC0 /* FeedPresenter.m */,
+			);
+			path = FeedPresenter;
+			sourceTree = "<group>";
+		};
+		7A9844A125640018009F6AC0 /* FeedTableViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7A79985F256565E8004EE025 /* AtomItemTableViewCell */,
+				7A98449825640007009F6AC0 /* FeedTableViewController.h */,
+				7A98449925640007009F6AC0 /* FeedTableViewController.m */,
+				7AB2A542256D35E500E38106 /* UITableView Helpers */,
+			);
+			path = FeedTableViewController;
+			sourceTree = "<group>";
+		};
+		7A9844AB25640264009F6AC0 /* FeedCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7A9C99282575973400EC76E6 /* CoordinatorType.h */,
+				7A9844A625640258009F6AC0 /* FeedCoordinator.h */,
+				7A9844A725640258009F6AC0 /* FeedCoordinator.m */,
+			);
+			path = FeedCoordinator;
+			sourceTree = "<group>";
+		};
+		7AAD274F256470B900270FE9 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				7A98448F2563FE77009F6AC0 /* FeedPresenter */,
+				7A9844862563FDF4009F6AC0 /* FeedPresenterTypes */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		7AB2A52A256D0F1500E38106 /* PubDateHelpers */ = {
+			isa = PBXGroup;
+			children = (
+				7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */,
+				7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */,
+				7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */,
+				7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */,
+				7AB2A525256D0D7100E38106 /* NSString+AtomItemPubDate.h */,
+				7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */,
+			);
+			path = PubDateHelpers;
+			sourceTree = "<group>";
+		};
+		7AB2A542256D35E500E38106 /* UITableView Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				7AB2A534256D30A000E38106 /* UITableView+RegisterCell.h */,
+				7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */,
+			);
+			path = "UITableView Helpers";
+			sourceTree = "<group>";
+		};
+		7AB2A54C256D42B700E38106 /* NSXMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				7AB2A547256D410500E38106 /* NSXMLParser+AtomParser.h */,
+				7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */,
+			);
+			path = NSXMLParser;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -198,6 +387,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A79985C256565E0004EE025 /* AtomItemTableViewCell.xib in Resources */,
 				7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */,
 				7A1AEE642562BC1A00BFBA5C /* Assets.xcassets in Resources */,
 				7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */,
@@ -218,8 +408,20 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A1AEE5F2562BC1700BFBA5C /* ViewController.m in Sources */,
+				7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */,
+				7A92155A256414FC003430CD /* AtomParser.m in Sources */,
+				7A3C7A642577D9E9006C4CD7 /* Downloader.m in Sources */,
 				7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */,
+				7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */,
+				7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */,
+				7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */,
+				7A92156A25642050003430CD /* FeedPresenter.m in Sources */,
+				7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */,
+				7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */,
+				7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */,
+				7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */,
+				7A79986225656743004EE025 /* AtomItemTableViewCell.m in Sources */,
+				7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -228,7 +430,9 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A1AEE742562BC1A00BFBA5C /* RSSReaderTests.m in Sources */,
+				7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */,
+				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
+				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,7 +509,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -358,7 +562,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -409,7 +613,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -429,7 +633,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.0;
+				IPHONEOS_DEPLOYMENT_TARGET = 12.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
