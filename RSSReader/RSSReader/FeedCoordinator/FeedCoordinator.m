@@ -12,6 +12,8 @@
 #import "AtomParser.h"
 #import "UIAlertController+RRErrorAlert.h"
 
+int64_t const kDeltaHideErrorActionSheet = 5 * NSEC_PER_SEC;
+
 @interface FeedCoordinator ()
 @property (nonatomic, assign) UINavigationController *navigationController;
 @end
@@ -54,7 +56,7 @@
   [self.navigationController presentViewController:alertController
                                           animated:YES
                                         completion:^{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kDeltaHideErrorActionSheet), dispatch_get_main_queue(), ^{
       [alertController dismissViewControllerAnimated:true completion:nil];
     });
   }];
