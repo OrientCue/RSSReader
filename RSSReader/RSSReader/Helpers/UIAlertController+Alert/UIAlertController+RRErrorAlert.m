@@ -12,11 +12,13 @@ NSString *const kAlertOkButtonTitle = @"OK";
 
 @implementation UIAlertController (RRErrorAlert)
 
-+ (instancetype)rr_actionSheetErrorWithMessage:(NSString *)message {
++ (instancetype)rr_actionSheetErrorWithMessage:(NSString *)message
+                                 barButtonItem:(UIBarButtonItem *)barButtonItem {
   UIAlertController *alertController =
   [UIAlertController alertControllerWithTitle:kAlertErrorTitle
                                        message:message
                                 preferredStyle:UIAlertControllerStyleActionSheet];
+  alertController.popoverPresentationController.barButtonItem = barButtonItem;
   UIAlertAction *okAction =
   [UIAlertAction actionWithTitle:kAlertOkButtonTitle
                            style:UIAlertActionStyleCancel

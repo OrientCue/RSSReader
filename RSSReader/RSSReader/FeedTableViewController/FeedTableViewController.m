@@ -81,6 +81,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
     _tableView.dataSource = self;
     _tableView.estimatedRowHeight = kEstimatedRowHeight;
     _tableView.separatorInset = UIEdgeInsetsZero;
+    _tableView.tableFooterView = [[UIView new] autorelease];
     _tableView.translatesAutoresizingMaskIntoConstraints = false;
     [_tableView registerNibForCellClasses:@[[AtomItemTableViewCell class]]];
   }
@@ -134,7 +135,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)displayError:(NSError *)error {
   if (self.displayErrorHandler) {
-    self.displayErrorHandler(error);
+    self.displayErrorHandler(error, self.navigationItem.rightBarButtonItem);
   }
 }
 

@@ -9,6 +9,6 @@
 
 @interface UIAlertController (RRErrorAlert)
 
-+ (instancetype)rr_actionSheetErrorWithMessage:(NSString *)message;
++ (instancetype)rr_actionSheetErrorWithMessage:(NSString *)message barButtonItem:(UIBarButtonItem *)barButtonItem;
 
 @end

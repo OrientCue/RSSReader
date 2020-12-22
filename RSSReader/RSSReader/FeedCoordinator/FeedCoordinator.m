@@ -32,8 +32,8 @@ int64_t const kDeltaHideErrorActionSheet = 5 * NSEC_PER_SEC;
   __block typeof(self) weakSelf = self;
   FeedTableViewController *feed = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
     [weakSelf displayURL:url];
-  } displayErrorHandler:^(NSError *error) {
-    [weakSelf displayError:error];
+  } displayErrorHandler:^(NSError *error, UIBarButtonItem *barButtonItem) {
+    [weakSelf displayError:error barButtonItem:barButtonItem];
   }];
   [self.navigationController pushViewController:feed animated:false];
 }
@@ -50,9 +50,9 @@ int64_t const kDeltaHideErrorActionSheet = 5 * NSEC_PER_SEC;
 
 #pragma mark - DisplayError
 
-- (void)displayError:(NSError *)error {
+- (void)displayError:(NSError *)error barButtonItem:(UIBarButtonItem *)barButtonItem {
   UIAlertController *alertController =
-  [UIAlertController rr_actionSheetErrorWithMessage:error.localizedDescription];
+  [UIAlertController rr_actionSheetErrorWithMessage:error.localizedDescription barButtonItem:barButtonItem];
   [self.navigationController presentViewController:alertController
                                           animated:YES
                                         completion:^{
