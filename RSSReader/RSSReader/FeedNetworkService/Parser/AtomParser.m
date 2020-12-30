@@ -74,12 +74,16 @@ didStartElement:(NSString *)elementName
 }
 
 - (void)parserDidEndDocument:(NSXMLParser *)parser {
-  self.completion(self.items, nil);
+  if (self.completion) {
+    self.completion(self.items, nil);
+  }
   [self resetParserState];
 }
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
-  self.completion(nil, parseError);
+  if (self.completion) {
+    self.completion(nil, parseError);
+  }
   [self resetParserState];
 }
 
@@ -88,29 +92,19 @@ didStartElement:(NSString *)elementName
 - (void)addItem {
   AtomFeedItem *item = [AtomFeedItem itemFromDictionary:self.itemsDictionary];
   [self.items addObject:item];
-  [self resetItemsDictionary];
+  self.itemsDictionary = nil;
 }
 
 - (void)addElementToItemsDictionary:(NSString *)elementName {
   self.itemsDictionary[elementName] = self.parsingString;
-  [self resetParsingString];
+  self.parsingString = nil;
 }
 
 - (void)resetParserState {
-  [_completion release];
-  _completion = nil;
-  [self resetItemsDictionary];
-  [self resetParsingString];
-}
-
-- (void)resetParsingString {
-  [_parsingString release];
-  _parsingString = nil;
-}
-
-- (void)resetItemsDictionary {
-  [_itemsDictionary release];
-  _itemsDictionary = nil;
+  self.completion = nil;
+  self.itemsDictionary = nil;
+  self.parsingString = nil;
+  self.items = nil;
 }
 
 #pragma mark - Getters
