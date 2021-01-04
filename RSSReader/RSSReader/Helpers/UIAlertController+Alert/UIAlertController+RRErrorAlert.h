@@ -7,8 +7,9 @@
 
 #import <UIKit/UIKit.h>
 
+typedef void(^AlertControllerPresentCompletion)(void);
+
 @interface UIAlertController (RRErrorAlert)
-
-+ (instancetype)rr_actionSheetErrorWithMessage:(NSString *)message barButtonItem:(UIBarButtonItem *)barButtonItem;
-
++ (instancetype)rr_errorAlertWithMessage:(NSString *)message;
+- (AlertControllerPresentCompletion)autoHideCompletion;
 @end

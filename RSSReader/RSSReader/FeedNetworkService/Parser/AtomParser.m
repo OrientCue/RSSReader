@@ -10,7 +10,6 @@
 #import "NSXMLParser+AtomParser.h"
 
 @interface AtomParser () <NSXMLParserDelegate>
-@property (nonatomic, retain) NSXMLParser *parser;
 @property (nonatomic, copy) FeedParserCompletion completion;
 @property (nonatomic, retain) NSMutableDictionary *itemsDictionary;;
 @property (nonatomic, retain) NSMutableString *parsingString;
@@ -23,7 +22,6 @@
 #pragma mark - Lifecycle
 
 - (void)dealloc {
-  [_parser release];
   [_completion release];
   [_items release];
   [_parsingString release];
@@ -35,10 +33,9 @@
 #pragma mark - FeedParserType
 
 - (void)parse:(NSData *)data completion:(FeedParserCompletion)completion {
-  assert(completion); // Completion will be called later, therefore it should not be nil.
   self.completion = completion;
-  self.parser = [NSXMLParser parserWith:data delegate:self];
-  [self.parser parse];
+  NSXMLParser *parser = [NSXMLParser parserWith:data delegate:self];
+  [parser parse];
 }
 
 #pragma mark - NSXMLParserDelegate

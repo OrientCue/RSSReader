@@ -135,7 +135,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)displayError:(NSError *)error {
   if (self.displayErrorHandler) {
-    self.displayErrorHandler(error, self.navigationItem.rightBarButtonItem);
+    self.displayErrorHandler(error);
   }
 }
 

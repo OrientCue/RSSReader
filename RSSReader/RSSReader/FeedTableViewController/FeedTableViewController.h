@@ -9,7 +9,7 @@
 #import "FeedViewType.h"
 
 typedef void(^DisplayURLHandler)(NSURL *url);
-typedef void(^DisplayErrorHandler)(NSError *error, UIBarButtonItem *barButtonItem);
+typedef void(^DisplayErrorHandler)(NSError *error);
 
 @protocol FeedPresenterType;
 @class AtomFeedItem;

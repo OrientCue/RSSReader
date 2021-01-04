@@ -10,21 +10,29 @@
 NSString *const kAlertErrorTitle = @"Error";
 NSString *const kAlertOkButtonTitle = @"OK";
 
+int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
+
 @implementation UIAlertController (RRErrorAlert)
 
-+ (instancetype)rr_actionSheetErrorWithMessage:(NSString *)message
-                                 barButtonItem:(UIBarButtonItem *)barButtonItem {
++ (instancetype)rr_errorAlertWithMessage:(NSString *)message {
   UIAlertController *alertController =
   [UIAlertController alertControllerWithTitle:kAlertErrorTitle
-                                       message:message
-                                preferredStyle:UIAlertControllerStyleActionSheet];
-  alertController.popoverPresentationController.barButtonItem = barButtonItem;
+                                      message:message
+                               preferredStyle:UIAlertControllerStyleAlert];
   UIAlertAction *okAction =
   [UIAlertAction actionWithTitle:kAlertOkButtonTitle
                            style:UIAlertActionStyleCancel
                          handler:nil];
   [alertController addAction:okAction];
   return alertController;
+}
+
+- (AlertControllerPresentCompletion)autoHideCompletion {
+  return [[^{
+    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kDeltaHideErrorAlert), dispatch_get_main_queue(), ^{
+      [self dismissViewControllerAnimated:true completion:nil];
+    });
+  } copy] autorelease];
 }
 
 @end

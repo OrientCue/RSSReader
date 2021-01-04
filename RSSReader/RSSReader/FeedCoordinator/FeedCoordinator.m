@@ -12,8 +12,6 @@
 #import "AtomParser.h"
 #import "UIAlertController+RRErrorAlert.h"
 
-int64_t const kDeltaHideErrorActionSheet = 5 * NSEC_PER_SEC;
-
 @interface FeedCoordinator ()
 @property (nonatomic, assign) UINavigationController *navigationController;
 @end
@@ -32,8 +30,8 @@ int64_t const kDeltaHideErrorActionSheet = 5 * NSEC_PER_SEC;
   __block typeof(self) weakSelf = self;
   FeedTableViewController *feed = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
     [weakSelf displayURL:url];
-  } displayErrorHandler:^(NSError *error, UIBarButtonItem *barButtonItem) {
-    [weakSelf displayError:error barButtonItem:barButtonItem];
+  } displayErrorHandler:^(NSError *error) {
+    [weakSelf displayError:error];
   }];
   [self.navigationController pushViewController:feed animated:false];
 }
@@ -50,16 +48,11 @@ int64_t const kDeltaHideErrorActionSheet = 5 * NSEC_PER_SEC;
 
 #pragma mark - DisplayError
 
-- (void)displayError:(NSError *)error barButtonItem:(UIBarButtonItem *)barButtonItem {
-  UIAlertController *alertController =
-  [UIAlertController rr_actionSheetErrorWithMessage:error.localizedDescription barButtonItem:barButtonItem];
+- (void)displayError:(NSError *)error {
+  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
   [self.navigationController presentViewController:alertController
                                           animated:YES
-                                        completion:^{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kDeltaHideErrorActionSheet), dispatch_get_main_queue(), ^{
-      [alertController dismissViewControllerAnimated:true completion:nil];
-    });
-  }];
+                                        completion:[alertController autoHideCompletion]];
 }
 
 #pragma mark - Factory
