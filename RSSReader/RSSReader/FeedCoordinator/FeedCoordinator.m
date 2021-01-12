@@ -52,7 +52,9 @@
   UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
   [self.navigationController presentViewController:alertController
                                           animated:YES
-                                        completion:[alertController autoHideCompletion]];
+                                        completion:^{
+    [alertController autoHideWithDelay];
+  }];
 }
 
 #pragma mark - Factory

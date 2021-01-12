@@ -27,12 +27,11 @@ int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
   return alertController;
 }
 
-- (AlertControllerPresentCompletion)autoHideCompletion {
-  return [[^{
-    dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kDeltaHideErrorAlert), dispatch_get_main_queue(), ^{
-      [self dismissViewControllerAnimated:true completion:nil];
-    });
-  } copy] autorelease];
+- (void)autoHideWithDelay {
+  __weak typeof(self) weakSelf = self;
+  dispatch_after(dispatch_time(DISPATCH_TIME_NOW, kDeltaHideErrorAlert), dispatch_get_main_queue(), ^{
+      [weakSelf dismissViewControllerAnimated:true completion:nil];
+  });
 }
 
 @end

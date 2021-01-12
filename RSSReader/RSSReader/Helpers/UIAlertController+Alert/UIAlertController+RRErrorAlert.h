@@ -7,9 +7,7 @@
 
 #import <UIKit/UIKit.h>
 
-typedef void(^AlertControllerPresentCompletion)(void);
-
 @interface UIAlertController (RRErrorAlert)
 + (instancetype)rr_errorAlertWithMessage:(NSString *)message;
-- (AlertControllerPresentCompletion)autoHideCompletion;
+- (void)autoHideWithDelay;
 @end
