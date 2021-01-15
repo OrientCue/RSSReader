@@ -10,14 +10,16 @@
 #import "AtomFeedItem.h"
 #import "AtomItemTableViewCell.h"
 #import "UITableView+RegisterCell.h"
+#import "AtomItemCellDelegate.h"
 
 NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
 
-@interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource, AtomItemCellDelegate>
 @property (nonatomic, readonly, retain) id<FeedPresenterType> presenter;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
+@property (nonatomic, retain) NSMutableIndexSet *expandedIndexSet;
 @property (nonatomic, copy) DisplayURLHandler displayURLHandler;
 @property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
@@ -35,6 +37,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
     _presenter.view = self;
     _displayURLHandler = [displayURLHandler copy];
     _displayErrorHandler = [displayErrorHandler copy];
+    _expandedIndexSet = [NSMutableIndexSet new];
   }
   return self;
 }
@@ -46,6 +49,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_displayURLHandler release];
   [_displayErrorHandler release];
   [_refreshButton release];
+  [_expandedIndexSet release];
   [super dealloc];
 }
 
@@ -106,7 +110,10 @@ CGFloat const kEstimatedRowHeight = 60.0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   AtomItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AtomItemTableViewCell class])
                                                                 forIndexPath:indexPath];
-  [cell configureWithItem:self.items[indexPath.row]];
+  [cell configureWithItem:self.items[indexPath.row]
+                indexPath:indexPath
+                 expanded:[self.expandedIndexSet containsIndex:indexPath.row]];
+  cell.delegate = self;
   return cell;
 }
 
@@ -139,4 +146,11 @@ CGFloat const kEstimatedRowHeight = 60.0;
   }
 }
 
+#pragma mark - AtomItemCellDelegate
+
+- (void)row:(NSInteger)row expandedState:(BOOL)isExpanded {
+  isExpanded ? [self.expandedIndexSet addIndex:row] : [self.expandedIndexSet removeIndex:row];
+  [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 @end

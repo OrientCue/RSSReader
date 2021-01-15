@@ -7,7 +7,11 @@
 
 #import <UIKit/UIKit.h>
 #import "AtomFeedItem.h"
+#import "AtomItemCellDelegate.h"
 
 @interface AtomItemTableViewCell : UITableViewCell
-- (void)configureWithItem:(AtomFeedItem *)item;
+@property (assign, nonatomic) id<AtomItemCellDelegate> delegate;
+- (void)configureWithItem:(AtomFeedItem *)item
+                indexPath:(NSIndexPath *)indexPath
+                 expanded:(BOOL)isExpanded;
 @end

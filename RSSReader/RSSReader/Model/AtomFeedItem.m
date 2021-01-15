@@ -8,6 +8,7 @@
 #import "AtomFeedItem.h"
 #import "NSDate+AtomItemPubDate.h"
 #import "NSString+AtomItemPubDate.h"
+#import "NSString+RR_HTMLTags.h"
 
 NSString *const kItemKey = @"item";
 NSString *const kTitleKey = @"title";
@@ -35,7 +36,7 @@ NSString *const kPubDateKey = @"pubDate";
                    linkString:(NSString *)linkString
                 pubDateString:(NSString *)pubDateString {
   return [self initWithTitle:title
-          articleDescription:articleDescription
+          articleDescription:[articleDescription descriptionWOTagsIfPresent]
                         link:[NSURL URLWithString:linkString]
                      pubDate:pubDateString.dateForPubDateString];
 }
