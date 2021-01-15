@@ -11,8 +11,9 @@
 #import "FeedNetworkService.h"
 #import "AtomParser.h"
 #import "UIAlertController+RRErrorAlert.h"
+#import "RRBrowserViewController.h"
 
-@interface FeedCoordinator ()
+@interface FeedCoordinator () <UINavigationControllerDelegate>
 @property (nonatomic, assign) UINavigationController *navigationController;
 @end
 
@@ -21,6 +22,7 @@
 + (instancetype)coordinatorWithNavigationController:(UINavigationController *)navigationController {
   FeedCoordinator *coordinator = [FeedCoordinator new];
   coordinator.navigationController = navigationController;
+  coordinator.navigationController.delegate = coordinator;
   return [coordinator autorelease];
 }
 
@@ -39,11 +41,8 @@
 #pragma mark - DisplayURL
 
 - (void)displayURL:(NSURL *)url {
-  [[UIApplication sharedApplication] openURL:url
-                                     options:@{}
-                           completionHandler:^(BOOL success) {
-    NSLog(@"%@", success ? @"success" : @"failure");
-  }];
+  RRBrowserViewController *browser = [[[RRBrowserViewController alloc] initWithUrl:url] autorelease];
+  [self.navigationController pushViewController:browser animated:true];
 }
 
 #pragma mark - DisplayError
@@ -53,7 +52,7 @@
   [self.navigationController presentViewController:alertController
                                           animated:YES
                                         completion:^{
-    [alertController autoHideWithDelay];
+    [alertController rr_autoHideWithDelay];
   }];
 }
 
@@ -68,6 +67,14 @@
                                                                    displayURLHandler:displayURLHandler
                                                                  displayErrorHandler:displayErrorHandler];
   return [view autorelease];
+}
+
+#pragma mark - UINavigationControllerDelegate
+
+- (void)navigationController:(UINavigationController *)navigationController
+      willShowViewController:(UIViewController *)viewController
+                    animated:(BOOL)animated {
+  self.navigationController.toolbarHidden = ![viewController isKindOfClass:[RRBrowserViewController class]];
 }
 
 @end

@@ -32,6 +32,7 @@
 		7AE88C1025B1D9340038084D /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C0D25B1D9330038084D /* AtomItemTableViewCell.m */; };
 		7AE88C1125B1D9340038084D /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE88C0F25B1D9340038084D /* AtomItemTableViewCell.xib */; };
 		7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */; };
+		7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1E25B1DD2F0038084D /* RRBrowserViewController.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -96,6 +97,8 @@
 		7AE88C0F25B1D9340038084D /* AtomItemTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AtomItemTableViewCell.xib; sourceTree = "<group>"; };
 		7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+RR_HTMLTags.m"; sourceTree = "<group>"; };
 		7AE88C1625B1DA950038084D /* NSString+RR_HTMLTags.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+RR_HTMLTags.h"; sourceTree = "<group>"; };
+		7AE88C1D25B1DD2F0038084D /* RRBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRBrowserViewController.h; sourceTree = "<group>"; };
+		7AE88C1E25B1DD2F0038084D /* RRBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRBrowserViewController.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -143,6 +146,7 @@
 				7A92154925640AA0003430CD /* FeedNetworkService */,
 				7A9844A125640018009F6AC0 /* FeedTableViewController */,
 				7A1AEE682562BC1A00BFBA5C /* Info.plist */,
+				7AE88C1C25B1DD2F0038084D /* RRBrowserViewController */,
 				7A3C7A812577FB94006C4CD7 /* Helpers */,
 				7A9844872563FE09009F6AC0 /* Model */,
 				7AAD274F256470B900270FE9 /* Presenter */,
@@ -351,10 +355,19 @@
 		7AE88C1425B1DA950038084D /* NSString+RR_HTMLTags */ = {
 			isa = PBXGroup;
 			children = (
-				7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */,
 				7AE88C1625B1DA950038084D /* NSString+RR_HTMLTags.h */,
+				7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */,
 			);
 			path = "NSString+RR_HTMLTags";
+			sourceTree = "<group>";
+		};
+		7AE88C1C25B1DD2F0038084D /* RRBrowserViewController */ = {
+			isa = PBXGroup;
+			children = (
+				7AE88C1D25B1DD2F0038084D /* RRBrowserViewController.h */,
+				7AE88C1E25B1DD2F0038084D /* RRBrowserViewController.m */,
+			);
+			path = RRBrowserViewController;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -458,6 +471,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */,
+				7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */,
 				7A92155A256414FC003430CD /* AtomParser.m in Sources */,
 				7AE88C1025B1D9340038084D /* AtomItemTableViewCell.m in Sources */,
 				7A3C7A642577D9E9006C4CD7 /* Downloader.m in Sources */,

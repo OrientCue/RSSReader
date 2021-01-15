@@ -9,5 +9,5 @@
 
 @interface UIAlertController (RRErrorAlert)
 + (instancetype)rr_errorAlertWithMessage:(NSString *)message;
-- (void)autoHideWithDelay;
+- (void)rr_autoHideWithDelay;
 @end
