@@ -6,7 +6,7 @@
 //
 
 #import "FeedNetworkService.h"
-#import "Downloader.h"
+#import "DownloaderNSThread.h"
 #import "FeedParserType.h"
 
 @interface FeedNetworkService ()
@@ -20,7 +20,7 @@
 
 - (instancetype)initWithParser:(id<FeedParserType>)parser {
   if (self = [super init]) {
-    _downloader = [Downloader new];
+    _downloader = [DownloaderNSThread new];
     _parser = [parser retain];
   }
   return self;

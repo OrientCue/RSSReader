@@ -8,7 +8,7 @@
 #import <Foundation/Foundation.h>
 
 @interface NSDateFormatter (AtomItemPubDate)
-@property (nonatomic, class, readonly) NSDateFormatter *formatterForPubDateOutput;
-@property (nonatomic, class, readonly) NSDateFormatter *formatterForPubDateInput;
+@property (nonatomic, class, readonly) NSDateFormatter *sharedFormatterForPubDateOutput;
+@property (nonatomic, class, readonly) NSDateFormatter *sharedFormatterForPubDateInput;
 @end
 

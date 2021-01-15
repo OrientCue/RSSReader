@@ -10,6 +10,7 @@
 #import "FeedPresenter.h"
 #import "FeedNetworkService.h"
 #import "AtomParser.h"
+#import "UIAlertController+RRErrorAlert.h"
 
 @interface FeedCoordinator ()
 @property (nonatomic, assign) UINavigationController *navigationController;
@@ -29,6 +30,8 @@
   __block typeof(self) weakSelf = self;
   FeedTableViewController *feed = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
     [weakSelf displayURL:url];
+  } displayErrorHandler:^(NSError *error) {
+    [weakSelf displayError:error];
   }];
   [self.navigationController pushViewController:feed animated:false];
 }
@@ -43,14 +46,27 @@
   }];
 }
 
+#pragma mark - DisplayError
+
+- (void)displayError:(NSError *)error {
+  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
+  [self.navigationController presentViewController:alertController
+                                          animated:YES
+                                        completion:^{
+    [alertController autoHideWithDelay];
+  }];
+}
+
 #pragma mark - Factory
 
-- (FeedTableViewController *)makeFeedTableViewControllerWithDisplayURLHandler:(DisplayURLHandler)displayURLHandler {
+- (FeedTableViewController *)makeFeedTableViewControllerWithDisplayURLHandler:(DisplayURLHandler)displayURLHandler
+                                                          displayErrorHandler:(DisplayErrorHandler)displayErrorHandler {
   AtomParser *parser = [[AtomParser new] autorelease];
   FeedNetworkService *networkService = [[[FeedNetworkService alloc] initWithParser:parser] autorelease];
   FeedPresenter *feedPresenter = [[[FeedPresenter alloc] initWithNetworkService:networkService] autorelease];
   FeedTableViewController *view = [[FeedTableViewController alloc] initWithPresenter:feedPresenter
-                                                                   displayURLHandler:displayURLHandler];
+                                                                   displayURLHandler:displayURLHandler
+                                                                 displayErrorHandler:displayErrorHandler];
   return [view autorelease];
 }
 

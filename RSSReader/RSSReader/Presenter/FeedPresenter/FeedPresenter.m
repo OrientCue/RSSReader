@@ -39,12 +39,16 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
   __block typeof(self) weakSelf = self;
   [self.service fetchFeedFromUrl:rssUrl completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
     if (error) {
-      NSLog(@"%@", error.localizedDescription);
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.view displayError:error];
+        [weakSelf.view hideLoading];
+      });
+    } else {
+      dispatch_async(dispatch_get_main_queue(), ^{
+        [weakSelf.view appendItems:items];
+        [weakSelf.view hideLoading];
+      });
     }
-    dispatch_async(dispatch_get_main_queue(), ^{
-      [weakSelf.view hideLoading];
-      [weakSelf.view appendItems:items];
-    });
   }];
 }
 

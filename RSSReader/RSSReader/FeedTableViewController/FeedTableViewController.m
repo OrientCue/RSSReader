@@ -19,17 +19,22 @@ CGFloat const kEstimatedRowHeight = 60.0;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
 @property (nonatomic, copy) DisplayURLHandler displayURLHandler;
+@property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
+@property (nonatomic, retain) UIBarButtonItem *refreshButton;
 @end
 
 @implementation FeedTableViewController
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter displayURLHandler:(DisplayURLHandler)displayURLHandler {
+- (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter
+                displayURLHandler:(DisplayURLHandler)displayURLHandler
+              displayErrorHandler:(DisplayErrorHandler)displayErrorHandler {
   if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
     _presenter.view = self;
     _displayURLHandler = [displayURLHandler copy];
+    _displayErrorHandler = [displayErrorHandler copy];
   }
   return self;
 }
@@ -39,6 +44,8 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_items release];
   [_tableView release];
   [_displayURLHandler release];
+  [_displayErrorHandler release];
+  [_refreshButton release];
   [super dealloc];
 }
 
@@ -48,6 +55,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [super viewDidLoad];
   self.title = kFeedTitle;
   [self layoutTableView];
+  self.navigationItem.rightBarButtonItem = self.refreshButton;
   [self.presenter fetch];
 }
 
@@ -73,10 +81,20 @@ CGFloat const kEstimatedRowHeight = 60.0;
     _tableView.dataSource = self;
     _tableView.estimatedRowHeight = kEstimatedRowHeight;
     _tableView.separatorInset = UIEdgeInsetsZero;
+    _tableView.tableFooterView = [[UIView new] autorelease];
     _tableView.translatesAutoresizingMaskIntoConstraints = false;
     [_tableView registerNibForCellClasses:@[[AtomItemTableViewCell class]]];
   }
   return _tableView;
+}
+
+- (UIBarButtonItem *)refreshButton {
+  if (!_refreshButton) {
+    _refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                   target:self.presenter
+                                                                   action:@selector(fetch)];
+  }
+  return _refreshButton;
 }
 
 #pragma mark - Table view data source
@@ -108,11 +126,17 @@ CGFloat const kEstimatedRowHeight = 60.0;
 }
 
 - (void)hideLoading {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
+  UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
 }
 
 - (void)showLoading {
-  NSLog(@"%s", __PRETTY_FUNCTION__);
+  UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+}
+
+- (void)displayError:(NSError *)error {
+  if (self.displayErrorHandler) {
+    self.displayErrorHandler(error);
+  }
 }
 
 @end
