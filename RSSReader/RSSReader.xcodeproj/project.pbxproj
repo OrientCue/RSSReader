@@ -29,6 +29,7 @@
 		7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */; };
 		7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */; };
 		7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; };
+		7AD6B17D25BF8ADD00E3946B /* LoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AD6B17B25BF8ADD00E3946B /* LoadingView.m */; };
 		7AE88C1025B1D9340038084D /* AtomItemTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C0D25B1D9330038084D /* AtomItemTableViewCell.m */; };
 		7AE88C1125B1D9340038084D /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE88C0F25B1D9340038084D /* AtomItemTableViewCell.xib */; };
 		7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */; };
@@ -91,6 +92,8 @@
 		7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UITableView+RegisterCell.m"; sourceTree = "<group>"; };
 		7AB2A547256D410500E38106 /* NSXMLParser+AtomParser.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSXMLParser+AtomParser.h"; sourceTree = "<group>"; };
 		7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSXMLParser+AtomParser.m"; sourceTree = "<group>"; };
+		7AD6B17B25BF8ADD00E3946B /* LoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LoadingView.m; sourceTree = "<group>"; };
+		7AD6B17C25BF8ADD00E3946B /* LoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LoadingView.h; sourceTree = "<group>"; };
 		7AE88C0C25B1D9330038084D /* AtomItemCellDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomItemCellDelegate.h; sourceTree = "<group>"; };
 		7AE88C0D25B1D9330038084D /* AtomItemTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AtomItemTableViewCell.m; sourceTree = "<group>"; };
 		7AE88C0E25B1D9330038084D /* AtomItemTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AtomItemTableViewCell.h; sourceTree = "<group>"; };
@@ -298,6 +301,8 @@
 				7A79985F256565E8004EE025 /* AtomItemTableViewCell */,
 				7A98449825640007009F6AC0 /* FeedTableViewController.h */,
 				7A98449925640007009F6AC0 /* FeedTableViewController.m */,
+				7AD6B17C25BF8ADD00E3946B /* LoadingView.h */,
+				7AD6B17B25BF8ADD00E3946B /* LoadingView.m */,
 			);
 			path = FeedTableViewController;
 			sourceTree = "<group>";
@@ -471,6 +476,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */,
+				7AD6B17D25BF8ADD00E3946B /* LoadingView.m in Sources */,
 				7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */,
 				7A92155A256414FC003430CD /* AtomParser.m in Sources */,
 				7AE88C1025B1D9340038084D /* AtomItemTableViewCell.m in Sources */,

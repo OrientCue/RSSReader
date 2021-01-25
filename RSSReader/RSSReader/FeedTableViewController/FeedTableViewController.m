@@ -11,6 +11,7 @@
 #import "AtomItemTableViewCell.h"
 #import "UITableView+RegisterCell.h"
 #import "AtomItemCellDelegate.h"
+#import "LoadingView.h"
 
 NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
@@ -23,6 +24,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 @property (nonatomic, copy) DisplayURLHandler displayURLHandler;
 @property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
+@property (nonatomic, retain) LoadingView *loadingView;
 @end
 
 @implementation FeedTableViewController
@@ -50,6 +52,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_displayErrorHandler release];
   [_refreshButton release];
   [_expandedIndexSet release];
+  [_loadingView release];
   [super dealloc];
 }
 
@@ -59,6 +62,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [super viewDidLoad];
   self.title = kFeedTitle;
   [self layoutTableView];
+  [self layoutLoadingView];
   self.navigationItem.rightBarButtonItem = self.refreshButton;
   [self.presenter fetch];
 }
@@ -75,7 +79,15 @@ CGFloat const kEstimatedRowHeight = 60.0;
   ]
    ];
 }
-
+- (void)layoutLoadingView {
+  [self.view addSubview:self.loadingView];
+  [NSLayoutConstraint activateConstraints:@[
+     [self.loadingView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+     [self.loadingView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+     [self.loadingView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+     [self.loadingView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+   ]];
+}
 #pragma mark - Lazy Properties
 
 - (UITableView *)tableView {
@@ -101,6 +113,14 @@ CGFloat const kEstimatedRowHeight = 60.0;
   return _refreshButton;
 }
 
+- (LoadingView *)loadingView {
+  if (!_loadingView) {
+    _loadingView = [LoadingView new];
+    _loadingView.translatesAutoresizingMaskIntoConstraints = false;
+  }
+  return _loadingView;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -120,6 +140,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:true];
   if (self.displayURLHandler) {
     self.displayURLHandler(self.items[indexPath.row].link);
   }
@@ -134,10 +155,12 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)hideLoading {
   UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+  [self.loadingView hideLoading];
 }
 
 - (void)showLoading {
   UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+  [self.loadingView showLoading];
 }
 
 - (void)displayError:(NSError *)error {
