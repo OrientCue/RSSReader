@@ -16,6 +16,11 @@
 		7A3C7A642577D9E9006C4CD7 /* Downloader.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154E2564121D003430CD /* Downloader.m */; };
 		7A3C7A762577F4E6006C4CD7 /* DownloaderNSThread.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C7A752577F4E6006C4CD7 /* DownloaderNSThread.m */; };
 		7A3C7A7E2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C7A7C2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m */; };
+		7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920A825C845620051154B /* SettingsStoreTests.m */; };
+		7A5920CA25C845A30051154B /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920C925C845A30051154B /* SettingsStore.m */; };
+		7A5920CB25C845A30051154B /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920C925C845A30051154B /* SettingsStore.m */; };
+		7A5920D325C845C80051154B /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920D225C845C80051154B /* RSSChannel.m */; };
+		7A5920D425C845C80051154B /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920D225C845C80051154B /* RSSChannel.m */; };
 		7A92155A256414FC003430CD /* AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A921559256414FC003430CD /* AtomParser.m */; };
 		7A92156A25642050003430CD /* FeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844892563FE2F009F6AC0 /* FeedPresenter.m */; };
 		7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A98449925640007009F6AC0 /* FeedTableViewController.m */; };
@@ -61,6 +66,11 @@
 		7A3C7A752577F4E6006C4CD7 /* DownloaderNSThread.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DownloaderNSThread.m; sourceTree = "<group>"; };
 		7A3C7A7C2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RRErrorAlert.m"; sourceTree = "<group>"; };
 		7A3C7A7D2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RRErrorAlert.h"; sourceTree = "<group>"; };
+		7A5920A825C845620051154B /* SettingsStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsStoreTests.m; sourceTree = "<group>"; };
+		7A5920C825C845A30051154B /* SettingsStore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SettingsStore.h; sourceTree = "<group>"; };
+		7A5920C925C845A30051154B /* SettingsStore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsStore.m; sourceTree = "<group>"; };
+		7A5920D125C845C80051154B /* RSSChannel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RSSChannel.h; sourceTree = "<group>"; };
+		7A5920D225C845C80051154B /* RSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannel.m; sourceTree = "<group>"; };
 		7A9215412564073A003430CD /* FeedNetworkServiceType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedNetworkServiceType.h; sourceTree = "<group>"; };
 		7A92154425640A65003430CD /* FeedNetworkService.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedNetworkService.h; sourceTree = "<group>"; };
 		7A92154525640A65003430CD /* FeedNetworkService.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedNetworkService.m; sourceTree = "<group>"; };
@@ -162,6 +172,7 @@
 			children = (
 				7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */,
 				7A1AEE752562BC1A00BFBA5C /* Info.plist */,
+				7A5920A825C845620051154B /* SettingsStoreTests.m */,
 			);
 			path = RSSReaderTests;
 			sourceTree = "<group>";
@@ -213,6 +224,33 @@
 				7A1AEE692562BC1A00BFBA5C /* main.m */,
 			);
 			path = Application;
+			sourceTree = "<group>";
+		};
+		7A5920D025C845C80051154B /* RSSChannel */ = {
+			isa = PBXGroup;
+			children = (
+				7A5920D125C845C80051154B /* RSSChannel.h */,
+				7A5920D225C845C80051154B /* RSSChannel.m */,
+			);
+			path = RSSChannel;
+			sourceTree = "<group>";
+		};
+		7A5920DF25C848940051154B /* AtomFeedItem */ = {
+			isa = PBXGroup;
+			children = (
+				7A9844782563FC66009F6AC0 /* AtomFeedItem.h */,
+				7A9844792563FC66009F6AC0 /* AtomFeedItem.m */,
+			);
+			path = AtomFeedItem;
+			sourceTree = "<group>";
+		};
+		7A5920E425C848A40051154B /* SettingsStore */ = {
+			isa = PBXGroup;
+			children = (
+				7A5920C825C845A30051154B /* SettingsStore.h */,
+				7A5920C925C845A30051154B /* SettingsStore.m */,
+			);
+			path = SettingsStore;
 			sourceTree = "<group>";
 		};
 		7A79985F256565E8004EE025 /* AtomItemTableViewCell */ = {
@@ -280,8 +318,9 @@
 		7A9844872563FE09009F6AC0 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				7A9844782563FC66009F6AC0 /* AtomFeedItem.h */,
-				7A9844792563FC66009F6AC0 /* AtomFeedItem.m */,
+				7A5920DF25C848940051154B /* AtomFeedItem */,
+				7A5920D025C845C80051154B /* RSSChannel */,
+				7A5920E425C848A40051154B /* SettingsStore */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -426,7 +465,6 @@
 					};
 					7A1AEE6E2562BC1A00BFBA5C = {
 						CreatedOnToolsVersion = 12.2;
-						TestTargetID = 7A1AEE532562BC1700BFBA5C;
 					};
 				};
 			};
@@ -487,6 +525,7 @@
 				7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */,
 				7A3C7A762577F4E6006C4CD7 /* DownloaderNSThread.m in Sources */,
 				7A92156A25642050003430CD /* FeedPresenter.m in Sources */,
+				7A5920CA25C845A30051154B /* SettingsStore.m in Sources */,
 				7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */,
 				7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */,
 				7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */,
@@ -494,6 +533,7 @@
 				7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */,
 				7A3C7A7E2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
+				7A5920D325C845C80051154B /* RSSChannel.m in Sources */,
 				7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -502,7 +542,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				7A5920CB25C845A30051154B /* SettingsStore.m in Sources */,
+				7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */,
 				7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */,
+				7A5920D425C845C80051154B /* RSSChannel.m in Sources */,
 				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
 				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 			);
@@ -681,7 +724,6 @@
 		7A1AEE872562BC1A00BFBA5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
@@ -694,14 +736,12 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.arseniystrakh.RSSReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RSSReader.app/RSSReader";
 			};
 			name = Debug;
 		};
 		7A1AEE882562BC1A00BFBA5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
-				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
@@ -714,7 +754,6 @@
 				PRODUCT_BUNDLE_IDENTIFIER = com.arseniystrakh.RSSReaderTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				TARGETED_DEVICE_FAMILY = "1,2";
-				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/RSSReader.app/RSSReader";
 			};
 			name = Release;
 		};
