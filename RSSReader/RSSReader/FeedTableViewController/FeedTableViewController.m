@@ -10,17 +10,21 @@
 #import "AtomFeedItem.h"
 #import "AtomItemTableViewCell.h"
 #import "UITableView+RegisterCell.h"
+#import "AtomItemCellDelegate.h"
+#import "LoadingView.h"
 
 NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
 
-@interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource>
+@interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource, AtomItemCellDelegate>
 @property (nonatomic, readonly, retain) id<FeedPresenterType> presenter;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
+@property (nonatomic, retain) NSMutableIndexSet *expandedIndexSet;
 @property (nonatomic, copy) DisplayURLHandler displayURLHandler;
 @property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
+@property (nonatomic, retain) LoadingView *loadingView;
 @end
 
 @implementation FeedTableViewController
@@ -35,6 +39,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
     _presenter.view = self;
     _displayURLHandler = [displayURLHandler copy];
     _displayErrorHandler = [displayErrorHandler copy];
+    _expandedIndexSet = [NSMutableIndexSet new];
   }
   return self;
 }
@@ -46,6 +51,8 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_displayURLHandler release];
   [_displayErrorHandler release];
   [_refreshButton release];
+  [_expandedIndexSet release];
+  [_loadingView release];
   [super dealloc];
 }
 
@@ -55,6 +62,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [super viewDidLoad];
   self.title = kFeedTitle;
   [self layoutTableView];
+  [self layoutLoadingView];
   self.navigationItem.rightBarButtonItem = self.refreshButton;
   [self.presenter fetch];
 }
@@ -71,7 +79,15 @@ CGFloat const kEstimatedRowHeight = 60.0;
   ]
    ];
 }
-
+- (void)layoutLoadingView {
+  [self.view addSubview:self.loadingView];
+  [NSLayoutConstraint activateConstraints:@[
+     [self.loadingView.leadingAnchor constraintEqualToAnchor:self.view.leadingAnchor],
+     [self.loadingView.trailingAnchor constraintEqualToAnchor:self.view.trailingAnchor],
+     [self.loadingView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
+     [self.loadingView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
+   ]];
+}
 #pragma mark - Lazy Properties
 
 - (UITableView *)tableView {
@@ -97,6 +113,14 @@ CGFloat const kEstimatedRowHeight = 60.0;
   return _refreshButton;
 }
 
+- (LoadingView *)loadingView {
+  if (!_loadingView) {
+    _loadingView = [LoadingView new];
+    _loadingView.translatesAutoresizingMaskIntoConstraints = false;
+  }
+  return _loadingView;
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -106,13 +130,17 @@ CGFloat const kEstimatedRowHeight = 60.0;
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
   AtomItemTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([AtomItemTableViewCell class])
                                                                 forIndexPath:indexPath];
-  [cell configureWithItem:self.items[indexPath.row]];
+  [cell configureWithItem:self.items[indexPath.row]
+                indexPath:indexPath
+                 expanded:[self.expandedIndexSet containsIndex:indexPath.row]];
+  cell.delegate = self;
   return cell;
 }
 
 #pragma mark - Table view delegate
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+  [tableView deselectRowAtIndexPath:indexPath animated:true];
   if (self.displayURLHandler) {
     self.displayURLHandler(self.items[indexPath.row].link);
   }
@@ -127,10 +155,12 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)hideLoading {
   UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
+  [self.loadingView hideLoading];
 }
 
 - (void)showLoading {
   UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
+  [self.loadingView showLoading];
 }
 
 - (void)displayError:(NSError *)error {
@@ -139,4 +169,11 @@ CGFloat const kEstimatedRowHeight = 60.0;
   }
 }
 
+#pragma mark - AtomItemCellDelegate
+
+- (void)row:(NSInteger)row expandedState:(BOOL)isExpanded {
+  isExpanded ? [self.expandedIndexSet addIndex:row] : [self.expandedIndexSet removeIndex:row];
+  [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
+                        withRowAnimation:UITableViewRowAnimationAutomatic];
+}
 @end
