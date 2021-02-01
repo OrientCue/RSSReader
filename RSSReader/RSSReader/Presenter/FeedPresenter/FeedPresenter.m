@@ -9,8 +9,6 @@
 #import "FeedViewType.h"
 #import "FeedNetworkServiceType.h"
 
-NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
-
 @interface FeedPresenter ()
 @property (nonatomic, retain) id<FeedNetworkServiceType> service;
 @end
@@ -55,6 +53,5 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
   [self.service cancelFetch];
   [self.view hideLoading];
 }
-
 
 @end

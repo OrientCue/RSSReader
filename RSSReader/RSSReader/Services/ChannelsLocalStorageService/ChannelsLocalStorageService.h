@@ -9,8 +9,8 @@
 #import "ChannelsLocalStorageServiceType.h"
 
 @interface ChannelsLocalStorageService : NSObject <ChannelsLocalStorageServiceType>
-
+@property (class, readonly, retain) ChannelsLocalStorageService *shared;
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;
-+ (instancetype)shared;
++ (instancetype)alloc NS_UNAVAILABLE;
 @end

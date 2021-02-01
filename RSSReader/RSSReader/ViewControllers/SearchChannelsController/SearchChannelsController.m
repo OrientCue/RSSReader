@@ -31,18 +31,21 @@ void *kTableViewSelectedRowsCountContext = &kTableViewSelectedRowsCountContext;
 @property (nonatomic, retain) NSIndexSet *alreadyAdded;
 @property (nonatomic, retain) UIBarButtonItem *cancelBarButton;
 @property (nonatomic, retain) UIBarButtonItem *addBarButton;
+@property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @end
 
 @implementation SearchChannelsController
 static NSString *const kSearchBarPlaceHolder = @"example.com";
-static NSString *const kAddBarButtonTitle = @"Add";
+static NSString *const kAddBarButtonTitle = @"   Add  ";
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithPresenter:(id<SearchChannelsPresenterType>)presenter {
+- (instancetype)initWithPresenter:(id<SearchChannelsPresenterType>)presenter
+              displayErrorHandler:(DisplayErrorHandler)displayErrorHandler {
   if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
     _presenter.view = self;
+    _displayErrorHandler = [displayErrorHandler copy];
   }
   return self;
 }
@@ -56,6 +59,7 @@ static NSString *const kAddBarButtonTitle = @"Add";
   [_alreadyAdded release];
   [_cancelBarButton release];
   [_addBarButton release];
+  [_displayErrorHandler release];
   [super dealloc];
 }
 
@@ -201,6 +205,12 @@ static NSString *const kAddBarButtonTitle = @"Add";
 - (void)showLoading {
   UIApplication.sharedApplication.networkActivityIndicatorVisible = YES;
   [self.loadingView showLoading];
+}
+
+- (void)displayError:(NSError *)error {
+  if (self.displayErrorHandler) {
+    self.displayErrorHandler(error);
+  }
 }
 
 #pragma mark - UISearchBar Delegate

@@ -20,7 +20,7 @@
 
 - (instancetype)init {
   if (self = [super init]) {
-    _service = [ChannelsLocalStorageService.shared retain];
+    _service = ChannelsLocalStorageService.shared;
   }
   return self;
 }

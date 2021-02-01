@@ -20,7 +20,7 @@
 - (instancetype)initWithService:(id<SearchChannelsServiceType>)service {
   if (self = [super init]) {
     _service = [service retain];
-    _localStorage = [ChannelsLocalStorageService.shared retain];
+    _localStorage = ChannelsLocalStorageService.shared;
   }
   return self;
 }
@@ -38,9 +38,8 @@
   __block typeof(self) weakSelf = self;
   [self.service searchChannelsForSiteName:siteName completion:^(NSArray<RSSChannel *> *channels, NSError *error) {
     if (error) {
-      NSLog(@"%@", error.localizedDescription);
       dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.view applyChannels:@[] alreadyAdded:nil];
+        [weakSelf.view displayError:error];
         [weakSelf.view hideLoading];
       });
     } else {
@@ -59,9 +58,8 @@
   [self.service searchChannelForLinkString:linkString
                                 completion:^(RSSChannel *channel, NSError *error) {
     if (error) {
-      NSLog(@"%@", error.localizedDescription);
       dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.view applyChannels:@[] alreadyAdded:nil];
+        [weakSelf.view displayError:error];
         [weakSelf.view hideLoading];
       });
     } else {
@@ -91,13 +89,11 @@
 
 - (NSIndexSet *)alreadyAddedChannelsIndexesForChannels:(NSArray<RSSChannel *> *)channels {
   NSMutableIndexSet *alreadyAdded = [NSMutableIndexSet indexSet];
-  NSUInteger index = 0;
-  for (RSSChannel *channel in channels) {
-    if ([self.localStorage containsChannel:channel]) {
-      [alreadyAdded addIndex:index];
+  [channels enumerateObjectsUsingBlock:^(RSSChannel *obj, NSUInteger idx, BOOL *stop) {
+    if ([self.localStorage containsChannel:obj]) {
+      [alreadyAdded addIndex:idx];
     }
-    index++;
-  }
+  }];
   return [[alreadyAdded copy] autorelease];
 }
 

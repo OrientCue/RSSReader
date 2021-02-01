@@ -9,8 +9,8 @@
 
 /// https://regex101.com/r/q0yQGp/4
 NSString *const kRSSLinkTagRegexPattern = @"<link[^>]* rel=\"alternate\" type=\"application\\/rss\\+xml\"[^>]*>|<a[^>]*href=[^>]*title=\"(?i)RSS\"[^>]*>";
-NSString *const kRSSLinkTitleTag = @" title=\"";
-NSString *const kRSSLinkHrefTag = @" href=\"";
+NSString *const kRSSLinkTitleTag = @"title=\"";
+NSString *const kRSSLinkHrefTag = @"href=\"";
 
 @interface AutodiscoveryHTMLParser ()
 @property (nonatomic, readonly) NSRegularExpression *regExp;

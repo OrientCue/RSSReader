@@ -24,13 +24,15 @@
   return [coordinator autorelease];
 }
 
-#pragma mark -
+#pragma mark -Coordinator Type
 
 - (void)launch {
   self.channelsViewController = [self makeChannelsViewController];
   [self.navigationController pushViewController:self.channelsViewController
                                        animated:false];
 }
+
+#pragma mark - Factory
 
 - (ChannelsViewController *)makeChannelsViewController {
   ChannelsPresenter *presenter = [[ChannelsPresenter new] autorelease];

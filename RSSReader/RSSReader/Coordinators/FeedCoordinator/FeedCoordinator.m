@@ -10,7 +10,6 @@
 #import "FeedPresenter.h"
 #import "FeedNetworkService.h"
 #import "AtomParser.h"
-#import "UIAlertController+RRErrorAlert.h"
 #import "RRBrowserViewController.h"
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
@@ -34,7 +33,7 @@
   self.feedController = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
     [weakSelf displayURL:url];
   } displayErrorHandler:^(NSError *error) {
-    [weakSelf displayError:error];
+    [weakSelf.splitCoordinator displayError:error];
   }];
   [self.navigationController pushViewController:self.feedController animated:false];
 }
@@ -44,17 +43,6 @@
 - (void)displayURL:(NSURL *)url {
   RRBrowserViewController *browser = [[[RRBrowserViewController alloc] initWithUrl:url] autorelease];
   [self.navigationController pushViewController:browser animated:true];
-}
-
-#pragma mark - DisplayError
-
-- (void)displayError:(NSError *)error {
-  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
-  [self.navigationController presentViewController:alertController
-                                          animated:YES
-                                        completion:^{
-    [alertController rr_autoHideWithDelay];
-  }];
 }
 
 #pragma mark - Factory

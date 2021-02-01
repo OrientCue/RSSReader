@@ -8,7 +8,7 @@
 #import "SplitCoordinator.h"
 #import "FeedCoordinator.h"
 #import "ChannelsCoordinator.h"
-
+#import "UIAlertController+RRErrorAlert.h"
 #import "SearchChannelsController.h"
 #import "AutodiscoveryRSS.h"
 #import "SearchChannelsPresenter.h"
@@ -47,6 +47,7 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
   
   UINavigationController *feedNavigationController = [[UINavigationController new] autorelease];
   self.feedCoordinator = [FeedCoordinator coordinatorWithNavigationController:feedNavigationController];
+  self.feedCoordinator.splitCoordinator = self;
   [self.feedCoordinator launch];
   
   self.splitViewController.viewControllers = @[channelsNavigationController, feedNavigationController];
@@ -69,19 +70,35 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 }
 
 - (void)didTapAddButton {
-  SearchChannelsController *searchViewController = [self makeSearchChannelsController];
+  __block typeof(self) weakSelf = self;
+  SearchChannelsController *searchViewController = [self makeSearchChannelsController:^(NSError *error) {
+    [weakSelf displayError:error];
+  }];
   UINavigationController *searchNavigationController = [[[UINavigationController alloc] initWithRootViewController:searchViewController] autorelease];
   [self.splitViewController presentViewController:searchNavigationController
-                                         animated:true
-                                       completion:nil];
+                                             animated:true
+                                           completion:nil];
+}
+
+#pragma mark - DisplayError
+
+- (void)displayError:(NSError *)error {
+  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
+  id sourceController = self.splitViewController.presentedViewController ? self.splitViewController.presentedViewController : self.splitViewController;
+  [sourceController presentViewController:alertController
+                                          animated:YES
+                                        completion:^{
+    [alertController rr_autoHideWithDelay];
+  }];
 }
 
 #pragma mark - Factory
 
-- (SearchChannelsController *)makeSearchChannelsController {
+- (SearchChannelsController *)makeSearchChannelsController:(DisplayErrorHandler)errorHandler {
   AutodiscoveryRSS *service = [[AutodiscoveryRSS new] autorelease];
   SearchChannelsPresenter *presenter = [[[SearchChannelsPresenter alloc] initWithService:service] autorelease];
-  return [[[SearchChannelsController alloc] initWithPresenter:presenter] autorelease];
+  return [[[SearchChannelsController alloc] initWithPresenter:presenter
+                                          displayErrorHandler:errorHandler] autorelease];
 }
 
 @end

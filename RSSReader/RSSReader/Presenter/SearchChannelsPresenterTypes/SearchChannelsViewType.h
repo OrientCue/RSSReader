@@ -12,4 +12,5 @@
 - (void)showLoading;
 - (void)hideLoading;
 - (void)applyChannels:(NSArray<RSSChannel *> *)channels alreadyAdded:(NSIndexSet *)alreadyAdded;
+- (void)displayError:(NSError *)error;
 @end

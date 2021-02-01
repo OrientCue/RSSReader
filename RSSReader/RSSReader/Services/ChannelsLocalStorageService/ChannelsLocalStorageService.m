@@ -23,6 +23,10 @@ static NSString *const kSettingsFileName = @"com.arss.rssreader.settings.dat";
 
 #pragma mark - Object Lifecycle
 
+- (id)copy {
+    return self;
+}
+
 - (void)dealloc {
   [_store release];
   [_handler release];
@@ -38,7 +42,26 @@ static NSString *const kSettingsFileName = @"com.arss.rssreader.settings.dat";
   
   return shared;
 }
-#pragma mark -
+
+#pragma mark - MRC
+
+- (oneway void)release {
+    
+}
+
+- (instancetype)autorelease {
+    return self;
+}
+
+- (NSUInteger)retainCount {
+    return NSUIntegerMax;
+}
+
+- (instancetype)retain {
+    return self;
+}
+
+#pragma mark - Lazy Properties
 
 - (NSURL *)fileURL {
   if (!_fileURL) {
