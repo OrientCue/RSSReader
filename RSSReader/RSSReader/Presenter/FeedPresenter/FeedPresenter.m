@@ -33,11 +33,10 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
 
 #pragma mark - FeedPresenterType
 
-- (void)fetch {
+- (void)fetchFeedFromURL:(NSURL *)url {
   [self.view showLoading];
-  NSURL *rssUrl = [NSURL URLWithString:kRssURLString];
   __block typeof(self) weakSelf = self;
-  [self.service fetchFeedFromUrl:rssUrl completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
+  [self.service fetchFeedFromUrl:url completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
     if (error) {
       dispatch_async(dispatch_get_main_queue(), ^{
         [weakSelf.view displayError:error];
@@ -51,5 +50,11 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
     }
   }];
 }
+
+- (void)cancelFetch {
+  [self.service cancelFetch];
+  [self.view hideLoading];
+}
+
 
 @end

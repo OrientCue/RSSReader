@@ -1,0 +1,48 @@
+//
+//  ChannelsCoordinator.m
+//  RSSReader
+//
+//  Created by Arseniy Strakh on 29.12.2020.
+//
+
+#import "ChannelsCoordinator.h"
+#import "ChannelsPresenter.h"
+#import "ChannelsViewController.h"
+
+@interface ChannelsCoordinator ()
+@property (nonatomic, assign) UINavigationController *navigationController;
+@property (nonatomic, assign) UIViewController<ChannelsViewType> *channelsViewController;
+@end
+
+@implementation ChannelsCoordinator
+
+#pragma mark - Object Lifecycle
+
++ (instancetype)coordinatorWithNavigationController:(UINavigationController *)navigationController {
+  ChannelsCoordinator *coordinator = [ChannelsCoordinator new];
+  coordinator.navigationController = navigationController;
+  return [coordinator autorelease];
+}
+
+#pragma mark -
+
+- (void)launch {
+  self.channelsViewController = [self makeChannelsViewController];
+  [self.navigationController pushViewController:self.channelsViewController
+                                       animated:false];
+}
+
+- (ChannelsViewController *)makeChannelsViewController {
+  ChannelsPresenter *presenter = [[ChannelsPresenter new] autorelease];
+  ChannelsViewController *channelsViewController = [[ChannelsViewController alloc] initWithPresenter:presenter];
+  __block typeof(self) weakSelf = self;
+  channelsViewController.didSelectChannelHandler = ^(RSSChannel *channel) {
+    [weakSelf.splitCoordinator didSelectChannel:channel];
+  };
+  channelsViewController.didTapAddButtonHandler = ^{
+    [weakSelf.splitCoordinator didTapAddButton];
+  };
+  return [channelsViewController autorelease];
+}
+
+@end

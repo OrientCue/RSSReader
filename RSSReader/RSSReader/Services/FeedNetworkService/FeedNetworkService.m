@@ -6,12 +6,14 @@
 //
 
 #import "FeedNetworkService.h"
-#import "DownloaderNSThread.h"
+#import "DownloadOperation.h"
 #import "FeedParserType.h"
 
 @interface FeedNetworkService ()
 @property (nonatomic, readonly, retain) id<FeedParserType> parser;
 @property (nonatomic, copy) FeedNetworkServiceCompletion completion;
+@property (nonatomic, retain) NSOperationQueue *queue;
+@property (nonatomic, getter=isInflight) BOOL inflight;
 @end
 
 @implementation FeedNetworkService
@@ -20,14 +22,14 @@
 
 - (instancetype)initWithParser:(id<FeedParserType>)parser {
   if (self = [super init]) {
-    _downloader = [DownloaderNSThread new];
+    _queue = [NSOperationQueue new];
     _parser = [parser retain];
   }
   return self;
 }
 
 - (void)dealloc {
-  [_downloader release];
+  [_queue release];
   [_parser release];
   [_completion release];
   [super dealloc];
@@ -36,18 +38,36 @@
 #pragma mark - NetworkServiceType
 
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(FeedNetworkServiceCompletion)completion {
-  assert(completion); // Completion will be called later, therefore it should not be nil.
+  if (self.isInflight) {
+    [self cancelFetch];
+  }
   self.completion = completion;
   __block typeof(self) weakSelf = self;
-  [self.downloader downloadFromUrl:url
-                        completion:^(NSData *data, NSError *error) {
-    if (error) {
-      weakSelf.completion(nil, error);
+  DownloadOperation *operation = [[DownloadOperation alloc] initWithURL:url];
+  __block typeof(operation) weakOperation = operation;
+  operation.completionBlock = ^{
+    if (weakOperation.isCancelled) {
+      weakSelf.inflight = false;
       return;
     }
-    [weakSelf.parser parse:data
-                completion:weakSelf.completion];
-  }];
+    if (weakOperation.error) {
+      if (weakSelf.completion) {
+        weakSelf.completion(nil, weakOperation.error);
+      }
+    } else {
+      [weakSelf.parser parse:weakOperation.downloaded
+                  completion:weakSelf.completion];
+    }
+    weakSelf.inflight = false;
+  };
+  self.inflight = true;
+  [self.queue addOperation:operation];
+  [operation release];
+}
+
+- (void)cancelFetch {
+  self.completion = nil;
+  [self.queue cancelAllOperations];
 }
 
 @end

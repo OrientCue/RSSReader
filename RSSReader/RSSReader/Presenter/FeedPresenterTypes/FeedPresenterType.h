@@ -11,5 +11,6 @@
 
 @protocol FeedPresenterType <NSObject>
 @property (nonatomic, assign) id<FeedViewType> view;
-- (void)fetch;
+- (void)fetchFeedFromURL:(NSURL *)url;
+- (void)cancelFetch;
 @end

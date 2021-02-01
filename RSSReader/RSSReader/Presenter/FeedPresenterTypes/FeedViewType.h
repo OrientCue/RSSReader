@@ -7,9 +7,10 @@
 
 #import <Foundation/Foundation.h>
 
-@class AtomFeedItem;
+@class AtomFeedItem, RSSChannel;
 
 @protocol FeedViewType <NSObject>
+- (void)feedForChannel:(RSSChannel *)channel;
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items;
 - (void)showLoading;
 - (void)hideLoading;

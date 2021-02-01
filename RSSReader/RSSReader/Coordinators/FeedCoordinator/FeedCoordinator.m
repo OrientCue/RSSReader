@@ -14,6 +14,7 @@
 #import "RRBrowserViewController.h"
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
+@property (nonatomic, assign) UIViewController<FeedViewType> *feedController;
 @property (nonatomic, assign) UINavigationController *navigationController;
 @end
 
@@ -30,12 +31,12 @@
 
 - (void)launch {
   __block typeof(self) weakSelf = self;
-  FeedTableViewController *feed = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
+  self.feedController = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
     [weakSelf displayURL:url];
   } displayErrorHandler:^(NSError *error) {
     [weakSelf displayError:error];
   }];
-  [self.navigationController pushViewController:feed animated:false];
+  [self.navigationController pushViewController:self.feedController animated:false];
 }
 
 #pragma mark - DisplayURL

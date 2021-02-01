@@ -12,8 +12,8 @@
 #import "UITableView+RegisterCell.h"
 #import "AtomItemCellDelegate.h"
 #import "LoadingView.h"
+#import "RSSChannel.h"
 
-NSString *const kFeedTitle = @"Tut.by";
 CGFloat const kEstimatedRowHeight = 60.0;
 
 @interface FeedTableViewController () <UITableViewDelegate, UITableViewDataSource, AtomItemCellDelegate>
@@ -25,6 +25,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 @property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
 @property (nonatomic, retain) LoadingView *loadingView;
+@property (nonatomic, retain) RSSChannel *channel;
 @end
 
 @implementation FeedTableViewController
@@ -53,6 +54,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_refreshButton release];
   [_expandedIndexSet release];
   [_loadingView release];
+  [_channel release];
   [super dealloc];
 }
 
@@ -60,11 +62,14 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = kFeedTitle;
   [self layoutTableView];
   [self layoutLoadingView];
   self.navigationItem.rightBarButtonItem = self.refreshButton;
-  [self.presenter fetch];
+}
+
+- (void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+  [self.presenter cancelFetch];
 }
 
 #pragma mark - Layout
@@ -108,7 +113,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
   if (!_refreshButton) {
     _refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
                                                                    target:self.presenter
-                                                                   action:@selector(fetch)];
+                                                                   action:@selector(refreshFeed)];
   }
   return _refreshButton;
 }
@@ -148,9 +153,19 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 #pragma mark - FeedViewType
 
+- (void)feedForChannel:(RSSChannel *)channel {
+  self.channel = channel;
+  self.title = channel.title;
+  [self.presenter fetchFeedFromURL:channel.link];
+}
+
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items {
   self.items = items;
+  [self.expandedIndexSet removeAllIndexes];
   [self.tableView reloadData];
+  [self.tableView scrollToRowAtIndexPath:[NSIndexPath indexPathForRow:0 inSection:0]
+                        atScrollPosition:UITableViewScrollPositionTop
+                                animated:true];
 }
 
 - (void)hideLoading {
@@ -167,6 +182,10 @@ CGFloat const kEstimatedRowHeight = 60.0;
   if (self.displayErrorHandler) {
     self.displayErrorHandler(error);
   }
+}
+
+- (void)refreshFeed {
+  [self.presenter fetchFeedFromURL:self.channel.link];
 }
 
 #pragma mark - AtomItemCellDelegate

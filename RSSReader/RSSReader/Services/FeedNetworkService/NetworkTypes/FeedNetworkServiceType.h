@@ -12,4 +12,5 @@ typedef void(^FeedNetworkServiceCompletion)(NSArray<AtomFeedItem *> *items, NSEr
 
 @protocol FeedNetworkServiceType <NSObject>
 - (void)fetchFeedFromUrl:(NSURL *)url completion:(FeedNetworkServiceCompletion)completion;
+- (void)cancelFetch;
 @end

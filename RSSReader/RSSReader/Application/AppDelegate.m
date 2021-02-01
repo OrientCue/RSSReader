@@ -6,7 +6,7 @@
 //
 
 #import "AppDelegate.h"
-#import "FeedCoordinator.h"
+#import "SplitCoordinator.h"
 
 @interface AppDelegate ()
 @property (nonatomic, retain) id<CoordinatorType> coordinator;
@@ -18,9 +18,9 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
-  UINavigationController *navigationController = [[UINavigationController new] autorelease];
-  self.window.rootViewController = navigationController;
-  self.coordinator = [FeedCoordinator coordinatorWithNavigationController:navigationController];
+  UISplitViewController *splitViewController = [[UISplitViewController new] autorelease];
+  self.window.rootViewController = splitViewController;
+  self.coordinator = [SplitCoordinator coordinatorWithSplitViewController:splitViewController];
   [self.coordinator launch];
   [self.window makeKeyAndVisible];
   return YES;
