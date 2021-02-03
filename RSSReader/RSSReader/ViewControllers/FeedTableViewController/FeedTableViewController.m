@@ -167,6 +167,11 @@ CGFloat const kEstimatedRowHeight = 60.0;
                         atScrollPosition:UITableViewScrollPositionTop
                                 animated:true];
 }
+- (void)showEmptyFeed {
+  self.items = @[];
+  [self.expandedIndexSet removeAllIndexes];
+  [self.tableView reloadData];
+}
 
 - (void)hideLoading {
   UIApplication.sharedApplication.networkActivityIndicatorVisible = NO;
@@ -179,6 +184,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 }
 
 - (void)displayError:(NSError *)error {
+  [self showEmptyFeed];
   if (self.displayErrorHandler) {
     self.displayErrorHandler(error);
   }

@@ -47,6 +47,7 @@ static CGFloat const kViewFadeAnimationDuration = 0.25;
     [loadingStackView.centerYAnchor constraintEqualToAnchor:self.safeAreaLayoutGuide.centerYAnchor],
   ]];
   [loadingStackView release];
+  self.alpha = 0.0;
 }
 
 - (void)dealloc {

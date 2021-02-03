@@ -32,6 +32,10 @@
 #pragma mark - FeedPresenterType
 
 - (void)fetchFeedFromURL:(NSURL *)url {
+  if (!url) {
+    [self.view showEmptyFeed];
+    return;
+  }
   [self.view showLoading];
   __block typeof(self) weakSelf = self;
   [self.service fetchFeedFromUrl:url completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {

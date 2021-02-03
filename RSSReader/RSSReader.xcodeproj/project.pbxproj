@@ -60,6 +60,7 @@
 		7AE88C1125B1D9340038084D /* AtomItemTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = 7AE88C0F25B1D9340038084D /* AtomItemTableViewCell.xib */; };
 		7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */; };
 		7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1E25B1DD2F0038084D /* RRBrowserViewController.m */; };
+		7AEFFD7B25CADBEF005C05C0 /* AutodiscoveryHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5921A325C858D40051154B /* AutodiscoveryHTMLParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -798,6 +799,7 @@
 			files = (
 				7A5920CB25C845A30051154B /* SettingsStore.m in Sources */,
 				7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */,
+				7AEFFD7B25CADBEF005C05C0 /* AutodiscoveryHTMLParser.m in Sources */,
 				7A5920FB25C849A50051154B /* URLValidator.m in Sources */,
 				7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */,
 				7A59211525C849B40051154B /* HTMLDataMock.m in Sources */,

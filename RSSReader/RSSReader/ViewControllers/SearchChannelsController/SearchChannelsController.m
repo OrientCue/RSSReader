@@ -134,7 +134,6 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
   if (!_loadingView) {
     _loadingView = [LoadingView new];
     _loadingView.translatesAutoresizingMaskIntoConstraints = false;
-    [_loadingView hideLoading];
   }
   return _loadingView;
 }

@@ -12,6 +12,7 @@
 @protocol FeedViewType <NSObject>
 - (void)feedForChannel:(RSSChannel *)channel;
 - (void)appendItems:(NSArray<AtomFeedItem *> *)items;
+- (void)showEmptyFeed;
 - (void)showLoading;
 - (void)hideLoading;
 - (void)displayError:(NSError *)error;
