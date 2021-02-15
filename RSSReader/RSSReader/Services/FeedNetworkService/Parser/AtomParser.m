@@ -34,8 +34,7 @@
 
 - (void)parse:(NSData *)data completion:(FeedParserCompletion)completion {
   self.completion = completion;
-  NSXMLParser *parser = [NSXMLParser parserWith:data delegate:self];
-  [parser parse];
+  [[NSXMLParser parserWith:data delegate:self] parse];
 }
 
 #pragma mark - NSXMLParserDelegate

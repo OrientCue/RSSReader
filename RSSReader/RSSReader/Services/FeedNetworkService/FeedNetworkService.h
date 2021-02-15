@@ -8,9 +8,8 @@
 #import <Foundation/Foundation.h>
 #import "FeedNetworkServiceType.h"
 
-@protocol DownloaderType, FeedParserType;
+@protocol FeedParserType;
 
 @interface FeedNetworkService : NSObject <FeedNetworkServiceType>
-@property (nonatomic, readonly, retain) id<DownloaderType> downloader;
 - (instancetype)initWithParser:(id<FeedParserType>)parser;
 @end
