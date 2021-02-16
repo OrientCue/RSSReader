@@ -18,9 +18,9 @@
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)init {
+- (instancetype)initWithLocalStorageService:(id<ChannelsLocalStorageServiceType>)service {
   if (self = [super init]) {
-    _service = ChannelsLocalStorageService.shared;
+    _service = [service retain];
   }
   return self;
 }
@@ -43,25 +43,27 @@
   NSError *error = nil;
   SettingsStore *store = [self.service loadSavedStoreError:&error];
   if (error) {
-    NSLog(@"%@", error.localizedDescription);
+    [self.view displayError:error];
+  } else {
+    [self.view displayFeedForChannels:store.channels selected:store.selectedChannel];
   }
-  [self.view displayFeedForChannels:store.channels selected:store.selectedChannel];
 }
 
 - (void)updateFromLocalStorage {
   NSError *error = nil;
   SettingsStore *store = [self.service loadSavedStoreError:&error];
   if (error) {
-    NSLog(@"%@", error.localizedDescription);
+    [self.view displayError:error];
+  } else {
+    [self.view update:store.channels selected:store.selectedChannel];
   }
-  [self.view update:store.channels selected:store.selectedChannel];
 }
 
 - (void)removeChannelFromLocalStorage:(RSSChannel *)channel {
   NSError *error = nil;
   [self.service removeChannel:channel error:&error];
   if (error) {
-    NSLog(@"%@", error.localizedDescription);
+    [self.view displayError:error];
   }
 }
 
@@ -69,7 +71,7 @@
   NSError *error = nil;
   [self.service updateStoreWithSelected:index error:&error];
   if (error) {
-    NSLog(@"%@", error.localizedDescription);
+    [self.view displayError:error];
   }
 }
 

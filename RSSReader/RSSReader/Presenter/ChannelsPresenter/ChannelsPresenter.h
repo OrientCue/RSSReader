@@ -12,4 +12,7 @@
 @interface ChannelsPresenter : NSObject <ChannelsPresenterType>
 @property (nonatomic, assign) id<ChannelsViewType> view;
 @property (nonatomic, retain, readonly) id<ChannelsLocalStorageServiceType> service;
+- (instancetype)initWithLocalStorageService:(id<ChannelsLocalStorageServiceType>)service;
+- (instancetype)init NS_UNAVAILABLE;
++ (instancetype)new NS_UNAVAILABLE;
 @end

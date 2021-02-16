@@ -167,6 +167,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
                         atScrollPosition:UITableViewScrollPositionTop
                                 animated:true];
 }
+
 - (void)showEmptyFeed {
   self.items = @[];
   [self.expandedIndexSet removeAllIndexes];

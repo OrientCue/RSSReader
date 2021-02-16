@@ -12,4 +12,5 @@
 @protocol ChannelsViewType <NSObject>
 - (void)displayFeedForChannels:(NSArray<RSSChannel *> *)channels selected:(NSUInteger)selected;
 - (void)update:(NSArray<RSSChannel *> *)channels selected:(NSUInteger)selected;
+- (void)displayError:(NSError *)error;
 @end

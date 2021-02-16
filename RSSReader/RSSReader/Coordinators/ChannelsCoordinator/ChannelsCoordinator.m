@@ -8,6 +8,7 @@
 #import "ChannelsCoordinator.h"
 #import "ChannelsPresenter.h"
 #import "ChannelsViewController.h"
+#import "ChannelsLocalStorageService.h"
 
 @interface ChannelsCoordinator ()
 @property (nonatomic, assign) UINavigationController *navigationController;
@@ -35,7 +36,7 @@
 #pragma mark - Factory
 
 - (ChannelsViewController *)makeChannelsViewController {
-  ChannelsPresenter *presenter = [[ChannelsPresenter new] autorelease];
+  ChannelsPresenter *presenter = [[[ChannelsPresenter alloc] initWithLocalStorageService:ChannelsLocalStorageService.shared] autorelease];
   ChannelsViewController *channelsViewController = [[ChannelsViewController alloc] initWithPresenter:presenter];
   __block typeof(self) weakSelf = self;
   channelsViewController.didSelectChannelHandler = ^(RSSChannel *channel) {
@@ -43,6 +44,9 @@
   };
   channelsViewController.didTapAddButtonHandler = ^{
     [weakSelf.splitCoordinator didTapAddButton];
+  };
+  channelsViewController.displayErrorHandler = ^(NSError *error) {
+    [weakSelf.splitCoordinator displayError:error];
   };
   return [channelsViewController autorelease];
 }

@@ -34,6 +34,7 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
   [_channels release];
   [_didSelectChannelHandler release];
   [_didTapAddButtonHandler release];
+  [_displayErrorHandler release];
   [_presenter release];
   [super dealloc];
 }
@@ -142,6 +143,18 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
                                 animated:true
                           scrollPosition:UITableViewScrollPositionNone];
   }
+}
+
+- (void)displayError:(NSError *)error {
+  [self showEmptyFeed];
+  if (self.displayErrorHandler) {
+    self.displayErrorHandler(error);
+  }
+}
+
+- (void)showEmptyFeed {
+  self.channels = @[];
+  [self.tableView reloadData];
 }
 
 @end
