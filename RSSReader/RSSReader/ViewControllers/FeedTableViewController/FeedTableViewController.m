@@ -112,7 +112,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 - (UIBarButtonItem *)refreshButton {
   if (!_refreshButton) {
     _refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                   target:self.presenter
+                                                                   target:self
                                                                    action:@selector(refreshFeed)];
   }
   return _refreshButton;

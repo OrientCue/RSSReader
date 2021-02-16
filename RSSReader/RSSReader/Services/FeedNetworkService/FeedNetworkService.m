@@ -22,7 +22,6 @@
 
 - (instancetype)initWithParser:(id<FeedParserType>)parser {
   if (self = [super init]) {
-    _queue = [NSOperationQueue new];
     _parser = [parser retain];
   }
   return self;
@@ -33,6 +32,15 @@
   [_parser release];
   [_completion release];
   [super dealloc];
+}
+
+#pragma mark - Lazy Properties
+
+- (NSOperationQueue *)queue {
+  if (!_queue) {
+    _queue = [NSOperationQueue new];
+  }
+  return _queue;
 }
 
 #pragma mark - NetworkServiceType
