@@ -9,8 +9,10 @@
 #import "SearchChannelsPresenterType.h"
 #import "SearchChannelsServiceType.h"
 #import "SearchChannelsViewType.h"
+#import "ChannelsLocalStorageService.h"
 
 @interface SearchChannelsPresenter : NSObject <SearchChannelsPresenterType>
 @property (nonatomic, assign) id<SearchChannelsViewType> view;
-- (instancetype)initWithService:(id<SearchChannelsServiceType>)service;
+- (instancetype)initWithSearchService:(id<SearchChannelsServiceType>)searchService
+                         localStorage:(id<ChannelsLocalStorageServiceType>)localStorage;
 @end

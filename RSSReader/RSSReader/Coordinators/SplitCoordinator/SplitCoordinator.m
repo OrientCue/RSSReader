@@ -96,7 +96,8 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 
 - (SearchChannelsController *)makeSearchChannelsController:(DisplayErrorHandler)errorHandler {
   AutodiscoveryRSS *service = [[AutodiscoveryRSS new] autorelease];
-  SearchChannelsPresenter *presenter = [[[SearchChannelsPresenter alloc] initWithService:service] autorelease];
+  SearchChannelsPresenter *presenter = [[[SearchChannelsPresenter alloc] initWithSearchService:service
+                                                                                  localStorage:ChannelsLocalStorageService.shared] autorelease];
   return [[[SearchChannelsController alloc] initWithPresenter:presenter
                                           displayErrorHandler:errorHandler] autorelease];
 }

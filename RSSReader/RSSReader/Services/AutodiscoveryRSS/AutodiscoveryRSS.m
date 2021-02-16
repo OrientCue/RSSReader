@@ -27,14 +27,6 @@
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)init {
-  if (self = [super init]) {
-    _validator = [URLValidator new];
-    _queue = [NSOperationQueue new];
-  }
-  return self;
-}
-
 - (void)dealloc {
   [_validator release];
   [_htmlParser release];
@@ -59,6 +51,20 @@
     _channelParser = [RSSChannelParser new];
   }
   return _channelParser;
+}
+
+- (URLValidator *)validator {
+  if (!_validator) {
+    _validator = [URLValidator new];
+  }
+  return _validator;
+}
+
+- (NSOperationQueue *)queue {
+  if (!_queue) {
+    _queue = [NSOperationQueue new];
+  }
+  return _queue;
 }
 
 #pragma mark -

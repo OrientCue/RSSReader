@@ -6,7 +6,6 @@
 //
 
 #import "SearchChannelsPresenter.h"
-#import "ChannelsLocalStorageService.h"
 
 @interface SearchChannelsPresenter ()
 @property (nonatomic, retain) id<SearchChannelsServiceType> service;
@@ -17,10 +16,11 @@
 
 #pragma mark - Object Lifecycle
 
-- (instancetype)initWithService:(id<SearchChannelsServiceType>)service {
+- (instancetype)initWithSearchService:(id<SearchChannelsServiceType>)searchService
+                         localStorage:(id<ChannelsLocalStorageServiceType>)localStorage {
   if (self = [super init]) {
-    _service = [service retain];
-    _localStorage = ChannelsLocalStorageService.shared;
+    _service = [searchService retain];
+    _localStorage = [localStorage retain];
   }
   return self;
 }
@@ -81,7 +81,7 @@
   NSError *error = nil;
   [self.localStorage addChannels:channels lastSelected:true error:&error];
   if (error) {
-    NSLog(@"%@", error.localizedDescription);
+    [self.view displayError:error];
   }
 }
 
@@ -89,11 +89,13 @@
 
 - (NSIndexSet *)alreadyAddedChannelsIndexesForChannels:(NSArray<RSSChannel *> *)channels {
   NSMutableIndexSet *alreadyAdded = [NSMutableIndexSet indexSet];
-  [channels enumerateObjectsUsingBlock:^(RSSChannel *obj, NSUInteger idx, BOOL *stop) {
-    if ([self.localStorage containsChannel:obj]) {
-      [alreadyAdded addIndex:idx];
+  NSUInteger index = 0;
+  for (RSSChannel *channel in channels) {
+    if ([self.localStorage containsChannel:channel]) {
+      [alreadyAdded addIndex:index];
     }
-  }];
+    index++;
+  }
   return [[alreadyAdded copy] autorelease];
 }
 
