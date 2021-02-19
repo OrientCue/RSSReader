@@ -14,7 +14,7 @@
 #import "SearchChannelsPresenter.h"
 
 @interface SplitCoordinator () <UISplitViewControllerDelegate>
-@property (nonatomic, assign) UISplitViewController *splitViewController;
+@property (nonatomic, retain) UISplitViewController *splitViewController;
 @property (nonatomic, retain) FeedCoordinator *feedCoordinator;
 @property (nonatomic, retain) ChannelsCoordinator *channelsCoordinator;
 @end
@@ -25,10 +25,8 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 
 #pragma mark - Object Lifecycle
 
-+ (instancetype)coordinatorWithSplitViewController:(UISplitViewController *)splitViewController {
-  SplitCoordinator *coordinator = [SplitCoordinator new];
-  coordinator.splitViewController = splitViewController;
-  return [coordinator autorelease];
++ (instancetype)coordinator {
+  return [[SplitCoordinator new] autorelease];
 }
 
 - (void)dealloc {
@@ -37,24 +35,46 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
   [super dealloc];
 }
 
+#pragma mark - Lazy Properties
+
+- (UISplitViewController *)splitViewController {
+  if (!_splitViewController) {
+    _splitViewController = [UISplitViewController new];
+  }
+  return _splitViewController;
+}
+
+- (FeedCoordinator *)feedCoordinator {
+  if (!_feedCoordinator) {
+    _feedCoordinator = [FeedCoordinator new];
+    _feedCoordinator.splitCoordinator = self;
+    [_feedCoordinator launch];
+  }
+  return _feedCoordinator;
+}
+
+- (ChannelsCoordinator *)channelsCoordinator {
+  if (!_channelsCoordinator) {
+    _channelsCoordinator = [ChannelsCoordinator new];
+    _channelsCoordinator.splitCoordinator = self;
+    [_channelsCoordinator launch];
+  }
+  return _channelsCoordinator;
+}
+
+
 #pragma mark - Coordinator Type
 
 - (void)launch {
-  UINavigationController *channelsNavigationController = [[UINavigationController new] autorelease];
-  self.channelsCoordinator = [ChannelsCoordinator coordinatorWithNavigationController:channelsNavigationController];
-  self.channelsCoordinator.splitCoordinator = self;
-  [self.channelsCoordinator launch];
+  self.splitViewController.viewControllers = @[
+    self.channelsCoordinator.navigationController,
+    self.feedCoordinator.navigationController
+  ];
   
-  UINavigationController *feedNavigationController = [[UINavigationController new] autorelease];
-  self.feedCoordinator = [FeedCoordinator coordinatorWithNavigationController:feedNavigationController];
-  self.feedCoordinator.splitCoordinator = self;
-  [self.feedCoordinator launch];
-  
-  self.splitViewController.viewControllers = @[channelsNavigationController, feedNavigationController];
   self.splitViewController.preferredPrimaryColumnWidthFraction = kPreferredPrimaryColumnWidthFraction;
   self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryOverlay;
   
-  UINavigationItem *navigationItem = feedNavigationController.topViewController.navigationItem;
+  UINavigationItem *navigationItem = self.feedCoordinator.feedController.navigationItem;
   navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
   navigationItem.leftItemsSupplementBackButton = true;
   [self.channelsCoordinator.channelsViewController loadViewIfNeeded];

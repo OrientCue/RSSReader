@@ -11,7 +11,7 @@
 #import "ChannelsLocalStorageService.h"
 
 @interface ChannelsCoordinator ()
-@property (nonatomic, assign) UINavigationController *navigationController;
+@property (nonatomic, retain) UINavigationController *navigationController;
 @property (nonatomic, assign) UIViewController<ChannelsViewType> *channelsViewController;
 @end
 
@@ -19,11 +19,19 @@
 
 #pragma mark - Object Lifecycle
 
-+ (instancetype)coordinatorWithNavigationController:(UINavigationController *)navigationController {
-  ChannelsCoordinator *coordinator = [ChannelsCoordinator new];
-  coordinator.navigationController = navigationController;
-  return [coordinator autorelease];
++ (instancetype)coordinator {
+  return [[ChannelsCoordinator new] autorelease];
 }
+
+#pragma mark - Lazy Properties
+
+- (UINavigationController *)navigationController {
+  if (!_navigationController) {
+    _navigationController = [UINavigationController new];
+  }
+  return _navigationController;
+}
+
 
 #pragma mark -Coordinator Type
 

@@ -14,16 +14,17 @@
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
 @property (nonatomic, assign) UIViewController<FeedViewType> *feedController;
-@property (nonatomic, assign) UINavigationController *navigationController;
+@property (nonatomic, retain) UINavigationController *navigationController;
 @end
 
 @implementation FeedCoordinator
 
-+ (instancetype)coordinatorWithNavigationController:(UINavigationController *)navigationController {
-  FeedCoordinator *coordinator = [FeedCoordinator new];
-  coordinator.navigationController = navigationController;
-  coordinator.navigationController.delegate = coordinator;
-  return [coordinator autorelease];
+- (UINavigationController *)navigationController {
+  if (!_navigationController) {
+    _navigationController = [UINavigationController new];
+    _navigationController.delegate = self;
+  }
+  return _navigationController;
 }
 
 #pragma mark - CoordinatorType

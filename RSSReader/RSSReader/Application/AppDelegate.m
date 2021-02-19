@@ -9,7 +9,7 @@
 #import "SplitCoordinator.h"
 
 @interface AppDelegate ()
-@property (nonatomic, retain) id<CoordinatorType> coordinator;
+@property (nonatomic, retain) SplitCoordinator *coordinator;
 @end
 
 @implementation AppDelegate
@@ -18,9 +18,8 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
   self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
-  UISplitViewController *splitViewController = [[UISplitViewController new] autorelease];
-  self.window.rootViewController = splitViewController;
-  self.coordinator = [SplitCoordinator coordinatorWithSplitViewController:splitViewController];
+  self.coordinator = [SplitCoordinator coordinator];
+  self.window.rootViewController = self.coordinator.splitViewController;
   [self.coordinator launch];
   [self.window makeKeyAndVisible];
   return YES;
