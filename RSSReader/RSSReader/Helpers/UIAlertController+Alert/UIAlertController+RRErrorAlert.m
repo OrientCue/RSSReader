@@ -14,6 +14,15 @@ int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
 
 @implementation UIAlertController (RRErrorAlert)
 
++ (void)rr_showError:(NSError *)error sourceViewController:(UIViewController *)viewController {
+  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
+  [viewController presentViewController:alertController
+                                          animated:YES
+                                        completion:^{
+    [alertController rr_autoHideWithDelay];
+  }];
+}
+
 + (instancetype)rr_errorAlertWithMessage:(NSString *)message {
   UIAlertController *alertController =
   [UIAlertController alertControllerWithTitle:kAlertErrorTitle

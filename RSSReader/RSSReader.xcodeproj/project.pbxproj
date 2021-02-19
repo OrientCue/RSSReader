@@ -28,7 +28,6 @@
 		7A59211325C849B40051154B /* onliner.by.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A59210C25C849B40051154B /* onliner.by.html */; };
 		7A59211425C849B40051154B /* tut.by.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A59210D25C849B40051154B /* tut.by.html */; };
 		7A59211525C849B40051154B /* HTMLDataMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59210F25C849B40051154B /* HTMLDataMock.m */; };
-		7A59213E25C84D9E0051154B /* ChannelsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59213C25C84D9E0051154B /* ChannelsCoordinator.m */; };
 		7A59216525C84E680051154B /* SelectChannelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59216125C84E680051154B /* SelectChannelViewCell.m */; };
 		7A59216F25C84E860051154B /* RSSChannelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59216D25C84E860051154B /* RSSChannelParser.m */; };
 		7A59217025C84E860051154B /* AutodiscoveryRSS.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59216E25C84E860051154B /* AutodiscoveryRSS.m */; };
@@ -46,6 +45,7 @@
 		7A92156A25642050003430CD /* FeedPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844892563FE2F009F6AC0 /* FeedPresenter.m */; };
 		7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A98449925640007009F6AC0 /* FeedTableViewController.m */; };
 		7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* FeedCoordinator.m */; };
+		7A9E734325DD4C81005D7A22 /* ChannelsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59213C25C84D9E0051154B /* ChannelsCoordinator.m */; };
 		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
 		7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */; };
 		7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */; };
@@ -782,8 +782,8 @@
 				7A59218925C850B80051154B /* ChannelsViewController.m in Sources */,
 				7A59219925C8584F0051154B /* ChannelsPresenter.m in Sources */,
 				7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */,
+				7A9E734325DD4C81005D7A22 /* ChannelsCoordinator.m in Sources */,
 				7A3C7A7E2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m in Sources */,
-				7A59213E25C84D9E0051154B /* ChannelsCoordinator.m in Sources */,
 				7A59219F25C8586F0051154B /* SearchChannelsPresenter.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
 				7A5920D325C845C80051154B /* RSSChannel.m in Sources */,

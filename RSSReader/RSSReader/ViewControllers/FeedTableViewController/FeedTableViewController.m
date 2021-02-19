@@ -13,6 +13,7 @@
 #import "AtomItemCellDelegate.h"
 #import "LoadingView.h"
 #import "RSSChannel.h"
+#import "UIAlertController+RRErrorAlert.h"
 
 CGFloat const kEstimatedRowHeight = 60.0;
 
@@ -22,7 +23,6 @@ CGFloat const kEstimatedRowHeight = 60.0;
 @property (nonatomic, retain) NSArray<AtomFeedItem *> *items;
 @property (nonatomic, retain) NSMutableIndexSet *expandedIndexSet;
 @property (nonatomic, copy) DisplayURLHandler displayURLHandler;
-@property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @property (nonatomic, retain) UIBarButtonItem *refreshButton;
 @property (nonatomic, retain) LoadingView *loadingView;
 @property (nonatomic, retain) RSSChannel *channel;
@@ -33,13 +33,11 @@ CGFloat const kEstimatedRowHeight = 60.0;
 #pragma mark - Lifecycle
 
 - (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter
-                displayURLHandler:(DisplayURLHandler)displayURLHandler
-              displayErrorHandler:(DisplayErrorHandler)displayErrorHandler {
+                displayURLHandler:(DisplayURLHandler)displayURLHandler {
   if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
     _presenter.view = self;
     _displayURLHandler = [displayURLHandler copy];
-    _displayErrorHandler = [displayErrorHandler copy];
     _expandedIndexSet = [NSMutableIndexSet new];
   }
   return self;
@@ -50,7 +48,6 @@ CGFloat const kEstimatedRowHeight = 60.0;
   [_items release];
   [_tableView release];
   [_displayURLHandler release];
-  [_displayErrorHandler release];
   [_refreshButton release];
   [_expandedIndexSet release];
   [_loadingView release];
@@ -186,9 +183,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)displayError:(NSError *)error {
   [self showEmptyFeed];
-  if (self.displayErrorHandler) {
-    self.displayErrorHandler(error);
-  }
+  [UIAlertController rr_showError:error sourceViewController:self];
 }
 
 - (void)refreshFeed {

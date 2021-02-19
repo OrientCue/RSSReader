@@ -11,6 +11,7 @@
 #import "FeedNetworkService.h"
 #import "AtomParser.h"
 #import "RRBrowserViewController.h"
+#import "UIAlertController+RRErrorAlert.h"
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
 @property (nonatomic, assign) UIViewController<FeedViewType> *feedController;
@@ -18,6 +19,15 @@
 @end
 
 @implementation FeedCoordinator
+
+#pragma mark - Object Lifecycle
+
+- (void)dealloc {
+  [_navigationController release];
+  [super dealloc];
+}
+
+#pragma mark - Lazy Properties
 
 - (UINavigationController *)navigationController {
   if (!_navigationController) {
@@ -33,8 +43,6 @@
   __block typeof(self) weakSelf = self;
   self.feedController = [self makeFeedTableViewControllerWithDisplayURLHandler:^(NSURL *url) {
     [weakSelf displayURL:url];
-  } displayErrorHandler:^(NSError *error) {
-    [weakSelf.splitCoordinator displayError:error];
   }];
   [self.navigationController pushViewController:self.feedController animated:false];
 }
@@ -48,14 +56,12 @@
 
 #pragma mark - Factory
 
-- (FeedTableViewController *)makeFeedTableViewControllerWithDisplayURLHandler:(DisplayURLHandler)displayURLHandler
-                                                          displayErrorHandler:(DisplayErrorHandler)displayErrorHandler {
+- (FeedTableViewController *)makeFeedTableViewControllerWithDisplayURLHandler:(DisplayURLHandler)displayURLHandler {
   AtomParser *parser = [[AtomParser new] autorelease];
   FeedNetworkService *networkService = [[[FeedNetworkService alloc] initWithParser:parser] autorelease];
   FeedPresenter *feedPresenter = [[[FeedPresenter alloc] initWithNetworkService:networkService] autorelease];
   FeedTableViewController *view = [[FeedTableViewController alloc] initWithPresenter:feedPresenter
-                                                                   displayURLHandler:displayURLHandler
-                                                                 displayErrorHandler:displayErrorHandler];
+                                                                   displayURLHandler:displayURLHandler];
   return [view autorelease];
 }
 

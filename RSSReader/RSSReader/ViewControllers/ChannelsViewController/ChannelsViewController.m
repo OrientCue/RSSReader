@@ -8,6 +8,7 @@
 #import "ChannelsViewController.h"
 #import "ChannelTableViewCell.h"
 #import "RSSChannel.h"
+#import "UIAlertController+RRErrorAlert.h"
 
 @interface ChannelsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly, retain) id<ChannelsPresenterType> presenter;
@@ -34,7 +35,6 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
   [_channels release];
   [_didSelectChannelHandler release];
   [_didTapAddButtonHandler release];
-  [_displayErrorHandler release];
   [_presenter release];
   [super dealloc];
 }
@@ -147,9 +147,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)displayError:(NSError *)error {
   [self showEmptyFeed];
-  if (self.displayErrorHandler) {
-    self.displayErrorHandler(error);
-  }
+  [UIAlertController rr_showError:error sourceViewController:self];
 }
 
 - (void)showEmptyFeed {

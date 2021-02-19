@@ -9,7 +9,6 @@
 #import "FeedViewType.h"
 
 typedef void(^DisplayURLHandler)(NSURL *url);
-typedef void(^DisplayErrorHandler)(NSError *error);
 
 @protocol FeedPresenterType;
 @class AtomFeedItem;
@@ -17,6 +16,5 @@ typedef void(^DisplayErrorHandler)(NSError *error);
 @interface FeedTableViewController : UIViewController <FeedViewType>
 
 - (instancetype)initWithPresenter:(id<FeedPresenterType>)presenter
-                displayURLHandler:(DisplayURLHandler)displayURLHandler
-              displayErrorHandler:(DisplayErrorHandler)displayErrorHandler;
+                displayURLHandler:(DisplayURLHandler)displayURLHandler;
 @end

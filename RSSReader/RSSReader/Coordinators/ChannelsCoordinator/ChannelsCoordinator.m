@@ -23,6 +23,11 @@
   return [[ChannelsCoordinator new] autorelease];
 }
 
+- (void)dealloc {
+  [_navigationController release];
+  [super dealloc];
+}
+
 #pragma mark - Lazy Properties
 
 - (UINavigationController *)navigationController {
@@ -31,7 +36,6 @@
   }
   return _navigationController;
 }
-
 
 #pragma mark -Coordinator Type
 
@@ -52,9 +56,6 @@
   };
   channelsViewController.didTapAddButtonHandler = ^{
     [weakSelf.splitCoordinator didTapAddButton];
-  };
-  channelsViewController.displayErrorHandler = ^(NSError *error) {
-    [weakSelf.splitCoordinator displayError:error];
   };
   return [channelsViewController autorelease];
 }

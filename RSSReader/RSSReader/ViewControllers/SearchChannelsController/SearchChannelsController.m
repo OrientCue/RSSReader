@@ -10,6 +10,7 @@
 #import "SelectChannelViewCell.h"
 #import "LoadingView.h"
 #import "ChannelsLocalStorageService.h"
+#import "UIAlertController+RRErrorAlert.h"
 
 NSString *const kScopeBarTitleWebsite = @"website";
 NSString *const kScopeBarTitleRSSLink = @"rss link";
@@ -31,7 +32,6 @@ void *kTableViewSelectedRowsCountContext = &kTableViewSelectedRowsCountContext;
 @property (nonatomic, retain) NSIndexSet *alreadyAdded;
 @property (nonatomic, retain) UIBarButtonItem *cancelBarButton;
 @property (nonatomic, retain) UIBarButtonItem *addBarButton;
-@property (nonatomic, copy) DisplayErrorHandler displayErrorHandler;
 @end
 
 @implementation SearchChannelsController
@@ -40,12 +40,10 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 
 #pragma mark - Lifecycle
 
-- (instancetype)initWithPresenter:(id<SearchChannelsPresenterType>)presenter
-              displayErrorHandler:(DisplayErrorHandler)displayErrorHandler {
+- (instancetype)initWithPresenter:(id<SearchChannelsPresenterType>)presenter {
   if (self = [super initWithNibName:nil bundle:nil]) {
     _presenter = [presenter retain];
     _presenter.view = self;
-    _displayErrorHandler = [displayErrorHandler copy];
   }
   return self;
 }
@@ -59,7 +57,6 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
   [_alreadyAdded release];
   [_cancelBarButton release];
   [_addBarButton release];
-  [_displayErrorHandler release];
   [super dealloc];
 }
 
@@ -207,9 +204,13 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 }
 
 - (void)displayError:(NSError *)error {
-  if (self.displayErrorHandler) {
-    self.displayErrorHandler(error);
-  }
+  [self showEmptyFeed];
+  [UIAlertController rr_showError:error sourceViewController:self];
+}
+
+- (void)showEmptyFeed {
+  self.channels = @[];
+  self.alreadyAdded = [NSIndexSet indexSet];
 }
 
 #pragma mark - UISearchBar Delegate

@@ -15,5 +15,4 @@
 + (instancetype)coordinator;
 - (void)didSelectChannel:(RSSChannel *)channel;
 - (void)didTapAddButton;
-- (void)displayError:(NSError *)error;
 @end

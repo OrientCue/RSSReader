@@ -32,6 +32,7 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 - (void)dealloc {
   [_feedCoordinator release];
   [_channelsCoordinator release];
+  [_splitViewController release];
   [super dealloc];
 }
 
@@ -47,7 +48,6 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 - (FeedCoordinator *)feedCoordinator {
   if (!_feedCoordinator) {
     _feedCoordinator = [FeedCoordinator new];
-    _feedCoordinator.splitCoordinator = self;
     [_feedCoordinator launch];
   }
   return _feedCoordinator;
@@ -90,36 +90,20 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 }
 
 - (void)didTapAddButton {
-  __block typeof(self) weakSelf = self;
-  SearchChannelsController *searchViewController = [self makeSearchChannelsController:^(NSError *error) {
-    [weakSelf displayError:error];
-  }];
+  SearchChannelsController *searchViewController = [self makeSearchChannelsController];
   UINavigationController *searchNavigationController = [[[UINavigationController alloc] initWithRootViewController:searchViewController] autorelease];
   [self.splitViewController presentViewController:searchNavigationController
                                              animated:true
                                            completion:nil];
 }
 
-#pragma mark - DisplayError
-
-- (void)displayError:(NSError *)error {
-  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
-  id sourceController = self.splitViewController.presentedViewController ? self.splitViewController.presentedViewController : self.splitViewController;
-  [sourceController presentViewController:alertController
-                                          animated:YES
-                                        completion:^{
-    [alertController rr_autoHideWithDelay];
-  }];
-}
-
 #pragma mark - Factory
 
-- (SearchChannelsController *)makeSearchChannelsController:(DisplayErrorHandler)errorHandler {
+- (SearchChannelsController *)makeSearchChannelsController {
   AutodiscoveryRSS *service = [[AutodiscoveryRSS new] autorelease];
   SearchChannelsPresenter *presenter = [[[SearchChannelsPresenter alloc] initWithSearchService:service
                                                                                   localStorage:ChannelsLocalStorageService.shared] autorelease];
-  return [[[SearchChannelsController alloc] initWithPresenter:presenter
-                                          displayErrorHandler:errorHandler] autorelease];
+  return [[[SearchChannelsController alloc] initWithPresenter:presenter] autorelease];
 }
 
 @end

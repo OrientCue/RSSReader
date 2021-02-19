@@ -8,6 +8,5 @@
 #import <UIKit/UIKit.h>
 
 @interface UIAlertController (RRErrorAlert)
-+ (instancetype)rr_errorAlertWithMessage:(NSString *)message;
-- (void)rr_autoHideWithDelay;
++ (void)rr_showError:(NSError *)error sourceViewController:(UIViewController *)viewController;
 @end

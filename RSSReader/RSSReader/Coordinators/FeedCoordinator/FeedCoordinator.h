@@ -13,5 +13,4 @@
 @interface FeedCoordinator : NSObject <CoordinatorType>
 @property (nonatomic, assign, readonly) UIViewController<FeedViewType> *feedController;
 @property (nonatomic, retain, readonly) UINavigationController *navigationController;
-@property (nonatomic, assign) SplitCoordinator *splitCoordinator;
 @end
