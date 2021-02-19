@@ -15,7 +15,6 @@
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
 @property (nonatomic, retain) UIViewController<FeedViewType> *feedController;
-@property (nonatomic, retain) UINavigationController *navigationController;
 @end
 
 @implementation FeedCoordinator
@@ -23,18 +22,8 @@
 #pragma mark - Object Lifecycle
 
 - (void)dealloc {
-  [_navigationController release];
+  [_feedController release];
   [super dealloc];
-}
-
-#pragma mark - Lazy Properties
-
-- (UINavigationController *)navigationController {
-  if (!_navigationController) {
-    _navigationController = [UINavigationController new];
-    _navigationController.delegate = self;
-  }
-  return _navigationController;
 }
 
 #pragma mark - CoordinatorType

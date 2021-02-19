@@ -6,11 +6,10 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CoordinatorType.h"
+#import "NavigationCoordinator.h"
 #import "FeedViewType.h"
 #import "SplitCoordinator.h"
 
-@interface FeedCoordinator : NSObject <CoordinatorType>
+@interface FeedCoordinator : NavigationCoordinator
 @property (nonatomic, retain, readonly) UIViewController<FeedViewType> *feedController;
-@property (nonatomic, retain, readonly) UINavigationController *navigationController;
 @end

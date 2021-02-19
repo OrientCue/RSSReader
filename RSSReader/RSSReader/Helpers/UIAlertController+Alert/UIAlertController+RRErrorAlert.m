@@ -14,8 +14,8 @@ int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
 
 @implementation UIAlertController (RRErrorAlert)
 
-+ (void)rr_showError:(NSError *)error sourceViewController:(UIViewController *)viewController {
-  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription];
++ (void)showError:(NSError *)error sourceViewController:(UIViewController *)viewController handler:(void (^)(UIAlertAction *action))handler {
+  UIAlertController *alertController = [UIAlertController rr_errorAlertWithMessage:error.localizedDescription handler:handler];
   [viewController presentViewController:alertController
                                           animated:YES
                                         completion:^{
@@ -23,7 +23,7 @@ int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
   }];
 }
 
-+ (instancetype)rr_errorAlertWithMessage:(NSString *)message {
++ (instancetype)rr_errorAlertWithMessage:(NSString *)message handler:(void (^)(UIAlertAction *action))handler {
   UIAlertController *alertController =
   [UIAlertController alertControllerWithTitle:kAlertErrorTitle
                                       message:message
@@ -31,7 +31,7 @@ int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
   UIAlertAction *okAction =
   [UIAlertAction actionWithTitle:kAlertOkButtonTitle
                            style:UIAlertActionStyleCancel
-                         handler:nil];
+                         handler:handler];
   [alertController addAction:okAction];
   return alertController;
 }

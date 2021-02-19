@@ -6,12 +6,11 @@
 //
 
 #import <Foundation/Foundation.h>
-#import "CoordinatorType.h"
+#import "NavigationCoordinator.h"
 #import "SplitCoordinator.h"
 #import "ChannelsViewType.h"
 
-@interface ChannelsCoordinator : NSObject <CoordinatorType>
+@interface ChannelsCoordinator : NavigationCoordinator
 @property (nonatomic, retain, readonly) UIViewController<ChannelsViewType> *channelsViewController;
-@property (nonatomic, retain, readonly) UINavigationController *navigationController;
 @property (nonatomic, assign) SplitCoordinator *splitCoordinator;
 @end

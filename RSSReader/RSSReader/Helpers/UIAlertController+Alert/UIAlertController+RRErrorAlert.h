@@ -8,5 +8,6 @@
 #import <UIKit/UIKit.h>
 
 @interface UIAlertController (RRErrorAlert)
-+ (void)rr_showError:(NSError *)error sourceViewController:(UIViewController *)viewController;
++ (void)showError:(NSError *)error sourceViewController:(UIViewController *)viewController
+          handler:(void (^)(UIAlertAction *action))handler ;
 @end

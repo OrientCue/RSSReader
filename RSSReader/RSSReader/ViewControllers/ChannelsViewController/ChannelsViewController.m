@@ -147,7 +147,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 
 - (void)displayError:(NSError *)error {
   [self showEmptyFeed];
-  [UIAlertController rr_showError:error sourceViewController:self];
+  [UIAlertController showError:error sourceViewController:self handler:nil];
 }
 
 - (void)showEmptyFeed {

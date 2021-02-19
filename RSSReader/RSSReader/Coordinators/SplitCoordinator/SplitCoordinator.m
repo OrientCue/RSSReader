@@ -82,7 +82,6 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
     self.channelsCoordinator.navigationController,
     self.feedCoordinator.navigationController
   ];
-
   self.splitViewController.preferredPrimaryColumnWidthFraction = kPreferredPrimaryColumnWidthFraction;
   self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryOverlay;
 }

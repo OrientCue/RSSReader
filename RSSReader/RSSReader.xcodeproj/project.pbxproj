@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		7A0D1FDC25E003D900CC5EE3 /* NavigationCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A0D1FDB25E003D900CC5EE3 /* NavigationCoordinator.m */; };
 		7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE582562BC1700BFBA5C /* AppDelegate.m */; };
 		7A1AEE642562BC1A00BFBA5C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE632562BC1A00BFBA5C /* Assets.xcassets */; };
 		7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */; };
@@ -74,6 +75,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		7A0D1FDA25E003D900CC5EE3 /* NavigationCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = NavigationCoordinator.h; sourceTree = "<group>"; };
+		7A0D1FDB25E003D900CC5EE3 /* NavigationCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = NavigationCoordinator.m; sourceTree = "<group>"; };
 		7A1AEE542562BC1700BFBA5C /* RSSReader.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = RSSReader.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1AEE572562BC1700BFBA5C /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		7A1AEE582562BC1700BFBA5C /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
@@ -193,6 +196,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		7A0D1FDF25E0076300CC5EE3 /* NavigationCoordinator */ = {
+			isa = PBXGroup;
+			children = (
+				7A0D1FDA25E003D900CC5EE3 /* NavigationCoordinator.h */,
+				7A0D1FDB25E003D900CC5EE3 /* NavigationCoordinator.m */,
+			);
+			path = NavigationCoordinator;
+			sourceTree = "<group>";
+		};
 		7A1AEE4B2562BC1700BFBA5C = {
 			isa = PBXGroup;
 			children = (
@@ -376,6 +388,7 @@
 			children = (
 				7A59213A25C84D9E0051154B /* ChannelsCoordinator */,
 				7A9844AB25640264009F6AC0 /* FeedCoordinator */,
+				7A0D1FDF25E0076300CC5EE3 /* NavigationCoordinator */,
 				7A59213725C84D9E0051154B /* SplitCoordinator */,
 			);
 			path = Coordinators;
@@ -755,6 +768,7 @@
 			files = (
 				7A59219325C8582A0051154B /* SplitCoordinator.m in Sources */,
 				7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */,
+				7A0D1FDC25E003D900CC5EE3 /* NavigationCoordinator.m in Sources */,
 				7AD6B17D25BF8ADD00E3946B /* LoadingView.m in Sources */,
 				7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */,
 				7A92155A256414FC003430CD /* AtomParser.m in Sources */,

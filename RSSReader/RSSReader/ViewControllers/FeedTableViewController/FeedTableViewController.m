@@ -183,7 +183,7 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (void)displayError:(NSError *)error {
   [self showEmptyFeed];
-  [UIAlertController rr_showError:error sourceViewController:self];
+  [UIAlertController showError:error sourceViewController:self handler:nil];
 }
 
 - (void)refreshFeed {
