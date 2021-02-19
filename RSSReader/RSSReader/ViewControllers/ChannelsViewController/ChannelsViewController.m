@@ -9,6 +9,7 @@
 #import "ChannelTableViewCell.h"
 #import "RSSChannel.h"
 #import "UIAlertController+RRErrorAlert.h"
+#import "NSArray+RRValidateIndex.h"
 
 @interface ChannelsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly, retain) id<ChannelsPresenterType> presenter;
@@ -123,9 +124,9 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)displayFeedForChannels:(NSArray<RSSChannel *> *)channels selected:(NSUInteger)selected {
   self.channels = [[channels mutableCopy] autorelease];
   [self.tableView reloadData];
-  if (selected >= 0 && selected < self.channels.count && self.didSelectChannelHandler) {
+  if ([self.channels isValidIndex:selected]) {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selected inSection:0];
-    if (![self.tableView.indexPathForSelectedRow isEqual:indexPath]) {
+    if (![self.tableView.indexPathForSelectedRow isEqual:indexPath] && self.didSelectChannelHandler) {
       self.didSelectChannelHandler(self.channels[selected]);
     }
     [self.tableView selectRowAtIndexPath:indexPath
@@ -137,7 +138,7 @@ forRowAtIndexPath:(NSIndexPath *)indexPath {
 - (void)update:(NSArray<RSSChannel *> *)channels selected:(NSUInteger)selected {
   self.channels = channels;
   [self.tableView reloadData];
-  if (selected >= 0 && selected < self.channels.count && self.channels) {
+  if ([self.channels isValidIndex:selected]) {
     NSIndexPath *indexPath = [NSIndexPath indexPathForRow:selected inSection:0];
       [self.tableView selectRowAtIndexPath:indexPath
                                 animated:true
