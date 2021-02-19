@@ -19,17 +19,21 @@ NSString *const kForbiddenCharacters = @"\t ()@[]/";
 NSString *const kHTTPSScheme = @"https";
 NSString *const kHTTPScheme = @"http";
 
+void safeSetError(NSError **error, NSError *value) {
+  if (error) { *error = value; }
+}
+
 @implementation URLValidator
 
-#pragma mark -
+#pragma mark - Interface
 
 - (NSURL *)validateSite:(NSString *)site error:(NSError **)error {
   if (!site) {
-    if (error) { *error = [self errorNilString]; }
+    safeSetError(error, [self errorNilString]);
     return nil;
   }
   if (!site.length) {
-    if (error) { *error = [self errorEmptyString]; }
+    safeSetError(error, [self errorEmptyString]);
     return nil;
   }
   NSString *trimmed = [site stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet];
@@ -39,30 +43,31 @@ NSString *const kHTTPScheme = @"http";
       NSURLComponents *components = [NSURLComponents componentsWithURL:url resolvingAgainstBaseURL:false];
       components.scheme = kHTTPSScheme;
       return components.URL;
+    } else {
+      return url;
     }
-    return url;
-  }
-  if (!url.scheme && !url.host && url.path) {
+  } else if (url.path) {
     if (url.query || [self containsForbiddenCharsIn:url.path]) {
-      if (error) { *error = [self errorForbiddenCharactersInString]; }
+      safeSetError(error, [self errorForbiddenCharactersInString]);
       return nil;
+    } else {
+      NSURLComponents *components = [[NSURLComponents new] autorelease];
+      components.scheme = kHTTPSScheme;
+      components.host = url.path;
+      return components.URL;
     }
-    NSURLComponents *components = [[NSURLComponents new] autorelease];
-    components.scheme = kHTTPSScheme;
-    components.host = url.path;
-    return components.URL;
   }
-  if (error) { *error = [self errorCantFormURL]; }
+  safeSetError(error, [self errorCantFormURL]);
   return nil;
 }
 
 - (NSURL *)validateLink:(NSString *)link error:(NSError **)error {
   if (!link) {
-    if (error) { *error = [self errorNilString]; }
+    safeSetError(error, [self errorNilString]);
     return nil;
   }
   if (!link.length) {
-    if (error) { *error = [self errorEmptyString]; }
+    safeSetError(error, [self errorEmptyString]);
     return nil;
   }
   NSString *trimmed = [link stringByTrimmingCharactersInSet:NSCharacterSet.whitespaceCharacterSet];
@@ -70,7 +75,7 @@ NSString *const kHTTPScheme = @"http";
   if (url) {
     return url;
   } else {
-    if (error) { *error = [self errorCantFormURL]; }
+    safeSetError(error, [self errorCantFormURL]);
     return nil;
   }
 }

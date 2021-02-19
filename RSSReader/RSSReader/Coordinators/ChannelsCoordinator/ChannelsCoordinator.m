@@ -12,7 +12,7 @@
 
 @interface ChannelsCoordinator ()
 @property (nonatomic, retain) UINavigationController *navigationController;
-@property (nonatomic, assign) UIViewController<ChannelsViewType> *channelsViewController;
+@property (nonatomic, retain) UIViewController<ChannelsViewType> *channelsViewController;
 @end
 
 @implementation ChannelsCoordinator

@@ -14,7 +14,7 @@
 #import "UIAlertController+RRErrorAlert.h"
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
-@property (nonatomic, assign) UIViewController<FeedViewType> *feedController;
+@property (nonatomic, retain) UIViewController<FeedViewType> *feedController;
 @property (nonatomic, retain) UINavigationController *navigationController;
 @end
 

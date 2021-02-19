@@ -66,18 +66,25 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 #pragma mark - Coordinator Type
 
 - (void)launch {
+  [self configureSplitViewController];
+
+  UINavigationItem *navigationItem = self.feedCoordinator.feedController.navigationItem;
+  navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
+  navigationItem.leftItemsSupplementBackButton = true;
+  
+  [self.channelsCoordinator.channelsViewController loadViewIfNeeded];
+}
+
+#pragma mark - Private Methods
+
+- (void)configureSplitViewController {
   self.splitViewController.viewControllers = @[
     self.channelsCoordinator.navigationController,
     self.feedCoordinator.navigationController
   ];
-  
+
   self.splitViewController.preferredPrimaryColumnWidthFraction = kPreferredPrimaryColumnWidthFraction;
   self.splitViewController.preferredDisplayMode = UISplitViewControllerDisplayModePrimaryOverlay;
-  
-  UINavigationItem *navigationItem = self.feedCoordinator.feedController.navigationItem;
-  navigationItem.leftBarButtonItem = self.splitViewController.displayModeButtonItem;
-  navigationItem.leftItemsSupplementBackButton = true;
-  [self.channelsCoordinator.channelsViewController loadViewIfNeeded];
 }
 
 #pragma mark -

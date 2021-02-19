@@ -11,7 +11,7 @@
 #import "ChannelsViewType.h"
 
 @interface ChannelsCoordinator : NSObject <CoordinatorType>
-@property (nonatomic, assign, readonly) UIViewController<ChannelsViewType> *channelsViewController;
+@property (nonatomic, retain, readonly) UIViewController<ChannelsViewType> *channelsViewController;
 @property (nonatomic, retain, readonly) UINavigationController *navigationController;
 @property (nonatomic, assign) SplitCoordinator *splitCoordinator;
 @end

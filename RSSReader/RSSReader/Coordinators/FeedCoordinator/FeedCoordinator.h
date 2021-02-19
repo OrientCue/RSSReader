@@ -11,6 +11,6 @@
 #import "SplitCoordinator.h"
 
 @interface FeedCoordinator : NSObject <CoordinatorType>
-@property (nonatomic, assign, readonly) UIViewController<FeedViewType> *feedController;
+@property (nonatomic, retain, readonly) UIViewController<FeedViewType> *feedController;
 @property (nonatomic, retain, readonly) UINavigationController *navigationController;
 @end
