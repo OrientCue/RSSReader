@@ -7,20 +7,15 @@
 
 #import "NSString+RR_HTMLTags.h"
 
-NSString *const kEndTag = @"<br clear=\"all\" />";
-NSString *const kStartTag = @"/>";
+NSString *const kRegExpTagPattern = @"<[^>]+>";
 
 @implementation NSString (RR_HTMLTags)
 
 - (NSString *)descriptionWOTagsIfPresent {
-  NSRange endTag = [self rangeOfString:kEndTag];
-  if (endTag.location == NSNotFound) {
-    return self;
-  }
-  NSRange startTag = [self rangeOfString:kStartTag];
-  NSUInteger start = startTag.location + startTag.length;
-  NSUInteger end = endTag.location;
-  return [self substringWithRange:NSMakeRange(start, end - start)];
+  return [self stringByReplacingOccurrencesOfString:kRegExpTagPattern
+                                         withString:@""
+                                            options:NSRegularExpressionSearch
+                                              range:NSMakeRange(0, self.length)];
 }
 
 @end
