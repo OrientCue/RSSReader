@@ -8,7 +8,6 @@
 #import "SplitCoordinator.h"
 #import "FeedCoordinator.h"
 #import "ChannelsCoordinator.h"
-#import "UIAlertController+RRErrorAlert.h"
 #import "SearchChannelsController.h"
 #import "AutodiscoveryRSS.h"
 #import "SearchChannelsPresenter.h"

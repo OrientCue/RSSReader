@@ -61,7 +61,7 @@ static CGFloat const kViewFadeAnimationDuration = 0.25;
 - (UILabel *)loadingLabel {
   if (!_loadingLabel) {
     _loadingLabel = [UILabel new];
-    _loadingLabel.text = kLoadingText;
+    _loadingLabel.text = NSLocalizedString(kLoadingText, nil);
     _loadingLabel.font = [UIFont systemFontOfSize:kLabelFontSize weight:UIFontWeightMedium];
     if (@available(iOS 13.0, *)) {
       _loadingLabel.textColor = UIColor.labelColor;

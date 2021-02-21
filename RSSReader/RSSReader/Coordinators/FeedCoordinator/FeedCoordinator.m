@@ -11,7 +11,6 @@
 #import "FeedNetworkService.h"
 #import "AtomParser.h"
 #import "RRBrowserViewController.h"
-#import "UIAlertController+RRErrorAlert.h"
 
 @interface FeedCoordinator () <UINavigationControllerDelegate>
 @property (nonatomic, retain) UIViewController<FeedViewType> *feedController;

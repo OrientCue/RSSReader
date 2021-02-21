@@ -61,7 +61,7 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
   [super viewDidLoad];
   self.title = NSLocalizedString(kChannelsViewControllerTitle, nil);
   [self layoutTableView];
-  self.navigationItem.rightBarButtonItem = [self addChannelButtonItem];
+  [self addChannelButtonItem];
   [self.presenter setup];
   [self.presenter loadFromLocalStorage];
 }
@@ -80,8 +80,10 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
 
 #pragma mark - Add Channels
 
-- (UIBarButtonItem *)addChannelButtonItem {
-  return [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd target:self action:@selector(addButtonDidTap)] autorelease];
+- (void)addChannelButtonItem {
+  self.navigationItem.rightBarButtonItem =  [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
+                                                                                           target:self
+                                                                                           action:@selector(addButtonDidTap)] autorelease];
 }
 
 - (void)addButtonDidTap {

@@ -56,6 +56,11 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
   [self loadPageFromURL];
 }
 
+- (void)viewDidDisappear:(BOOL)animated {
+  [super viewDidDisappear:animated];
+  [self removeObservers];
+}
+
 #pragma mark - Layout
 
 - (void)setupAppearance {
@@ -91,8 +96,7 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
 #pragma mark -
 
 - (void)loadPageFromURL {
-  NSURLRequest *request = [NSURLRequest requestWithURL:self.url];
-  [self.webView loadRequest:request];
+  [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
 
 #pragma mark - Setup Toolbar
@@ -126,6 +130,7 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
+  [self.progressView setProgress:0 animated:false];
   self.back.enabled = webView.canGoBack;
   self.forward.enabled = webView.canGoForward;
   self.stop.enabled = true;
