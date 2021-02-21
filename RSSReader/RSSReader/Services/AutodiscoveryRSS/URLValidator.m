@@ -85,25 +85,25 @@ void safeSetError(NSError **error, NSError *value) {
 - (NSError *)errorNilString {
   return [NSError errorWithDomain:RRSiteValidatorErrorDomain
                             code:0
-                        userInfo:@{NSLocalizedDescriptionKey: kRRSiteValidatorErrorNilSite}];
+                        userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kRRSiteValidatorErrorNilSite, nil)}];
 }
 
 - (NSError *)errorEmptyString {
   return [NSError errorWithDomain:RRSiteValidatorErrorDomain
                             code:1
-                         userInfo:@{NSLocalizedDescriptionKey: kRRSiteValidatorErrorEmptySite}];
+                         userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kRRSiteValidatorErrorEmptySite, nil)}];
 }
 
 - (NSError *)errorForbiddenCharactersInString {
   return [NSError errorWithDomain:RRSiteValidatorErrorDomain
                             code:2
-                         userInfo:@{NSLocalizedDescriptionKey: kRRSiteValidatorErrorForbiddenCharacters}];
+                         userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kRRSiteValidatorErrorForbiddenCharacters, nil)}];
 }
 
 - (NSError *)errorCantFormURL {
   return [NSError errorWithDomain:RRSiteValidatorErrorDomain
                             code:3
-                         userInfo:@{NSLocalizedDescriptionKey: kRRSiteValidatorErrorCantFormURL}];
+                         userInfo:@{NSLocalizedDescriptionKey: NSLocalizedString(kRRSiteValidatorErrorCantFormURL, nil)}];
 }
 
 #pragma mark - Private

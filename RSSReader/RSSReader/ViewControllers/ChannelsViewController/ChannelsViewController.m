@@ -59,7 +59,7 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
 
 - (void)viewDidLoad {
   [super viewDidLoad];
-  self.title = kChannelsViewControllerTitle;
+  self.title = NSLocalizedString(kChannelsViewControllerTitle, nil);
   [self layoutTableView];
   self.navigationItem.rightBarButtonItem = [self addChannelButtonItem];
   [self.presenter setup];

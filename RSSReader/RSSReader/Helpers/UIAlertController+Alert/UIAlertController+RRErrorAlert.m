@@ -25,11 +25,11 @@ int64_t const kDeltaHideErrorAlert = 5 * NSEC_PER_SEC;
 
 + (instancetype)rr_errorAlertWithMessage:(NSString *)message handler:(void (^)(UIAlertAction *action))handler {
   UIAlertController *alertController =
-  [UIAlertController alertControllerWithTitle:kAlertErrorTitle
+  [UIAlertController alertControllerWithTitle:NSLocalizedString(kAlertErrorTitle, nil)
                                       message:message
                                preferredStyle:UIAlertControllerStyleAlert];
   UIAlertAction *okAction =
-  [UIAlertAction actionWithTitle:kAlertOkButtonTitle
+  [UIAlertAction actionWithTitle:NSLocalizedString(kAlertOkButtonTitle, nil)
                            style:UIAlertActionStyleCancel
                          handler:handler];
   [alertController addAction:okAction];

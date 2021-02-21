@@ -107,7 +107,10 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
     _searchBar.placeholder = kSearchBarPlaceHolder;
     _searchBar.showsCancelButton = false;
     _searchBar.showsScopeBar = true;
-    _searchBar.scopeButtonTitles = @[kScopeBarTitleWebsite, kScopeBarTitleRSSLink];
+    _searchBar.scopeButtonTitles = @[
+      NSLocalizedString(kScopeBarTitleWebsite, nil),
+      NSLocalizedString(kScopeBarTitleRSSLink, nil)
+    ];
   }
   return _searchBar;
 }
@@ -146,7 +149,7 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 
 - (UIBarButtonItem *)addBarButton {
   if (!_addBarButton) {
-    _addBarButton = [[UIBarButtonItem alloc] initWithTitle:kAddBarButtonTitle
+    _addBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(kAddBarButtonTitle, nil)
                                                      style:UIBarButtonItemStylePlain
                                                     target:self
                                                     action:@selector(addButtonClicked)];
