@@ -88,15 +88,15 @@
 #pragma mark - Private
 
 - (NSIndexSet *)alreadyAddedChannelsIndexesForChannels:(NSArray<RSSChannel *> *)channels {
-    NSMutableIndexSet *alreadyAdded = [NSMutableIndexSet indexSet];
+    NSMutableIndexSet *alreadyAddedIndexes = [NSMutableIndexSet indexSet];
     NSUInteger index = 0;
     for (RSSChannel *channel in channels) {
         if ([self.localStorage containsChannel:channel]) {
-            [alreadyAdded addIndex:index];
+            [alreadyAddedIndexes addIndex:index];
         }
         index++;
     }
-    return [[alreadyAdded copy] autorelease];
+    return [[alreadyAddedIndexes copy] autorelease];
 }
 
 @end

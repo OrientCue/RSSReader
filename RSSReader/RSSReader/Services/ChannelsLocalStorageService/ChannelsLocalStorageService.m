@@ -45,10 +45,6 @@ static NSString *const kSettingsFileName = @"com.arss.rssreader.settings.dat";
 
 #pragma mark - MRC
 
-- (oneway void)release {
-    
-}
-
 - (instancetype)autorelease {
     return self;
 }
@@ -108,13 +104,13 @@ static NSString *const kSettingsFileName = @"com.arss.rssreader.settings.dat";
     }
     [self saveStoreError:error];
     [self notifyListeners];
-    return error && *error ? false : true;
+    return !(error && *error);
 }
 
 - (BOOL)updateStoreWithSelected:(NSUInteger)index error:(NSError **)error {
     self.store.selectedChannel = index;
     [self saveStoreError:error];
-    return error && *error ? false : true;
+    return !(error && *error);
 }
 
 #pragma mark -
@@ -124,7 +120,7 @@ static NSString *const kSettingsFileName = @"com.arss.rssreader.settings.dat";
                                          requiringSecureCoding:true
                                                          error:error];
     [data writeToURL:self.fileURL options:NSDataWritingAtomic error:error];
-    return error && *error ? false : true;
+    return !(error && *error);
 }
 
 - (BOOL)addChannels:(NSArray<RSSChannel *> *)channels lastSelected:(BOOL)selected error:(NSError **)error {
@@ -132,7 +128,7 @@ static NSString *const kSettingsFileName = @"com.arss.rssreader.settings.dat";
     if (selected) { self.store.selectedChannel = self.store.channels.count - 1; }
     [self saveStoreError:error];
     [self notifyListeners];
-    return error && *error ? false : true;
+    return !(error && *error);
 }
 
 #pragma mark -

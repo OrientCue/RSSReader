@@ -70,11 +70,10 @@
 #pragma mark -
 
 - (void)searchChannelsForSiteName:(NSString *)siteName completion:(SearchSiteNameCompletion)completion {
-    
     NSError *error = nil;
     NSURL *url = [self.validator validateSite:siteName error:&error];
-    if (error) {
-        if (completion) { completion(nil, error); }
+    if (error && completion) {
+        completion(nil, error);
         return;
     }
     
@@ -90,10 +89,10 @@
             weakSelf.inflight = false;
             return;
         }
-        if (weakOperation.error) {
-            if (weakSelf.searchSiteCompletion) { weakSelf.searchSiteCompletion(nil, weakOperation.error); }
-        } else {
-            if (weakSelf.searchSiteCompletion) {
+        if (weakSelf.searchSiteCompletion) {
+            if (weakOperation.error) {
+                weakSelf.searchSiteCompletion(nil, weakOperation.error);
+            } else {
                 NSArray<RSSChannel *> *channels = [self.htmlParser parseChannelsFromHTML:weakOperation.downloaded
                                                                                  baseURL:url];
                 weakSelf.searchSiteCompletion(channels, nil);
@@ -113,8 +112,8 @@
     }
     NSError *error = nil;
     NSURL *url = [self.validator validateLink:urlString error:&error];
-    if (error) {
-        if (completion) { completion(nil, error); }
+    if (error && completion) {
+        completion(nil, error);
         return;
     }
     self.searchLinkCompletion = completion;
@@ -126,10 +125,8 @@
             weakSelf.inflight = false;
             return;
         }
-        if (weakOperation.error) {
-            if (weakSelf.searchLinkCompletion) {
-                weakSelf.searchLinkCompletion(nil, weakOperation.error);
-            }
+        if (weakOperation.error && weakSelf.searchLinkCompletion) {
+            weakSelf.searchLinkCompletion(nil, weakOperation.error);
         } else {
             [weakSelf.channelParser parse:weakOperation.downloaded
                                   baseURL:url
