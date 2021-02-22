@@ -89,14 +89,12 @@
             weakSelf.inflight = false;
             return;
         }
-        if (weakSelf.searchSiteCompletion) {
-            if (weakOperation.error) {
-                weakSelf.searchSiteCompletion(nil, weakOperation.error);
-            } else {
-                NSArray<RSSChannel *> *channels = [self.htmlParser parseChannelsFromHTML:weakOperation.downloaded
-                                                                                 baseURL:url];
-                weakSelf.searchSiteCompletion(channels, nil);
-            }
+        if (weakOperation.error && weakSelf.searchSiteCompletion) {
+            weakSelf.searchSiteCompletion(nil, weakOperation.error);
+        } else if (weakSelf.searchSiteCompletion) {
+            NSArray<RSSChannel *> *channels = [self.htmlParser parseChannelsFromHTML:weakOperation.downloaded
+                                                                             baseURL:url];
+            weakSelf.searchSiteCompletion(channels, nil);
         }
         weakSelf.inflight = false;
     };

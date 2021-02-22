@@ -9,7 +9,7 @@
 
 @interface SelectChannelViewCell ()
 @property (nonatomic, retain) RSSChannel *channel;
-@property (nonatomic, getter=isAlreadyAdded) BOOL alreadyAdded;
+@property (nonatomic, getter=isAlreadyAddedChannel) BOOL alreadyAddedChannel;
 @end
 
 @implementation SelectChannelViewCell
@@ -27,7 +27,7 @@
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
-    if (self.alreadyAdded) {
+    if (self.alreadyAddedChannel) {
         [super setSelected:!selected animated:animated];
     } else {
         [super setSelected:selected animated:animated];
@@ -41,8 +41,8 @@
     self.channel = channel;
     self.textLabel.text = self.channel.title;
     self.detailTextLabel.text = self.channel.link.absoluteString;
-    self.alreadyAdded = alreadyAdded;
-    self.accessoryType = self.alreadyAdded ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
+    self.alreadyAddedChannel = alreadyAdded;
+    self.accessoryType = self.isAlreadyAddedChannel ? UITableViewCellAccessoryCheckmark : UITableViewCellAccessoryNone;
 }
 
 @end

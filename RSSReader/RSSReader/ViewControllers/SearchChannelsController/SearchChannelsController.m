@@ -30,7 +30,7 @@ void *kTableViewSelectedRowsCountContext = &kTableViewSelectedRowsCountContext;
 @property (nonatomic, retain) UISearchBar *searchBar;
 @property (nonatomic, retain) UITableView *tableView;
 @property (nonatomic, retain) LoadingView *loadingView;
-@property (nonatomic, retain) NSIndexSet *alreadyAdded;
+@property (nonatomic, retain) NSIndexSet *alreadyAddedChannelsIndexes;
 @property (nonatomic, retain) UIBarButtonItem *cancelBarButton;
 @property (nonatomic, retain) UIBarButtonItem *addBarButton;
 @end
@@ -55,7 +55,7 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
     [_searchBar release];
     [_channels release];
     [_loadingView release];
-    [_alreadyAdded release];
+    [_alreadyAddedChannelsIndexes release];
     [_cancelBarButton release];
     [_addBarButton release];
     [super dealloc];
@@ -181,7 +181,7 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     SelectChannelViewCell *cell = [tableView dequeueReusableCellWithIdentifier:NSStringFromClass([SelectChannelViewCell class])];
     [cell configureWithChannel:self.channels[indexPath.row]
-                  alreadyAdded:[self.alreadyAdded containsIndex:indexPath.row]];
+                  alreadyAdded:[self.alreadyAddedChannelsIndexes containsIndex:indexPath.row]];
     return cell;
 }
 
@@ -198,7 +198,7 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 #pragma mark - SearchResultsViewType
 
 - (void)applyChannels:(NSArray<RSSChannel *> *)channels alreadyAdded:(NSIndexSet *)alreadyAdded {
-    self.alreadyAdded = alreadyAdded;
+    self.alreadyAddedChannelsIndexes = alreadyAdded;
     self.channels = channels;
     [self.tableView reloadData];
 }
@@ -220,7 +220,7 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 
 - (void)showEmptyFeed {
     self.channels = @[];
-    self.alreadyAdded = [NSIndexSet indexSet];
+    self.alreadyAddedChannelsIndexes = [NSIndexSet indexSet];
 }
 
 #pragma mark - UISearchBar Delegate
