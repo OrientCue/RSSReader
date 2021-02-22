@@ -6,6 +6,7 @@
 //
 
 #import "RRBrowserViewController.h"
+#import "UIBarButtonItem+ASBlockInit.h"
 #import <WebKit/WebKit.h>
 
 void *kEstimatedProgressContext = &kEstimatedProgressContext;
@@ -53,7 +54,7 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     [self addObservers];
-    [self loadPageFromURL];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
@@ -93,33 +94,26 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
     ]];
 }
 
-#pragma mark -
-
-- (void)loadPageFromURL {
-    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
-}
-
 #pragma mark - Setup Toolbar
 
 - (void)setupToolbar {
-    UIBarButtonItem *spacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                             target:nil
-                                                                             action:nil] autorelease];
-    UIBarButtonItem *safari = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                             target:self
-                                                                             action:@selector(openUrlInSafari)] autorelease];
-    UIBarButtonItem *reload = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                             target:self.webView
-                                                                             action:@selector(reload)] autorelease];
+    UIBarButtonItem *spacer = [UIBarButtonItem systemItem:UIBarButtonSystemItemFlexibleSpace
+                                               withAction:nil];
+
+    __block typeof(self) weakSelf = self;
+    UIBarButtonItem *safari = [UIBarButtonItem systemItem:UIBarButtonSystemItemAction
+                                               withAction:^{
+        [UIApplication.sharedApplication openURL:weakSelf.webView.URL
+                                         options:@{}
+                               completionHandler:nil];
+    }];
+
+    UIBarButtonItem *reload = [UIBarButtonItem systemItem:UIBarButtonSystemItemRefresh
+                                               withAction:^{
+        [weakSelf.webView reload];
+    }];
+
     self.toolbarItems = @[self.back, spacer, self.forward, spacer, reload, spacer, self.stop, spacer, safari];
-}
-
-#pragma mark - Open URL In Safari
-
-- (void)openUrlInSafari {
-    [[UIApplication sharedApplication] openURL:self.webView.URL
-                                       options:@{}
-                             completionHandler:nil];
 }
 
 #pragma mark - WKNavigationDelegate

@@ -14,6 +14,7 @@
 #import "LoadingView.h"
 #import "RSSChannel.h"
 #import "UIAlertController+RRErrorAlert.h"
+#import "UIBarButtonItem+ASBlockInit.h"
 
 CGFloat const kEstimatedRowHeight = 60.0;
 
@@ -108,9 +109,11 @@ CGFloat const kEstimatedRowHeight = 60.0;
 
 - (UIBarButtonItem *)refreshButton {
     if (!_refreshButton) {
-        _refreshButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                       target:self
-                                                                       action:@selector(refreshFeed)];
+        __block typeof(self) weakSelf = self;
+        _refreshButton = [[UIBarButtonItem alloc] initWithSystemItem:UIBarButtonSystemItemRefresh
+                                                              action:^{
+            [weakSelf.presenter fetchFeedFromURL:weakSelf.channel.link];
+        }];
     }
     return _refreshButton;
 }
@@ -184,10 +187,6 @@ CGFloat const kEstimatedRowHeight = 60.0;
 - (void)displayError:(NSError *)error {
     [self showEmptyFeed];
     [UIAlertController showError:error sourceViewController:self handler:nil];
-}
-
-- (void)refreshFeed {
-    [self.presenter fetchFeedFromURL:self.channel.link];
 }
 
 #pragma mark - AtomItemCellDelegate

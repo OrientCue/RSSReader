@@ -10,6 +10,7 @@
 #import "RSSChannel.h"
 #import "UIAlertController+RRErrorAlert.h"
 #import "NSArray+RRValidateIndex.h"
+#import "UIBarButtonItem+ASBlockInit.h"
 
 @interface ChannelsViewController () <UITableViewDelegate, UITableViewDataSource>
 @property (nonatomic, readonly, retain) id<ChannelsPresenterType> presenter;
@@ -61,7 +62,13 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
     [super viewDidLoad];
     self.title = NSLocalizedString(kChannelsViewControllerTitle, nil);
     [self layoutTableView];
-    [self addChannelButtonItem];
+    __block typeof(self) weakSelf = self;
+    self.navigationItem.rightBarButtonItem =  [UIBarButtonItem systemItem:UIBarButtonSystemItemAdd
+                                                               withAction:^{
+        if (weakSelf.didTapAddButtonHandler) {
+            weakSelf.didTapAddButtonHandler();
+        }
+    }];
     [self.presenter setup];
     [self.presenter loadFromLocalStorage];
 }
@@ -76,20 +83,6 @@ static NSString *const kChannelsViewControllerTitle = @"Channels";
         [self.tableView.topAnchor constraintEqualToAnchor:self.view.topAnchor],
         [self.tableView.bottomAnchor constraintEqualToAnchor:self.view.bottomAnchor]
     ]];
-}
-
-#pragma mark - Add Channels
-
-- (void)addChannelButtonItem {
-    self.navigationItem.rightBarButtonItem =  [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAdd
-                                                                                             target:self
-                                                                                             action:@selector(addButtonDidTap)] autorelease];
-}
-
-- (void)addButtonDidTap {
-    if (self.didTapAddButtonHandler) {
-        self.didTapAddButtonHandler();
-    }
 }
 
 #pragma mark - UITableViewDataSource

@@ -11,6 +11,7 @@
 #import "LoadingView.h"
 #import "ChannelsLocalStorageService.h"
 #import "UIAlertController+RRErrorAlert.h"
+#import "UIBarButtonItem+ASBlockInit.h"
 
 NSString *const kScopeBarTitleWebsite = @"website";
 NSString *const kScopeBarTitleRSSLink = @"rss link";
@@ -140,19 +141,25 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 
 - (UIBarButtonItem *)cancelBarButton {
     if (!_cancelBarButton) {
-        _cancelBarButton = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemCancel
-                                                                         target:self
-                                                                         action:@selector(cancelButtonClicked)];
+        __block typeof(self) weakSelf = self;
+        _cancelBarButton = [[UIBarButtonItem alloc] initWithSystemItem:UIBarButtonSystemItemCancel
+                                                                action:^{
+            [weakSelf.searchBar resignFirstResponder];
+            [weakSelf dismissViewControllerAnimated:true completion:nil];
+        }];
     }
     return _cancelBarButton;
 }
 
 - (UIBarButtonItem *)addBarButton {
     if (!_addBarButton) {
+        __block typeof(self) weakSelf = self;
         _addBarButton = [[UIBarButtonItem alloc] initWithTitle:NSLocalizedString(kAddBarButtonTitle, nil)
                                                          style:UIBarButtonItemStylePlain
-                                                        target:self
-                                                        action:@selector(addButtonClicked)];
+                                                        action:^{
+            [weakSelf.presenter addChannelsToLocalStorage:weakSelf.selectedChannels];
+            [weakSelf dismissViewControllerAnimated:true completion:nil];
+        }];
     }
     return _addBarButton;
 }
@@ -218,11 +225,6 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
 
 #pragma mark - UISearchBar Delegate
 
-- (void)cancelButtonClicked {
-    [self.searchBar resignFirstResponder];
-    [self dismissViewControllerAnimated:true completion:nil];
-}
-
 - (void)searchBarSearchButtonClicked:(UISearchBar *)searchBar {
     [searchBar resignFirstResponder];
     switch (searchBar.selectedScopeButtonIndex) {
@@ -234,11 +236,6 @@ static NSString *const kAddBarButtonTitle = @"   Add  ";
         default:
             break;
     }
-}
-
-- (void)addButtonClicked {
-    [self.presenter addChannelsToLocalStorage:self.selectedChannels];
-    [self dismissViewControllerAnimated:true completion:nil];
 }
 
 @end

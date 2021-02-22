@@ -14,6 +14,7 @@
 		7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */; };
 		7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE692562BC1A00BFBA5C /* main.m */; };
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
+		7A3608E825E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3608E725E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m */; };
 		7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* FeedNetworkService.m */; };
 		7A3C7A7E2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C7A7C2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m */; };
 		7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920A825C845620051154B /* SettingsStoreTests.m */; };
@@ -90,6 +91,9 @@
 		7A1AEE6F2562BC1A00BFBA5C /* RSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
+		7A3608E625E42D80002E7449 /* UIBarButtonItem+ASBlockInit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ASBlockInit.h"; sourceTree = "<group>"; };
+		7A3608E725E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ASBlockInit.m"; sourceTree = "<group>"; };
+		7A3608EE25E42DFC002E7449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7A3C7A7C2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "UIAlertController+RRErrorAlert.m"; sourceTree = "<group>"; };
 		7A3C7A7D2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "UIAlertController+RRErrorAlert.h"; sourceTree = "<group>"; };
 		7A5920A825C845620051154B /* SettingsStoreTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SettingsStoreTests.m; sourceTree = "<group>"; };
@@ -180,7 +184,6 @@
 		7AE88C1D25B1DD2F0038084D /* RRBrowserViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RRBrowserViewController.h; sourceTree = "<group>"; };
 		7AE88C1E25B1DD2F0038084D /* RRBrowserViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RRBrowserViewController.m; sourceTree = "<group>"; };
 		7AEC9EEE25E2766900E75913 /* ru */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = ru; path = ru.lproj/Localizable.strings; sourceTree = "<group>"; };
-		7AEC9EF125E276FA00E75913 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = en; path = en.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		7AEC9EF225E276FA00E75913 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/Localizable.strings; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -274,6 +277,15 @@
 			path = ROADMAP;
 			sourceTree = "<group>";
 		};
+		7A3608EB25E42D93002E7449 /* UIBarButtonItem+ASBlockInit */ = {
+			isa = PBXGroup;
+			children = (
+				7A3608E625E42D80002E7449 /* UIBarButtonItem+ASBlockInit.h */,
+				7A3608E725E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m */,
+			);
+			path = "UIBarButtonItem+ASBlockInit";
+			sourceTree = "<group>";
+		};
 		7A3C7A7B2577FB8E006C4CD7 /* UIAlertController+Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -292,6 +304,7 @@
 				7AE88C1425B1DA950038084D /* NSString+RR_HTMLTags */,
 				7AB2A52A256D0F1500E38106 /* PubDateHelpers */,
 				7A3C7A7B2577FB8E006C4CD7 /* UIAlertController+Alert */,
+				7A3608EB25E42D93002E7449 /* UIBarButtonItem+ASBlockInit */,
 				7AB2A542256D35E500E38106 /* UITableView Helpers */,
 			);
 			path = Helpers;
@@ -519,10 +532,10 @@
 		7A59218325C850B80051154B /* ChannelsViewController */ = {
 			isa = PBXGroup;
 			children = (
-				7A59218425C850B80051154B /* ChannelTableViewCell.m */,
+				7A59218725C850B80051154B /* ChannelsViewController.h */,
 				7A59218525C850B80051154B /* ChannelsViewController.m */,
 				7A59218625C850B80051154B /* ChannelTableViewCell.h */,
-				7A59218725C850B80051154B /* ChannelsViewController.h */,
+				7A59218425C850B80051154B /* ChannelTableViewCell.m */,
 			);
 			path = ChannelsViewController;
 			sourceTree = "<group>";
@@ -741,6 +754,7 @@
 			knownRegions = (
 				en,
 				ru,
+				Base,
 			);
 			mainGroup = 7A1AEE4B2562BC1700BFBA5C;
 			productRefGroup = 7A1AEE552562BC1700BFBA5C /* Products */;
@@ -796,6 +810,7 @@
 				7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */,
 				7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */,
 				7A98449B25640007009F6AC0 /* FeedTableViewController.m in Sources */,
+				7A3608E825E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m in Sources */,
 				7A5920FA25C849A50051154B /* URLValidator.m in Sources */,
 				7A59216F25C84E860051154B /* RSSChannelParser.m in Sources */,
 				7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */,
@@ -856,7 +871,7 @@
 		7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
-				7AEC9EF125E276FA00E75913 /* en */,
+				7A3608EE25E42DFC002E7449 /* Base */,
 			);
 			name = LaunchScreen.storyboard;
 			sourceTree = "<group>";
