@@ -14,23 +14,23 @@
 @implementation ChannelTableViewCell
 
 - (instancetype)initWithStyle:(UITableViewCellStyle)style reuseIdentifier:(NSString *)reuseIdentifier {
-  if (self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier]) {
-    self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
-  }
-  return self;
+    if (self = [super initWithStyle:UITableViewCellStyleSubtitle reuseIdentifier:reuseIdentifier]) {
+        self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
+    }
+    return self;
 }
 
 - (void)dealloc {
-  [_channel release];
-  [super dealloc];
+    [_channel release];
+    [super dealloc];
 }
 
 #pragma mark - Interface
 
 - (void)configureWithChannel:(RSSChannel *)channel {
-  self.channel = channel;
-  self.textLabel.text = self.channel.title;
-  self.detailTextLabel.text = self.channel.link.absoluteString;
+    self.channel = channel;
+    self.textLabel.text = self.channel.title;
+    self.detailTextLabel.text = self.channel.link.absoluteString;
 }
 
 @end

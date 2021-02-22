@@ -10,9 +10,9 @@
 @implementation NSXMLParser (AtomParser)
 
 + (NSXMLParser *)parserWith:(NSData *)data delegate:(id<NSXMLParserDelegate>)delegate {
-  NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
-  parser.delegate = delegate;
-  return [parser autorelease];
+    NSXMLParser *parser = [[NSXMLParser alloc] initWithData:data];
+    parser.delegate = delegate;
+    return [parser autorelease];
 }
 
 @end

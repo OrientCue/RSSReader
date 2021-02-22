@@ -15,18 +15,18 @@
 #pragma mark - Object Lifecycle
 
 - (void)dealloc {
-  [_navigationController release];
-  [super dealloc];
+    [_navigationController release];
+    [super dealloc];
 }
 
 #pragma mark - Lazy Properties
 
 - (UINavigationController *)navigationController {
-  if (!_navigationController) {
-    _navigationController = [UINavigationController new];
-    _navigationController.delegate = self;
-  }
-  return _navigationController;
+    if (!_navigationController) {
+        _navigationController = [UINavigationController new];
+        _navigationController.delegate = self;
+    }
+    return _navigationController;
 }
 
 /// Base class does nothing

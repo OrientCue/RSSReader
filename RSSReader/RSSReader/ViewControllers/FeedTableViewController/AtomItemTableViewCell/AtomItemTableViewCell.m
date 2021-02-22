@@ -22,27 +22,27 @@
 - (void)configureWithItem:(AtomFeedItem *)item
                 indexPath:(NSIndexPath *)indexPath
                  expanded:(BOOL)isExpanded {
-  self.item = item;
-  self.row = indexPath.row;
-  self.descriptionLabel.hidden = !isExpanded;
-  self.descriptionLabel.text = self.item.articleDescription;
-  self.titleLabel.text = self.item.title;
-  self.pubDateLabel.text = self.item.pubDateString;
+    self.item = item;
+    self.row = indexPath.row;
+    self.descriptionLabel.hidden = !isExpanded;
+    self.descriptionLabel.text = self.item.articleDescription;
+    self.titleLabel.text = self.item.title;
+    self.pubDateLabel.text = self.item.pubDateString;
 }
 #pragma mark - IBAction
 
 - (IBAction)annotationButtonDidTap:(UIButton *)sender {
-  [self.delegate row:self.row expandedState:self.descriptionLabel.isHidden];
+    [self.delegate row:self.row expandedState:self.descriptionLabel.isHidden];
 }
 
 #pragma mark -
 
 - (void)dealloc {
-  [_item release];
-  [_titleLabel release];
-  [_pubDateLabel release];
-  [_descriptionLabel release];
-  [super dealloc];
+    [_item release];
+    [_titleLabel release];
+    [_pubDateLabel release];
+    [_descriptionLabel release];
+    [super dealloc];
 }
 
 @end

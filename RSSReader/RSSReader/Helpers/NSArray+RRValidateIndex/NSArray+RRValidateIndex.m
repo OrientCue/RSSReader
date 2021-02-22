@@ -9,6 +9,6 @@
 
 @implementation NSArray (RRValidateIndex)
 - (BOOL)isValidIndex:(NSUInteger)index {
-  return index >= 0 && index < self.count;
+    return index >= 0 && index < self.count;
 }
 @end

@@ -10,10 +10,10 @@
 @implementation UITableView (RegisterCell)
 
 - (void)registerNibForCellClasses:(NSArray<Class> *)cellClasses {
-  for (Class cellClass in cellClasses) {
-    UINib *nib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
-    [self registerNib:nib forCellReuseIdentifier:NSStringFromClass(cellClass)];
-  }
+    for (Class cellClass in cellClasses) {
+        UINib *nib = [UINib nibWithNibName:NSStringFromClass(cellClass) bundle:nil];
+        [self registerNib:nib forCellReuseIdentifier:NSStringFromClass(cellClass)];
+    }
 }
 
 @end

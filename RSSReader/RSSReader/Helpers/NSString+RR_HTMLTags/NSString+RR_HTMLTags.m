@@ -12,10 +12,10 @@ NSString *const kRegExpTagPattern = @"<[^>]+>";
 @implementation NSString (RR_HTMLTags)
 
 - (NSString *)descriptionWOTagsIfPresent {
-  return [self stringByReplacingOccurrencesOfString:kRegExpTagPattern
-                                         withString:@""
-                                            options:NSRegularExpressionSearch
-                                              range:NSMakeRange(0, self.length)];
+    return [self stringByReplacingOccurrencesOfString:kRegExpTagPattern
+                                           withString:@""
+                                              options:NSRegularExpressionSearch
+                                                range:NSMakeRange(0, self.length)];
 }
 
 @end

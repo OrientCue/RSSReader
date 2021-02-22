@@ -15,15 +15,15 @@
 @implementation AtomFeedItemTests
 
 - (void)testItemFromDictionary_nilDictionary_raiseExeption {
-  XCTAssertThrowsSpecificNamed([AtomFeedItem itemFromDictionary:nil],
-                               NSException,
-                               NSInvalidArgumentException);
+    XCTAssertThrowsSpecificNamed([AtomFeedItem itemFromDictionary:nil],
+                                 NSException,
+                                 NSInvalidArgumentException);
 }
 
 - (void)testItemFromDictionary_emptyDictionary_raiseExeption {
-  XCTAssertThrowsSpecificNamed([AtomFeedItem itemFromDictionary:@{}],
-                               NSException,
-                               NSInvalidArgumentException);
+    XCTAssertThrowsSpecificNamed([AtomFeedItem itemFromDictionary:@{}],
+                                 NSException,
+                                 NSInvalidArgumentException);
 }
 
 @end

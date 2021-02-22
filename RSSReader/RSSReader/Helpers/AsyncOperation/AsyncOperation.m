@@ -9,46 +9,46 @@
 #import "AsyncOperation.h"
 
 @interface AsyncOperation () {
-  BOOL executing;
-  BOOL finished;
+    BOOL executing;
+    BOOL finished;
 }
 @end
 
 @implementation AsyncOperation
 
 - (BOOL)isAsynchronous {
-  return YES;
+    return YES;
 }
 
 - (BOOL)isExecuting {
-  return executing;
+    return executing;
 }
 
 - (BOOL)isFinished {
-  return finished;
+    return finished;
 }
 
 - (void)start {
-  if (self.isCancelled) {
-    [self willChangeValueForKey:@"isFinished"];
-    finished = YES;
-    [self didChangeValueForKey:@"isFinished"];
-    return;
-  }
-  [self main];
-  [self willChangeValueForKey:@"isExecuting"];
-  executing = YES;
-  [self didChangeValueForKey:@"isExecuting"];
-
+    if (self.isCancelled) {
+        [self willChangeValueForKey:@"isFinished"];
+        finished = YES;
+        [self didChangeValueForKey:@"isFinished"];
+        return;
+    }
+    [self main];
+    [self willChangeValueForKey:@"isExecuting"];
+    executing = YES;
+    [self didChangeValueForKey:@"isExecuting"];
+    
 }
 
 - (void)finishOperation {
-  [self willChangeValueForKey:@"isExecuting"];
-  [self willChangeValueForKey:@"isFinished"];
-  executing = NO;
-  finished = YES;
-  [self didChangeValueForKey:@"isExecuting"];
-  [self didChangeValueForKey:@"isFinished"];
+    [self willChangeValueForKey:@"isExecuting"];
+    [self willChangeValueForKey:@"isFinished"];
+    executing = NO;
+    finished = YES;
+    [self didChangeValueForKey:@"isExecuting"];
+    [self didChangeValueForKey:@"isFinished"];
 }
 
 @end

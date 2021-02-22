@@ -22,63 +22,63 @@ NSString *const kPubDateKey = @"pubDate";
            articleDescription:(NSString *)articleDescription
                          link:(NSURL *)link
                       pubDate:(NSDate *)pubDate {
-  if (self = [super init]) {
-    _title = [title copy];
-    _articleDescription = [articleDescription copy];
-    _link = [link retain];
-    _pubDate = [pubDate retain];
-  }
-  return self;
+    if (self = [super init]) {
+        _title = [title copy];
+        _articleDescription = [articleDescription copy];
+        _link = [link retain];
+        _pubDate = [pubDate retain];
+    }
+    return self;
 }
 
 - (instancetype)initWithTitle:(NSString *)title
            articleDescription:(NSString *)articleDescription
                    linkString:(NSString *)linkString
                 pubDateString:(NSString *)pubDateString {
-  return [self initWithTitle:title
-          articleDescription:[articleDescription descriptionWOTagsIfPresent]
-                        link:[NSURL URLWithString:linkString]
-                     pubDate:pubDateString.dateForPubDateString];
+    return [self initWithTitle:title
+            articleDescription:[articleDescription descriptionWOTagsIfPresent]
+                          link:[NSURL URLWithString:linkString]
+                       pubDate:pubDateString.dateForPubDateString];
 }
 
 + (instancetype)itemFromDictionary:(NSDictionary *)dictionary {
-  if (!dictionary) {
-    [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be nil!"];
-    return nil;
-  }
-  if (!dictionary.count) {
-    [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be empty!"];
-    return nil;
-  }
-  return [[[AtomFeedItem alloc] initWithTitle:dictionary[kTitleKey]
-                           articleDescription:dictionary[kDescriptionKey]
-                                   linkString:dictionary[kLinkKey]
-                                pubDateString:dictionary[kPubDateKey]] autorelease];
+    if (!dictionary) {
+        [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be nil!"];
+        return nil;
+    }
+    if (!dictionary.count) {
+        [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be empty!"];
+        return nil;
+    }
+    return [[[AtomFeedItem alloc] initWithTitle:dictionary[kTitleKey]
+                             articleDescription:dictionary[kDescriptionKey]
+                                     linkString:dictionary[kLinkKey]
+                                  pubDateString:dictionary[kPubDateKey]] autorelease];
 }
 
 #pragma mark - Lifecycle
 
 - (void)dealloc {
-  [_title release];
-  [_articleDescription release];
-  [_link release];
-  [_pubDate release];
-  [super dealloc];
+    [_title release];
+    [_articleDescription release];
+    [_link release];
+    [_pubDate release];
+    [super dealloc];
 }
 
 #pragma mark - NSObject
 
 - (NSString *)description {
-  return [NSString stringWithFormat:@"Title: %@\nLink: %@\nPubDate: %@",
-          self.title,
-          self.link.absoluteString,
-          self.pubDate];
+    return [NSString stringWithFormat:@"Title: %@\nLink: %@\nPubDate: %@",
+            self.title,
+            self.link.absoluteString,
+            self.pubDate];
 }
 
 #pragma mark - Interface
 
 - (NSString *)pubDateString {
-  return self.pubDate.stringForPubDate;
+    return self.pubDate.stringForPubDate;
 }
 
 @end

@@ -26,114 +26,114 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
 #pragma mark - Object Lifecycle
 
 - (instancetype)initWithUrl:(NSURL *)url {
-  if (self = [super initWithNibName:nil bundle:nil]) {
-    _url = [url retain];
-  }
-  return self;
+    if (self = [super initWithNibName:nil bundle:nil]) {
+        _url = [url retain];
+    }
+    return self;
 }
 
 - (void)dealloc {
-  [_webView release];
-  [_url release];
-  [_back release];
-  [_forward release];
-  [_reload release];
-  [_stop release];
-  [_progressView release];
-  [super dealloc];
+    [_webView release];
+    [_url release];
+    [_back release];
+    [_forward release];
+    [_reload release];
+    [_stop release];
+    [_progressView release];
+    [super dealloc];
 }
 
 #pragma mark - UIViewController Lifecycle
 
 - (void)viewDidLoad {
-  [super viewDidLoad];
-  [self setupAppearance];
+    [super viewDidLoad];
+    [self setupAppearance];
 }
 
 - (void)viewWillAppear:(BOOL)animated {
-  [super viewWillAppear:animated];
-  [self addObservers];
-  [self loadPageFromURL];
+    [super viewWillAppear:animated];
+    [self addObservers];
+    [self loadPageFromURL];
 }
 
 - (void)viewDidDisappear:(BOOL)animated {
-  [super viewDidDisappear:animated];
-  [self removeObservers];
+    [super viewDidDisappear:animated];
+    [self removeObservers];
 }
 
 #pragma mark - Layout
 
 - (void)setupAppearance {
-  if (@available(iOS 13.0, *)) {
-    self.view.backgroundColor = UIColor.systemBackgroundColor;
-  } else {
-    self.view.backgroundColor = UIColor.whiteColor;
-  }
-  [self layoutWebView];
-  [self layoutProgressView];
-  [self setupToolbar];
+    if (@available(iOS 13.0, *)) {
+        self.view.backgroundColor = UIColor.systemBackgroundColor;
+    } else {
+        self.view.backgroundColor = UIColor.whiteColor;
+    }
+    [self layoutWebView];
+    [self layoutProgressView];
+    [self setupToolbar];
 }
 
 - (void)layoutWebView {
-  [self.view addSubview:self.webView];
-  [NSLayoutConstraint activateConstraints:@[
-    [self.webView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
-    [self.webView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
-    [self.webView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-    [self.webView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
-  ]];
+    [self.view addSubview:self.webView];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.webView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+        [self.webView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+        [self.webView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+        [self.webView.bottomAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.bottomAnchor]
+    ]];
 }
 
 - (void)layoutProgressView {
-  [self.view addSubview:self.progressView];
-  [NSLayoutConstraint activateConstraints:@[
-    [self.progressView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
-    [self.progressView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
-    [self.progressView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
-  ]];
+    [self.view addSubview:self.progressView];
+    [NSLayoutConstraint activateConstraints:@[
+        [self.progressView.leadingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.leadingAnchor],
+        [self.progressView.trailingAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.trailingAnchor],
+        [self.progressView.topAnchor constraintEqualToAnchor:self.view.safeAreaLayoutGuide.topAnchor],
+    ]];
 }
 
 #pragma mark -
 
 - (void)loadPageFromURL {
-  [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
+    [self.webView loadRequest:[NSURLRequest requestWithURL:self.url]];
 }
 
 #pragma mark - Setup Toolbar
 
 - (void)setupToolbar {
-  UIBarButtonItem *spacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
-                                                                           target:nil
-                                                                           action:nil] autorelease];
-  UIBarButtonItem *safari = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
-                                                                           target:self
-                                                                           action:@selector(openUrlInSafari)] autorelease];
-  UIBarButtonItem *reload = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
-                                                                           target:self.webView
-                                                                           action:@selector(reload)] autorelease];
-  self.toolbarItems = @[self.back, spacer, self.forward, spacer, reload, spacer, self.stop, spacer, safari];
+    UIBarButtonItem *spacer = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFlexibleSpace
+                                                                             target:nil
+                                                                             action:nil] autorelease];
+    UIBarButtonItem *safari = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemAction
+                                                                             target:self
+                                                                             action:@selector(openUrlInSafari)] autorelease];
+    UIBarButtonItem *reload = [[[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRefresh
+                                                                             target:self.webView
+                                                                             action:@selector(reload)] autorelease];
+    self.toolbarItems = @[self.back, spacer, self.forward, spacer, reload, spacer, self.stop, spacer, safari];
 }
 
 #pragma mark - Open URL In Safari
 
 - (void)openUrlInSafari {
-  [[UIApplication sharedApplication] openURL:self.webView.URL
-                                     options:@{}
-                           completionHandler:nil];
+    [[UIApplication sharedApplication] openURL:self.webView.URL
+                                       options:@{}
+                             completionHandler:nil];
 }
 
 #pragma mark - WKNavigationDelegate
 
 - (void)webView:(WKWebView *)webView didFinishNavigation:(WKNavigation *)navigation {
-  self.title = webView.title;
-  self.stop.enabled = false;
+    self.title = webView.title;
+    self.stop.enabled = false;
 }
 
 - (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
-  [self.progressView setProgress:0 animated:false];
-  self.back.enabled = webView.canGoBack;
-  self.forward.enabled = webView.canGoForward;
-  self.stop.enabled = true;
+    [self.progressView setProgress:0 animated:false];
+    self.back.enabled = webView.canGoBack;
+    self.forward.enabled = webView.canGoForward;
+    self.stop.enabled = true;
 }
 
 #pragma mark - WKUIDelegate
@@ -143,102 +143,102 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
 createWebViewWithConfiguration:(WKWebViewConfiguration *)configuration
    forNavigationAction:(WKNavigationAction *)navigationAction
         windowFeatures:(WKWindowFeatures *)windowFeatures {
-  if (!navigationAction.targetFrame.isMainFrame) {
-    [webView loadRequest:navigationAction.request];
-  }
-  return nil;
+    if (!navigationAction.targetFrame.isMainFrame) {
+        [webView loadRequest:navigationAction.request];
+    }
+    return nil;
 }
 
 #pragma mark - KVO
 
 - (void)addObservers {
-  [self.webView addObserver:self
-                 forKeyPath:NSStringFromSelector(@selector(estimatedProgress))
-                    options:NSKeyValueObservingOptionNew
-                    context:kEstimatedProgressContext];
+    [self.webView addObserver:self
+                   forKeyPath:NSStringFromSelector(@selector(estimatedProgress))
+                      options:NSKeyValueObservingOptionNew
+                      context:kEstimatedProgressContext];
 }
 
 - (void)removeObservers {
-  [self.webView removeObserver:self
-                    forKeyPath:NSStringFromSelector(@selector(estimatedProgress))];
+    [self.webView removeObserver:self
+                      forKeyPath:NSStringFromSelector(@selector(estimatedProgress))];
 }
 
 - (void)observeValueForKeyPath:(NSString *)keyPath
                       ofObject:(id)object
                         change:(NSDictionary *)change
                        context:(void *)context {
-  if (context == kEstimatedProgressContext) {
-    [self.progressView setProgress:(float)self.webView.estimatedProgress animated:true];
-    self.progressView.hidden = self.webView.estimatedProgress >= 1.0;
-    if (self.progressView.hidden) { self.progressView.progress = 0.0; }
-  } else {
-    [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-  }
+    if (context == kEstimatedProgressContext) {
+        [self.progressView setProgress:(float)self.webView.estimatedProgress animated:true];
+        self.progressView.hidden = self.webView.estimatedProgress >= 1.0;
+        if (self.progressView.hidden) { self.progressView.progress = 0.0; }
+    } else {
+        [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+    }
 }
 
 #pragma mark - Lazy Properties
 
 - (UIProgressView *)progressView {
-  if (!_progressView) {
-    _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
-    _progressView.translatesAutoresizingMaskIntoConstraints = false;
-  }
-  return _progressView;
+    if (!_progressView) {
+        _progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
+        _progressView.translatesAutoresizingMaskIntoConstraints = false;
+    }
+    return _progressView;
 }
 
 - (WKWebView *)webView {
-  if (!_webView) {
-    _webView = [WKWebView new];
-    _webView.navigationDelegate = self;
-    _webView.UIDelegate = self;
-    _webView.scrollView.delegate = self;
-    _webView.allowsBackForwardNavigationGestures = true;
-    _webView.translatesAutoresizingMaskIntoConstraints = false;
-  }
-  return _webView;
+    if (!_webView) {
+        _webView = [WKWebView new];
+        _webView.navigationDelegate = self;
+        _webView.UIDelegate = self;
+        _webView.scrollView.delegate = self;
+        _webView.allowsBackForwardNavigationGestures = true;
+        _webView.translatesAutoresizingMaskIntoConstraints = false;
+    }
+    return _webView;
 }
 
 - (UIBarButtonItem *)back {
-  if (!_back) {
-    _back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
-                                                          target:self.webView
-                                                          action:@selector(goBack)];
-    _back.enabled = false;
-  }
-  return _back;
+    if (!_back) {
+        _back = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemRewind
+                                                              target:self.webView
+                                                              action:@selector(goBack)];
+        _back.enabled = false;
+    }
+    return _back;
 }
 
 - (UIBarButtonItem *)forward {
-  if (!_forward) {
-    _forward = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
-                                                             target:self.webView
-                                                             action:@selector(goForward)];
-    _forward.enabled = false;
-  }
-  return _forward;
+    if (!_forward) {
+        _forward = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemFastForward
+                                                                 target:self.webView
+                                                                 action:@selector(goForward)];
+        _forward.enabled = false;
+    }
+    return _forward;
 }
 
 - (UIBarButtonItem *)stop {
-  if (!_stop) {
-    _stop = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
-                                                          target:self.webView
-                                                          action:@selector(stopLoading)];
-    _stop.enabled = false;
-  }
-  return _stop;
+    if (!_stop) {
+        _stop = [[UIBarButtonItem alloc] initWithBarButtonSystemItem:UIBarButtonSystemItemStop
+                                                              target:self.webView
+                                                              action:@selector(stopLoading)];
+        _stop.enabled = false;
+    }
+    return _stop;
 }
 
 #pragma mark - UIScrollViewDelegate Methods
 /// Fixes hidesBarsOnSwipe showing bars with view attached to safeAreaLayoutGuide.topAnchor
 
 - (void)scrollViewWillBeginDragging:(UIScrollView *)scrollView {
-  self.contentOffsetLastY = scrollView.contentOffset.y;
+    self.contentOffsetLastY = scrollView.contentOffset.y;
 }
 
 - (void)scrollViewWillBeginDecelerating:(UIScrollView *)scrollView {
-  BOOL shouldHide = scrollView.contentOffset.y > self.contentOffsetLastY;
-  [self.navigationController setNavigationBarHidden:shouldHide animated:true];
-  [self.navigationController setToolbarHidden:shouldHide animated:true];
+    BOOL shouldHide = scrollView.contentOffset.y > self.contentOffsetLastY;
+    [self.navigationController setNavigationBarHidden:shouldHide animated:true];
+    [self.navigationController setToolbarHidden:shouldHide animated:true];
 }
 
 @end

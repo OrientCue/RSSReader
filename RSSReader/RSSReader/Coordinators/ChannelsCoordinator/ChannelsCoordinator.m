@@ -17,30 +17,30 @@
 @implementation ChannelsCoordinator
 
 - (void)dealloc {
-  [_channelsViewController release];
-  [super dealloc];
+    [_channelsViewController release];
+    [super dealloc];
 }
 #pragma mark -Coordinator Type
 
 - (void)launch {
-  self.channelsViewController = [self makeChannelsViewController];
-  [self.navigationController pushViewController:self.channelsViewController
-                                       animated:false];
+    self.channelsViewController = [self makeChannelsViewController];
+    [self.navigationController pushViewController:self.channelsViewController
+                                         animated:false];
 }
 
 #pragma mark - Factory
 
 - (ChannelsViewController *)makeChannelsViewController {
-  ChannelsPresenter *presenter = [[[ChannelsPresenter alloc] initWithLocalStorageService:ChannelsLocalStorageService.shared] autorelease];
-  ChannelsViewController *channelsViewController = [[ChannelsViewController alloc] initWithPresenter:presenter];
-  __block typeof(self) weakSelf = self;
-  channelsViewController.didSelectChannelHandler = ^(RSSChannel *channel) {
-    [weakSelf.splitCoordinator didSelectChannel:channel];
-  };
-  channelsViewController.didTapAddButtonHandler = ^{
-    [weakSelf.splitCoordinator didTapAddButton];
-  };
-  return [channelsViewController autorelease];
+    ChannelsPresenter *presenter = [[[ChannelsPresenter alloc] initWithLocalStorageService:ChannelsLocalStorageService.shared] autorelease];
+    ChannelsViewController *channelsViewController = [[ChannelsViewController alloc] initWithPresenter:presenter];
+    __block typeof(self) weakSelf = self;
+    channelsViewController.didSelectChannelHandler = ^(RSSChannel *channel) {
+        [weakSelf.splitCoordinator didSelectChannel:channel];
+    };
+    channelsViewController.didTapAddButtonHandler = ^{
+        [weakSelf.splitCoordinator didTapAddButton];
+    };
+    return [channelsViewController autorelease];
 }
 
 @end

@@ -17,20 +17,20 @@
 #pragma mark - AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-  self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
-  self.coordinator = [SplitCoordinator coordinator];
-  self.window.rootViewController = self.coordinator.splitViewController;
-  [self.coordinator launch];
-  [self.window makeKeyAndVisible];
-  return YES;
+    self.window = [[[UIWindow alloc] initWithFrame:UIScreen.mainScreen.bounds] autorelease];
+    self.coordinator = [SplitCoordinator coordinator];
+    self.window.rootViewController = self.coordinator.splitViewController;
+    [self.coordinator launch];
+    [self.window makeKeyAndVisible];
+    return YES;
 }
 
 #pragma mark -
 
 - (void)dealloc {
-  [_window release];
-  [_coordinator release];
-  [super dealloc];
+    [_window release];
+    [_coordinator release];
+    [super dealloc];
 }
 
 @end
