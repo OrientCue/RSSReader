@@ -14,22 +14,19 @@
 		7A1AEE672562BC1A00BFBA5C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE652562BC1A00BFBA5C /* LaunchScreen.storyboard */; };
 		7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A1AEE692562BC1A00BFBA5C /* main.m */; };
 		7A1AEE962562BC8D00BFBA5C /* RSSReader.rtf in Resources */ = {isa = PBXBuildFile; fileRef = 7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */; };
+		7A22B49125E9713800263B4F /* html.bundle in Resources */ = {isa = PBXBuildFile; fileRef = 7A22B49025E9713800263B4F /* html.bundle */; };
 		7A3608E825E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3608E725E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A92154525640A65003430CD /* FeedNetworkService.m */; };
 		7A3C7A7E2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A3C7A7C2577FB8E006C4CD7 /* UIAlertController+RRErrorAlert.m */; };
 		7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920A825C845620051154B /* SettingsStoreTests.m */; };
 		7A5920CA25C845A30051154B /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920C925C845A30051154B /* SettingsStore.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		7A5920CB25C845A30051154B /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920C925C845A30051154B /* SettingsStore.m */; };
+		7A5920CB25C845A30051154B /* SettingsStore.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920C925C845A30051154B /* SettingsStore.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7A5920D325C845C80051154B /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920D225C845C80051154B /* RSSChannel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		7A5920D425C845C80051154B /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920D225C845C80051154B /* RSSChannel.m */; };
+		7A5920D425C845C80051154B /* RSSChannel.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920D225C845C80051154B /* RSSChannel.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7A5920EA25C8493C0051154B /* SiteValidatorTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920E925C8493C0051154B /* SiteValidatorTests.m */; };
 		7A5920FA25C849A50051154B /* URLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920F325C849A50051154B /* URLValidator.m */; };
 		7A5920FB25C849A50051154B /* URLValidator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5920F325C849A50051154B /* URLValidator.m */; };
 		7A59211025C849B40051154B /* AutodiscoveryHTMLParserTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59210725C849B40051154B /* AutodiscoveryHTMLParserTests.m */; };
-		7A59211125C849B40051154B /* withoutTags.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A59210A25C849B40051154B /* withoutTags.html */; };
-		7A59211225C849B40051154B /* nytimes.com.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A59210B25C849B40051154B /* nytimes.com.html */; };
-		7A59211325C849B40051154B /* onliner.by.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A59210C25C849B40051154B /* onliner.by.html */; };
-		7A59211425C849B40051154B /* tut.by.html in Resources */ = {isa = PBXBuildFile; fileRef = 7A59210D25C849B40051154B /* tut.by.html */; };
 		7A59211525C849B40051154B /* HTMLDataMock.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59210F25C849B40051154B /* HTMLDataMock.m */; };
 		7A59216525C84E680051154B /* SelectChannelViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59216125C84E680051154B /* SelectChannelViewCell.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7A59216F25C84E860051154B /* RSSChannelParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59216D25C84E860051154B /* RSSChannelParser.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -54,7 +51,7 @@
 		7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A52D256D280200E38106 /* AtomFeedItemTests.m */; };
-		7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; };
+		7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AB2A536256D30A000E38106 /* UITableView+RegisterCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A535256D30A000E38106 /* UITableView+RegisterCell.m */; };
 		7AB2A549256D410500E38106 /* NSXMLParser+AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A548256D410500E38106 /* NSXMLParser+AtomParser.m */; };
 		7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; };
@@ -91,6 +88,7 @@
 		7A1AEE6F2562BC1A00BFBA5C /* RSSReaderTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = RSSReaderTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		7A1AEE752562BC1A00BFBA5C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		7A1AEE952562BC8D00BFBA5C /* RSSReader.rtf */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.rtf; path = RSSReader.rtf; sourceTree = "<group>"; };
+		7A22B49025E9713800263B4F /* html.bundle */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.plug-in"; path = html.bundle; sourceTree = "<group>"; };
 		7A3608E625E42D80002E7449 /* UIBarButtonItem+ASBlockInit.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "UIBarButtonItem+ASBlockInit.h"; sourceTree = "<group>"; };
 		7A3608E725E42D80002E7449 /* UIBarButtonItem+ASBlockInit.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "UIBarButtonItem+ASBlockInit.m"; sourceTree = "<group>"; };
 		7A3608EE25E42DFC002E7449 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -106,10 +104,6 @@
 		7A5920F725C849A50051154B /* AutodiscoveryHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParser.h; sourceTree = "<group>"; };
 		7A5920F925C849A50051154B /* URLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLValidator.h; sourceTree = "<group>"; };
 		7A59210725C849B40051154B /* AutodiscoveryHTMLParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutodiscoveryHTMLParserTests.m; sourceTree = "<group>"; };
-		7A59210A25C849B40051154B /* withoutTags.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = withoutTags.html; sourceTree = "<group>"; };
-		7A59210B25C849B40051154B /* nytimes.com.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = nytimes.com.html; sourceTree = "<group>"; };
-		7A59210C25C849B40051154B /* onliner.by.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = onliner.by.html; sourceTree = "<group>"; };
-		7A59210D25C849B40051154B /* tut.by.html */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.html; path = tut.by.html; sourceTree = "<group>"; };
 		7A59210E25C849B40051154B /* HTMLDataMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDataMock.h; sourceTree = "<group>"; };
 		7A59210F25C849B40051154B /* HTMLDataMock.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HTMLDataMock.m; sourceTree = "<group>"; };
 		7A59213825C84D9E0051154B /* SplitCoordinator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SplitCoordinator.h; sourceTree = "<group>"; };
@@ -395,22 +389,11 @@
 		7A59210825C849B40051154B /* HTMLDataMock */ = {
 			isa = PBXGroup;
 			children = (
-				7A59210925C849B40051154B /* HTML */,
 				7A59210E25C849B40051154B /* HTMLDataMock.h */,
 				7A59210F25C849B40051154B /* HTMLDataMock.m */,
+				7A22B49025E9713800263B4F /* html.bundle */,
 			);
 			path = HTMLDataMock;
-			sourceTree = "<group>";
-		};
-		7A59210925C849B40051154B /* HTML */ = {
-			isa = PBXGroup;
-			children = (
-				7A59210A25C849B40051154B /* withoutTags.html */,
-				7A59210B25C849B40051154B /* nytimes.com.html */,
-				7A59210C25C849B40051154B /* onliner.by.html */,
-				7A59210D25C849B40051154B /* tut.by.html */,
-			);
-			path = HTML;
 			sourceTree = "<group>";
 		};
 		7A59213425C84D870051154B /* Coordinators */ = {
@@ -784,10 +767,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				7A59211425C849B40051154B /* tut.by.html in Resources */,
-				7A59211325C849B40051154B /* onliner.by.html in Resources */,
-				7A59211125C849B40051154B /* withoutTags.html in Resources */,
-				7A59211225C849B40051154B /* nytimes.com.html in Resources */,
+				7A22B49125E9713800263B4F /* html.bundle in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1041,6 +1021,7 @@
 		7A1AEE872562BC1A00BFBA5C /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
@@ -1059,6 +1040,7 @@
 		7A1AEE882562BC1A00BFBA5C /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = NO;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = X44WA6279F;
 				INFOPLIST_FILE = RSSReaderTests/Info.plist;
