@@ -126,6 +126,18 @@ CGFloat const kEstimatedRowHeight = 60.0;
     return _loadingView;
 }
 
+#pragma mark - Shake Gesture
+
+- (BOOL)canBecomeFirstResponder {
+    return true;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    if (motion == UIEventSubtypeMotionShake) {
+        [self.presenter fetchFeedFromURL:self.channel.link];
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
