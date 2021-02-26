@@ -9,8 +9,6 @@
 #import "FeedViewType.h"
 #import "FeedNetworkServiceType.h"
 
-NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
-
 @interface FeedPresenter ()
 @property (nonatomic, retain) id<FeedNetworkServiceType> service;
 @end
@@ -20,36 +18,44 @@ NSString *const kRssURLString = @"https://news.tut.by/rss/index.rss";
 #pragma mark - NSObject
 
 - (instancetype)initWithNetworkService:(id<FeedNetworkServiceType>)service {
-  if (self = [super init]) {
-    _service = [service retain];
-  }
-  return self;
+    if (self = [super init]) {
+        _service = [service retain];
+    }
+    return self;
 }
 
 - (void)dealloc {
-  [_service release];
-  [super dealloc];
+    [_service release];
+    [super dealloc];
 }
 
 #pragma mark - FeedPresenterType
 
-- (void)fetch {
-  [self.view showLoading];
-  NSURL *rssUrl = [NSURL URLWithString:kRssURLString];
-  __block typeof(self) weakSelf = self;
-  [self.service fetchFeedFromUrl:rssUrl completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
-    if (error) {
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.view displayError:error];
-        [weakSelf.view hideLoading];
-      });
-    } else {
-      dispatch_async(dispatch_get_main_queue(), ^{
-        [weakSelf.view appendItems:items];
-        [weakSelf.view hideLoading];
-      });
+- (void)fetchFeedFromURL:(NSURL *)url {
+    if (!url) {
+        [self.view showEmptyFeed];
+        return;
     }
-  }];
+    [self.view showLoading];
+    __block typeof(self) weakSelf = self;
+    [self.service fetchFeedFromUrl:url completion:^(NSArray<AtomFeedItem *> *items, NSError *error) {
+        if (error) {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.view displayError:error];
+                [weakSelf.view hideLoading];
+            });
+        } else {
+            dispatch_async(dispatch_get_main_queue(), ^{
+                [weakSelf.view appendItems:items];
+                [weakSelf.view hideLoading];
+            });
+        }
+    }];
+}
+
+- (void)cancelFetch {
+    [self.service cancelFetch];
+    [self.view hideLoading];
 }
 
 @end

@@ -13,26 +13,26 @@ NSString *const kDateFormatAtomInput = @"EE, d MMM yyyy HH:mm:ss Z";
 @implementation NSDateFormatter (AtomItemPubDate)
 
 + (NSDateFormatter *)sharedFormatterForPubDateOutput {
-  static NSDateFormatter *sharedDateFormatter = nil;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    NSString *localizedDateFormat = [self dateFormatFromTemplate:kDateFormatAtomOutput
-                                                         options:0
-                                                          locale:NSLocale.currentLocale];
-    sharedDateFormatter = [NSDateFormatter new];
-    sharedDateFormatter.dateFormat = localizedDateFormat;
-  });
-  return sharedDateFormatter;
+    static NSDateFormatter *sharedDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        NSString *localizedDateFormat = [self dateFormatFromTemplate:kDateFormatAtomOutput
+                                                             options:0
+                                                              locale:NSLocale.currentLocale];
+        sharedDateFormatter = [NSDateFormatter new];
+        sharedDateFormatter.dateFormat = localizedDateFormat;
+    });
+    return sharedDateFormatter;
 }
 
 + (NSDateFormatter *)sharedFormatterForPubDateInput {
-  static NSDateFormatter *sharedDateFormatter = nil;
-  static dispatch_once_t onceToken;
-  dispatch_once(&onceToken, ^{
-    sharedDateFormatter = [NSDateFormatter new];
-    sharedDateFormatter.dateFormat = kDateFormatAtomInput;
-  });
-  return sharedDateFormatter;
+    static NSDateFormatter *sharedDateFormatter = nil;
+    static dispatch_once_t onceToken;
+    dispatch_once(&onceToken, ^{
+        sharedDateFormatter = [NSDateFormatter new];
+        sharedDateFormatter.dateFormat = kDateFormatAtomInput;
+    });
+    return sharedDateFormatter;
 }
 
 @end

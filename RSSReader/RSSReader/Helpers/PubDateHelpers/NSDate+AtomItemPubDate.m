@@ -11,7 +11,7 @@
 @implementation NSDate (AtomItemPubDate)
 
 - (NSString *)stringForPubDate {
-  return [NSDateFormatter.sharedFormatterForPubDateOutput stringFromDate:self];
+    return [NSDateFormatter.sharedFormatterForPubDateOutput stringFromDate:self];
 }
 
 @end
