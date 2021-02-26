@@ -13,7 +13,7 @@ void *kActionHandlerContext = &kActionHandlerContext;
 @implementation UIBarButtonItem (ASBlockInit)
 
 + (instancetype)systemItem:(UIBarButtonSystemItem)systemItem withAction:(ActionHandler)action {
-    return [[[UIBarButtonItem alloc] initWithSystemItem:systemItem action:action] autorelease];
+    return [[UIBarButtonItem alloc] initWithSystemItem:systemItem action:action];
 }
 
 - (instancetype)initWithSystemItem:(UIBarButtonSystemItem)systemItem action:(ActionHandler)action {

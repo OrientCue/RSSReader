@@ -8,10 +8,10 @@
 #import "AtomItemTableViewCell.h"
 
 @interface AtomItemTableViewCell ()
-@property (retain, nonatomic) IBOutlet UILabel *titleLabel;
-@property (retain, nonatomic) IBOutlet UILabel *pubDateLabel;
-@property (retain, nonatomic) IBOutlet UILabel *descriptionLabel;
-@property (retain, nonatomic) AtomFeedItem *item;
+@property (strong, nonatomic) IBOutlet UILabel *titleLabel;
+@property (strong, nonatomic) IBOutlet UILabel *pubDateLabel;
+@property (strong, nonatomic) IBOutlet UILabel *descriptionLabel;
+@property (strong, nonatomic) AtomFeedItem *item;
 @property (assign, nonatomic) NSInteger row;
 @end
 
@@ -33,16 +33,6 @@
 
 - (IBAction)annotationButtonDidTap:(UIButton *)sender {
     [self.delegate row:self.row expandedState:self.descriptionLabel.isHidden];
-}
-
-#pragma mark -
-
-- (void)dealloc {
-    [_item release];
-    [_titleLabel release];
-    [_pubDateLabel release];
-    [_descriptionLabel release];
-    [super dealloc];
 }
 
 @end

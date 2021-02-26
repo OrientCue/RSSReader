@@ -10,7 +10,7 @@
 #import "AtomItemCellDelegate.h"
 
 @interface AtomItemTableViewCell : UITableViewCell
-@property (assign, nonatomic) id<AtomItemCellDelegate> delegate;
+@property (weak, nonatomic) id<AtomItemCellDelegate> delegate;
 - (void)configureWithItem:(AtomFeedItem *)item
                 indexPath:(NSIndexPath *)indexPath
                  expanded:(BOOL)isExpanded;

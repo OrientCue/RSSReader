@@ -8,7 +8,7 @@
 #import "SelectChannelViewCell.h"
 
 @interface SelectChannelViewCell ()
-@property (nonatomic, retain) RSSChannel *channel;
+@property (nonatomic, strong) RSSChannel *channel;
 @property (nonatomic, getter=isAlreadyAddedChannel) BOOL alreadyAddedChannel;
 @end
 
@@ -19,11 +19,6 @@
         self.accessoryType = UITableViewCellAccessoryNone;
     }
     return self;
-}
-
-- (void)dealloc {
-    [_channel release];
-    [super dealloc];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {

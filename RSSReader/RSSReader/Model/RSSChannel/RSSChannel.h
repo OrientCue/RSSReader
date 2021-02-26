@@ -13,7 +13,7 @@ extern NSString *const kRSSChannelHrefKey;
 
 @interface RSSChannel : NSObject <NSSecureCoding>
 @property (nonatomic, copy, readonly) NSString *title;
-@property (nonatomic, retain, readonly) NSURL *link;
+@property (nonatomic, strong, readonly) NSURL *link;
 
 - (instancetype)init NS_UNAVAILABLE;
 + (instancetype)new NS_UNAVAILABLE;;

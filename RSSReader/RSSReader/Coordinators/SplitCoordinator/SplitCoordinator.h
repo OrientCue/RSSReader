@@ -11,7 +11,7 @@
 @class RSSChannel;
 
 @interface SplitCoordinator : NSObject <CoordinatorType>
-@property (nonatomic, retain, readonly) UISplitViewController *splitViewController;
+@property (nonatomic, strong, readonly) UISplitViewController *splitViewController;
 + (instancetype)coordinator;
 - (void)didSelectChannel:(RSSChannel *)channel;
 - (void)didTapAddButton;

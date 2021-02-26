@@ -14,28 +14,16 @@
 @class RSSChannel;
 
 @interface AutodiscoveryRSS ()
-@property (nonatomic, retain) URLValidator *validator;
-@property (nonatomic, retain) AutodiscoveryHTMLParser *htmlParser;
-@property (nonatomic, retain) RSSChannelParser *channelParser;
+@property (nonatomic, strong) URLValidator *validator;
+@property (nonatomic, strong) AutodiscoveryHTMLParser *htmlParser;
+@property (nonatomic, strong) RSSChannelParser *channelParser;
 @property (nonatomic, copy) SearchSiteNameCompletion searchSiteCompletion;
 @property (nonatomic, copy) SearchLinkCompletion searchLinkCompletion;
-@property (nonatomic, retain) NSOperationQueue *queue;
+@property (nonatomic, strong) NSOperationQueue *queue;
 @property (nonatomic, getter=isInflight) BOOL inflight;
 @end
 
 @implementation AutodiscoveryRSS
-
-#pragma mark - Object Lifecycle
-
-- (void)dealloc {
-    [_validator release];
-    [_htmlParser release];
-    [_channelParser release];
-    [_searchSiteCompletion release];
-    [_searchLinkCompletion release];
-    [_queue release];
-    [super dealloc];
-}
 
 #pragma mark -
 
@@ -76,14 +64,13 @@
         completion(nil, error);
         return;
     }
-    
     if (self.isInflight) {
         [self cancelSearch];
     }
     self.searchSiteCompletion = completion;
-    __block typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     DownloadOperation *operation = [[DownloadOperation alloc] initWithURL:url];
-    __block typeof(operation) weakOperation = operation;
+    __weak typeof(operation) weakOperation = operation;
     operation.completionBlock = ^{
         if (weakOperation.isCancelled) {
             weakSelf.inflight = false;
@@ -100,7 +87,6 @@
     };
     self.inflight = true;
     [self.queue addOperation:operation];
-    [operation release];
 }
 
 - (void)searchChannelForLinkString:(NSString *)urlString
@@ -115,9 +101,9 @@
         return;
     }
     self.searchLinkCompletion = completion;
-    __block typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     DownloadOperation *operation = [[DownloadOperation alloc] initWithURL:url];
-    __block typeof(operation) weakOperation = operation;
+    __weak typeof(operation) weakOperation = operation;
     operation.completionBlock = ^{
         if (weakOperation.isCancelled) {
             weakSelf.inflight = false;
@@ -134,7 +120,6 @@
     };
     self.inflight = true;
     [self.queue addOperation:operation];
-    [operation release];
 }
 
 - (void)cancelSearch {

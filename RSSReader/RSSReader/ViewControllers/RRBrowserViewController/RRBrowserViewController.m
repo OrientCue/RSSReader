@@ -12,13 +12,13 @@
 void *kEstimatedProgressContext = &kEstimatedProgressContext;
 
 @interface RRBrowserViewController () <WKNavigationDelegate, WKUIDelegate, UIScrollViewDelegate>
-@property (nonatomic, retain) WKWebView *webView;
-@property (nonatomic, retain) UIBarButtonItem *back;
-@property (nonatomic, retain) UIBarButtonItem *forward;
-@property (nonatomic, retain) UIBarButtonItem *reload;
-@property (nonatomic, retain) UIBarButtonItem *stop;
-@property (nonatomic, retain) UIProgressView *progressView;
-@property (nonatomic, retain, readonly) NSURL *url;
+@property (nonatomic, strong) WKWebView *webView;
+@property (nonatomic, strong) UIBarButtonItem *back;
+@property (nonatomic, strong) UIBarButtonItem *forward;
+@property (nonatomic, strong) UIBarButtonItem *reload;
+@property (nonatomic, strong) UIBarButtonItem *stop;
+@property (nonatomic, strong) UIProgressView *progressView;
+@property (nonatomic, strong, readonly) NSURL *url;
 @property (nonatomic) CGFloat contentOffsetLastY;
 @end
 
@@ -28,20 +28,9 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
 
 - (instancetype)initWithUrl:(NSURL *)url {
     if (self = [super initWithNibName:nil bundle:nil]) {
-        _url = [url retain];
+        _url = url;
     }
     return self;
-}
-
-- (void)dealloc {
-    [_webView release];
-    [_url release];
-    [_back release];
-    [_forward release];
-    [_reload release];
-    [_stop release];
-    [_progressView release];
-    [super dealloc];
 }
 
 #pragma mark - UIViewController Lifecycle
@@ -100,7 +89,7 @@ void *kEstimatedProgressContext = &kEstimatedProgressContext;
     UIBarButtonItem *spacer = [UIBarButtonItem systemItem:UIBarButtonSystemItemFlexibleSpace
                                                withAction:nil];
 
-    __block typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     UIBarButtonItem *safari = [UIBarButtonItem systemItem:UIBarButtonSystemItemAction
                                                withAction:^{
         [UIApplication.sharedApplication openURL:weakSelf.webView.URL

@@ -10,28 +10,17 @@
 #import "AtomFeedItem.h"
 
 @interface RSSChannelParser () <NSXMLParserDelegate>
-@property (nonatomic, retain) NSURL *baseURL;
-@property (nonatomic, retain) NSXMLParser *parser;
-@property (nonatomic, retain) NSMutableDictionary *channelDictionary;
+@property (nonatomic, strong) NSURL *baseURL;
+@property (nonatomic, strong) NSXMLParser *parser;
+@property (nonatomic, strong) NSMutableDictionary *channelDictionary;
 @property (nonatomic, copy) RSSChannelParserCompletion completion;
-@property (nonatomic, retain) NSMutableString *parsingString;
+@property (nonatomic, strong) NSMutableString *parsingString;
 @property (nonatomic, assign, getter=isFinished) BOOL finished;
 @end
 
 @implementation RSSChannelParser
 
-#pragma mark - Object Lifecycle
-
-- (void)dealloc {
-    [_baseURL release];
-    [_parser release];
-    [_parsingString release];
-    [_channelDictionary release];
-    [_completion release];
-    [super dealloc];
-}
-
-#pragma mark -
+#pragma mark - Interface
 
 - (void)parse:(NSData *)data baseURL:(NSURL *)url completion:(RSSChannelParserCompletion)completion {
     self.baseURL = url;
@@ -73,8 +62,8 @@ didStartElement:(NSString *)elementName
 
 - (void)parser:(NSXMLParser *)parser parseErrorOccurred:(NSError *)parseError {
     if (self.isFinished && self.completion) {
-        RSSChannel *channel = [[[RSSChannel alloc] initWithTitle:self.channelDictionary[kRSSChannelTitleKey]
-                                                            link:self.baseURL] autorelease];
+        RSSChannel *channel = [[RSSChannel alloc] initWithTitle:self.channelDictionary[kRSSChannelTitleKey]
+                                                           link:self.baseURL];
         self.completion(channel, nil);
     } else if (self.completion) {
         self.completion(nil, parseError);

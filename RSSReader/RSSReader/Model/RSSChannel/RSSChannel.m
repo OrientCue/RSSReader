@@ -18,15 +18,9 @@ NSString *const kRSSChannelHrefKey = @"href";
 - (instancetype)initWithTitle:(NSString *)title link:(NSURL *)link {
     if (self = [super init]) {
         _title = [title copy];
-        _link = [link retain];
+        _link = link;
     }
     return self;
-}
-
-- (void)dealloc {
-    [_title release];
-    [_link release];
-    [super dealloc];
 }
 
 + (NSArray<RSSChannel *> *)channelsFromDictionaries:(NSArray *)dictionaries baseURL:(NSURL *)url;{
@@ -35,11 +29,11 @@ NSString *const kRSSChannelHrefKey = @"href";
         NSString *href = [dictionary[kRSSChannelHrefKey] localizedLowercaseString];
         if (!href) { continue; }
         NSURL *link = [NSURL URLWithString:href relativeToURL:url];
-        RSSChannel *channel = [[[RSSChannel alloc] initWithTitle:dictionary[kRSSChannelTitleKey]
-                                                            link:link] autorelease];
+        RSSChannel *channel = [[RSSChannel alloc] initWithTitle:dictionary[kRSSChannelTitleKey]
+                                                           link:link];
         [channels addObject:channel];
     }
-    return [[channels copy] autorelease];
+    return [channels copy];
 }
 
 #pragma mark - NSSecureCoding
@@ -55,8 +49,8 @@ NSString *const kRSSChannelHrefKey = @"href";
 
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
-        _title = [[coder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(title))] retain];
-        _link = [[coder decodeObjectOfClass:[NSURL class] forKey:NSStringFromSelector(@selector(link))] retain];
+        _title = [coder decodeObjectOfClass:[NSString class] forKey:NSStringFromSelector(@selector(title))];
+        _link = [coder decodeObjectOfClass:[NSURL class] forKey:NSStringFromSelector(@selector(link))];
     }
     return self;
 }

@@ -10,5 +10,5 @@
 
 /// Base class
 @interface NavigationCoordinator : NSObject <CoordinatorType>
-@property (nonatomic, retain, readonly) UINavigationController *navigationController;
+@property (nonatomic, strong, readonly) UINavigationController *navigationController;
 @end
