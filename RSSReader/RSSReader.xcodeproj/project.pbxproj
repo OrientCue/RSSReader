@@ -38,7 +38,6 @@
 		7A59219325C8582A0051154B /* SplitCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59219225C8582A0051154B /* SplitCoordinator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7A59219925C8584F0051154B /* ChannelsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59219825C8584E0051154B /* ChannelsPresenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7A59219F25C8586F0051154B /* SearchChannelsPresenter.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59219E25C8586F0051154B /* SearchChannelsPresenter.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		7A5921A425C858D40051154B /* AutodiscoveryHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5921A325C858D40051154B /* AutodiscoveryHTMLParser.m */; };
 		7A5921AB25C859030051154B /* ChannelsLocalStorageService.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5921AA25C859030051154B /* ChannelsLocalStorageService.m */; };
 		7A5921B225C859420051154B /* SearchChannelsController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5921B125C859420051154B /* SearchChannelsController.m */; };
 		7A92155A256414FC003430CD /* AtomParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A921559256414FC003430CD /* AtomParser.m */; };
@@ -47,6 +46,8 @@
 		7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* FeedCoordinator.m */; };
 		7A9E734325DD4C81005D7A22 /* ChannelsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59213C25C84D9E0051154B /* ChannelsCoordinator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		7AB0715625F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */; };
+		7AB0716025F550A80040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */; };
 		7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -61,7 +62,6 @@
 		7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1525B1DA950038084D /* NSString+RR_HTMLTags.m */; };
 		7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AE88C1E25B1DD2F0038084D /* RRBrowserViewController.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AEC9EEB25E275DC00E75913 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 7AEC9EE925E275DC00E75913 /* Localizable.strings */; };
-		7AEFFD7B25CADBEF005C05C0 /* AutodiscoveryHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A5921A325C858D40051154B /* AutodiscoveryHTMLParser.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -101,7 +101,6 @@
 		7A5920D225C845C80051154B /* RSSChannel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RSSChannel.m; sourceTree = "<group>"; };
 		7A5920E925C8493C0051154B /* SiteValidatorTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SiteValidatorTests.m; sourceTree = "<group>"; };
 		7A5920F325C849A50051154B /* URLValidator.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = URLValidator.m; sourceTree = "<group>"; };
-		7A5920F725C849A50051154B /* AutodiscoveryHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParser.h; sourceTree = "<group>"; };
 		7A5920F925C849A50051154B /* URLValidator.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = URLValidator.h; sourceTree = "<group>"; };
 		7A59210725C849B40051154B /* AutodiscoveryHTMLParserTests.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutodiscoveryHTMLParserTests.m; sourceTree = "<group>"; };
 		7A59210E25C849B40051154B /* HTMLDataMock.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HTMLDataMock.h; sourceTree = "<group>"; };
@@ -134,7 +133,6 @@
 		7A59219825C8584E0051154B /* ChannelsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsPresenter.m; sourceTree = "<group>"; };
 		7A59219E25C8586F0051154B /* SearchChannelsPresenter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SearchChannelsPresenter.m; sourceTree = "<group>"; };
 		7A5921A225C858960051154B /* SearchChannelsViewType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = SearchChannelsViewType.h; sourceTree = "<group>"; };
-		7A5921A325C858D40051154B /* AutodiscoveryHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutodiscoveryHTMLParser.m; sourceTree = "<group>"; };
 		7A5921A925C859030051154B /* ChannelsLocalStorageService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChannelsLocalStorageService.h; sourceTree = "<group>"; };
 		7A5921AA25C859030051154B /* ChannelsLocalStorageService.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChannelsLocalStorageService.m; sourceTree = "<group>"; };
 		7A5921B025C859420051154B /* SearchChannelsController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SearchChannelsController.h; sourceTree = "<group>"; };
@@ -156,6 +154,9 @@
 		7A9844A625640258009F6AC0 /* FeedCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCoordinator.h; sourceTree = "<group>"; };
 		7A9844A725640258009F6AC0 /* FeedCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCoordinator.m; sourceTree = "<group>"; };
 		7A9C99282575973400EC76E6 /* CoordinatorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoordinatorType.h; sourceTree = "<group>"; };
+		7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutodiscoveryHTMLParserRuntime.m; sourceTree = "<group>"; };
+		7AB0715325F54DD60040CE2F /* AutodiscoveryHTMLParserType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParserType.h; sourceTree = "<group>"; };
+		7AB0715425F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParserRuntime.h; sourceTree = "<group>"; };
 		7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+AtomItemPubDate.h"; sourceTree = "<group>"; };
 		7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AtomItemPubDate.m"; sourceTree = "<group>"; };
 		7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+AtomItemPubDate.h"; sourceTree = "<group>"; };
@@ -357,7 +358,7 @@
 		7A5920F025C849A50051154B /* AutodiscoveryRSS */ = {
 			isa = PBXGroup;
 			children = (
-				7A5920F625C849A50051154B /* AutodiscoveryHTMLParser */,
+				7AB0715B25F54DE80040CE2F /* AutodiscoveryHTMLParser */,
 				7A59216C25C84E860051154B /* AutodiscoveryRSS.h */,
 				7A59216E25C84E860051154B /* AutodiscoveryRSS.m */,
 				7A59216B25C84E860051154B /* RSSChannelParser.h */,
@@ -366,15 +367,6 @@
 				7A5920F325C849A50051154B /* URLValidator.m */,
 			);
 			path = AutodiscoveryRSS;
-			sourceTree = "<group>";
-		};
-		7A5920F625C849A50051154B /* AutodiscoveryHTMLParser */ = {
-			isa = PBXGroup;
-			children = (
-				7A5920F725C849A50051154B /* AutodiscoveryHTMLParser.h */,
-				7A5921A325C858D40051154B /* AutodiscoveryHTMLParser.m */,
-			);
-			path = AutodiscoveryHTMLParser;
 			sourceTree = "<group>";
 		};
 		7A59210625C849B40051154B /* AutodiscoveryHTMLParser */ = {
@@ -627,6 +619,16 @@
 			path = Presenter;
 			sourceTree = "<group>";
 		};
+		7AB0715B25F54DE80040CE2F /* AutodiscoveryHTMLParser */ = {
+			isa = PBXGroup;
+			children = (
+				7AB0715425F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.h */,
+				7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */,
+				7AB0715325F54DD60040CE2F /* AutodiscoveryHTMLParserType.h */,
+			);
+			path = AutodiscoveryHTMLParser;
+			sourceTree = "<group>";
+		};
 		7AB2A52A256D0F1500E38106 /* PubDateHelpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,7 +787,6 @@
 				7AE88C1F25B1DD2F0038084D /* RRBrowserViewController.m in Sources */,
 				7A92155A256414FC003430CD /* AtomParser.m in Sources */,
 				7AE88C1025B1D9340038084D /* AtomItemTableViewCell.m in Sources */,
-				7A5921A425C858D40051154B /* AutodiscoveryHTMLParser.m in Sources */,
 				7A0D1FE225E0109300CC5EE3 /* NSArray+RRValidateIndex.m in Sources */,
 				7A1AEE592562BC1700BFBA5C /* AppDelegate.m in Sources */,
 				7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */,
@@ -815,6 +816,7 @@
 				7A59219F25C8586F0051154B /* SearchChannelsPresenter.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
 				7A5920D325C845C80051154B /* RSSChannel.m in Sources */,
+				7AB0716025F550A80040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */,
 				7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -825,13 +827,13 @@
 			files = (
 				7A5920CB25C845A30051154B /* SettingsStore.m in Sources */,
 				7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */,
-				7AEFFD7B25CADBEF005C05C0 /* AutodiscoveryHTMLParser.m in Sources */,
 				7A5920FB25C849A50051154B /* URLValidator.m in Sources */,
 				7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */,
 				7A59211525C849B40051154B /* HTMLDataMock.m in Sources */,
 				7A5920EA25C8493C0051154B /* SiteValidatorTests.m in Sources */,
 				7A5920D425C845C80051154B /* RSSChannel.m in Sources */,
 				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
+				7AB0715625F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */,
 				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 				7A59211025C849B40051154B /* AutodiscoveryHTMLParserTests.m in Sources */,
 			);

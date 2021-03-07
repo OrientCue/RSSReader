@@ -6,21 +6,28 @@
 //
 
 #import <XCTest/XCTest.h>
-#import "AutodiscoveryHTMLParser.h"
+#import "AutodiscoveryHTMLParserRuntime.h"
 #import "HTMLDataMock.h"
+#import "RSSChannel.h"
 
 @interface AutodiscoveryHTMLParserTests : XCTestCase
-@property (nonatomic, retain) AutodiscoveryHTMLParser *sut;
+@property (nonatomic, retain) id<AutodiscoveryHTMLParserType> sut;
 @property (nonatomic, retain) HTMLDataMock *dataMock;
 @end
 
 @implementation AutodiscoveryHTMLParserTests
 
++ (void)initialize {
+    if (self == [AutodiscoveryHTMLParserTests class]) {
+        registerHTMLParserClass();
+    }
+}
+
 #pragma mark - XCTest
 
 - (void)setUp {
     self.continueAfterFailure = false;
-    _sut = [AutodiscoveryHTMLParser new];
+    _sut = [AutodiscoveryHTMLParserRuntime new];
     _dataMock = [HTMLDataMock new];
 }
 
