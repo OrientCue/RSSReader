@@ -6,7 +6,7 @@
 //
 
 #import "AutodiscoveryRSS.h"
-#import "AutodiscoveryHTMLParserRuntime.h"
+#import "AutodiscoveryHTMLParser.h"
 #import "DownloadOperation.h"
 #import "RSSChannelParser.h"
 #import "URLValidator.h"
@@ -15,7 +15,7 @@
 
 @interface AutodiscoveryRSS ()
 @property (nonatomic, strong) URLValidator *validator;
-@property (nonatomic, strong) id<AutodiscoveryHTMLParserType> htmlParser;
+@property (nonatomic, strong) AutodiscoveryHTMLParser *htmlParser;
 @property (nonatomic, strong) RSSChannelParser *channelParser;
 @property (nonatomic, copy) SearchSiteNameCompletion searchSiteCompletion;
 @property (nonatomic, copy) SearchLinkCompletion searchLinkCompletion;
@@ -25,19 +25,11 @@
 
 @implementation AutodiscoveryRSS
 
-#pragma mark - Initialize
-
-+ (void)initialize {
-    if (self == [AutodiscoveryRSS class]) {
-        registerHTMLParserClass();
-    }
-}
-
 #pragma mark - Lazy Properties
 
-- (id<AutodiscoveryHTMLParserType>)htmlParser {
+- (AutodiscoveryHTMLParser *)htmlParser {
     if (!_htmlParser) {
-        _htmlParser = [AutodiscoveryHTMLParserRuntime new];
+        _htmlParser = [AutodiscoveryHTMLParser new];
     }
     return _htmlParser;
 }

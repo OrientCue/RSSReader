@@ -46,8 +46,8 @@
 		7A9844A825640258009F6AC0 /* FeedCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844A725640258009F6AC0 /* FeedCoordinator.m */; };
 		7A9E734325DD4C81005D7A22 /* ChannelsCoordinator.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A59213C25C84D9E0051154B /* ChannelsCoordinator.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AAD275825647BCB00270FE9 /* AtomFeedItem.m in Sources */ = {isa = PBXBuildFile; fileRef = 7A9844792563FC66009F6AC0 /* AtomFeedItem.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
-		7AB0715625F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */; };
-		7AB0716025F550A80040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
+		7AB0716B25F5606C0040CE2F /* AutodiscoveryHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0716A25F5606C0040CE2F /* AutodiscoveryHTMLParser.m */; };
+		7AB0716C25F5606C0040CE2F /* AutodiscoveryHTMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB0716A25F5606C0040CE2F /* AutodiscoveryHTMLParser.m */; };
 		7AB2A51D256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A51C256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.m */; };
 		7AB2A522256D0C9800E38106 /* NSDate+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
 		7AB2A527256D0D7100E38106 /* NSString+AtomItemPubDate.m in Sources */ = {isa = PBXBuildFile; fileRef = 7AB2A526256D0D7100E38106 /* NSString+AtomItemPubDate.m */; settings = {COMPILER_FLAGS = "-fobjc-arc"; }; };
@@ -154,9 +154,8 @@
 		7A9844A625640258009F6AC0 /* FeedCoordinator.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = FeedCoordinator.h; sourceTree = "<group>"; };
 		7A9844A725640258009F6AC0 /* FeedCoordinator.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = FeedCoordinator.m; sourceTree = "<group>"; };
 		7A9C99282575973400EC76E6 /* CoordinatorType.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = CoordinatorType.h; sourceTree = "<group>"; };
-		7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutodiscoveryHTMLParserRuntime.m; sourceTree = "<group>"; };
-		7AB0715325F54DD60040CE2F /* AutodiscoveryHTMLParserType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParserType.h; sourceTree = "<group>"; };
-		7AB0715425F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParserRuntime.h; sourceTree = "<group>"; };
+		7AB0716925F5606B0040CE2F /* AutodiscoveryHTMLParser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AutodiscoveryHTMLParser.h; sourceTree = "<group>"; };
+		7AB0716A25F5606C0040CE2F /* AutodiscoveryHTMLParser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AutodiscoveryHTMLParser.m; sourceTree = "<group>"; };
 		7AB2A516256CFBC200E38106 /* NSDate+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDate+AtomItemPubDate.h"; sourceTree = "<group>"; };
 		7AB2A517256CFBC200E38106 /* NSDate+AtomItemPubDate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSDate+AtomItemPubDate.m"; sourceTree = "<group>"; };
 		7AB2A51B256D0B9900E38106 /* NSDateFormatter+AtomItemPubDate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSDateFormatter+AtomItemPubDate.h"; sourceTree = "<group>"; };
@@ -622,9 +621,8 @@
 		7AB0715B25F54DE80040CE2F /* AutodiscoveryHTMLParser */ = {
 			isa = PBXGroup;
 			children = (
-				7AB0715425F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.h */,
-				7AB0715225F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m */,
-				7AB0715325F54DD60040CE2F /* AutodiscoveryHTMLParserType.h */,
+				7AB0716925F5606B0040CE2F /* AutodiscoveryHTMLParser.h */,
+				7AB0716A25F5606C0040CE2F /* AutodiscoveryHTMLParser.m */,
 			);
 			path = AutodiscoveryHTMLParser;
 			sourceTree = "<group>";
@@ -781,6 +779,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				7A59219325C8582A0051154B /* SplitCoordinator.m in Sources */,
+				7AB0716B25F5606C0040CE2F /* AutodiscoveryHTMLParser.m in Sources */,
 				7A3C7A5D2577D4EA006C4CD7 /* FeedNetworkService.m in Sources */,
 				7A0D1FDC25E003D900CC5EE3 /* NavigationCoordinator.m in Sources */,
 				7AD6B17D25BF8ADD00E3946B /* LoadingView.m in Sources */,
@@ -816,7 +815,6 @@
 				7A59219F25C8586F0051154B /* SearchChannelsPresenter.m in Sources */,
 				7A1AEE6A2562BC1A00BFBA5C /* main.m in Sources */,
 				7A5920D325C845C80051154B /* RSSChannel.m in Sources */,
-				7AB0716025F550A80040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */,
 				7AE88C1725B1DA950038084D /* NSString+RR_HTMLTags.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -827,13 +825,13 @@
 			files = (
 				7A5920CB25C845A30051154B /* SettingsStore.m in Sources */,
 				7A5920A925C845620051154B /* SettingsStoreTests.m in Sources */,
+				7AB0716C25F5606C0040CE2F /* AutodiscoveryHTMLParser.m in Sources */,
 				7A5920FB25C849A50051154B /* URLValidator.m in Sources */,
 				7AC3409725703D99006A6185 /* NSString+AtomItemPubDate.m in Sources */,
 				7A59211525C849B40051154B /* HTMLDataMock.m in Sources */,
 				7A5920EA25C8493C0051154B /* SiteValidatorTests.m in Sources */,
 				7A5920D425C845C80051154B /* RSSChannel.m in Sources */,
 				7AB2A52E256D280200E38106 /* AtomFeedItemTests.m in Sources */,
-				7AB0715625F54DD60040CE2F /* AutodiscoveryHTMLParserRuntime.m in Sources */,
 				7AB2A531256D283C00E38106 /* AtomFeedItem.m in Sources */,
 				7A59211025C849B40051154B /* AutodiscoveryHTMLParserTests.m in Sources */,
 			);
