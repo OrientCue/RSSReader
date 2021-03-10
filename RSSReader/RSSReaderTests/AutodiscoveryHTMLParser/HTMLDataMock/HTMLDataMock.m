@@ -35,15 +35,15 @@
 }
 
 - (NSData *)tut_by {
-    return [self htmlData:@"tut.by"];
+    return [self htmlData:@"tut_by"];
 }
 
 - (NSData *)onliner_by {
-    return [self htmlData:@"onliner.by"];
+    return [self htmlData:@"onliner_by"];
 }
 
 - (NSData *)nytimes_com {
-    return [self htmlData:@"nytimes.com"];
+    return [self htmlData:@"nytimes_com"];
 }
 
 #pragma mark -

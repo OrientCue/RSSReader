@@ -6,16 +6,16 @@
 //
 
 #import "AutodiscoveryRSS.h"
+#import "AutodiscoveryHTMLParserRuntime.h"
 #import "DownloadOperation.h"
-#import "URLValidator.h"
-#import "AutodiscoveryHTMLParser.h"
 #import "RSSChannelParser.h"
+#import "URLValidator.h"
 
 @class RSSChannel;
 
 @interface AutodiscoveryRSS ()
 @property (nonatomic, strong) URLValidator *validator;
-@property (nonatomic, strong) AutodiscoveryHTMLParser *htmlParser;
+@property (nonatomic, strong) id<AutodiscoveryHTMLParserType> htmlParser;
 @property (nonatomic, strong) RSSChannelParser *channelParser;
 @property (nonatomic, copy) SearchSiteNameCompletion searchSiteCompletion;
 @property (nonatomic, copy) SearchLinkCompletion searchLinkCompletion;
@@ -25,11 +25,19 @@
 
 @implementation AutodiscoveryRSS
 
-#pragma mark -
+#pragma mark - Initialize
 
-- (AutodiscoveryHTMLParser *)htmlParser {
++ (void)initialize {
+    if (self == [AutodiscoveryRSS class]) {
+        registerHTMLParserClass();
+    }
+}
+
+#pragma mark - Lazy Properties
+
+- (id<AutodiscoveryHTMLParserType>)htmlParser {
     if (!_htmlParser) {
-        _htmlParser = [AutodiscoveryHTMLParser new];
+        _htmlParser = [AutodiscoveryHTMLParserRuntime new];
     }
     return _htmlParser;
 }
@@ -55,7 +63,7 @@
     return _queue;
 }
 
-#pragma mark -
+#pragma mark - Interface
 
 - (void)searchChannelsForSiteName:(NSString *)siteName completion:(SearchSiteNameCompletion)completion {
     NSError *error = nil;
