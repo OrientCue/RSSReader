@@ -8,16 +8,10 @@
 #import "NavigationCoordinator.h"
 
 @interface NavigationCoordinator () <UINavigationControllerDelegate>
-@property (nonatomic, retain) UINavigationController *navigationController;
+@property (nonatomic, strong) UINavigationController *navigationController;
 @end
 
 @implementation NavigationCoordinator
-#pragma mark - Object Lifecycle
-
-- (void)dealloc {
-    [_navigationController release];
-    [super dealloc];
-}
 
 #pragma mark - Lazy Properties
 

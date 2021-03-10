@@ -7,10 +7,6 @@
 
 #import "SettingsStore.h"
 
-@interface SettingsStore ()
-
-@end
-
 @implementation SettingsStore
 
 #pragma mark - Object Lifecycle
@@ -20,11 +16,6 @@
         _channels = [NSArray new];
     }
     return self;
-}
-
-- (void)dealloc {
-    [_channels release];
-    [super dealloc];
 }
 
 #pragma mark -
@@ -53,8 +44,8 @@
 - (instancetype)initWithCoder:(NSCoder *)coder {
     if (self = [super init]) {
         _selectedChannel = [coder decodeIntegerForKey:NSStringFromSelector(@selector(selectedChannel))];
-        _channels = [[coder decodeObjectOfClasses:[NSSet setWithArray:@[[NSArray class], [RSSChannel class]]]
-                                           forKey:NSStringFromSelector(@selector(channels))] retain];
+        _channels = [coder decodeObjectOfClasses:[NSSet setWithArray:@[[NSArray class], [RSSChannel class]]]
+                                           forKey:NSStringFromSelector(@selector(channels))];
     }
     return self;
 }

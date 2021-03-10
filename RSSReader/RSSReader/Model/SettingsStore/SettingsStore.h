@@ -9,6 +9,6 @@
 #import "RSSChannel.h"
 
 @interface SettingsStore : NSObject <NSSecureCoding>
-@property (nonatomic, retain) NSArray<RSSChannel *> *channels;
+@property (nonatomic, strong) NSArray<RSSChannel *> *channels;
 @property (nonatomic) NSInteger selectedChannel;
 @end

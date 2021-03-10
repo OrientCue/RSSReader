@@ -13,9 +13,9 @@
 #import "SearchChannelsPresenter.h"
 
 @interface SplitCoordinator () <UISplitViewControllerDelegate>
-@property (nonatomic, retain) UISplitViewController *splitViewController;
-@property (nonatomic, retain) FeedCoordinator *feedCoordinator;
-@property (nonatomic, retain) ChannelsCoordinator *channelsCoordinator;
+@property (nonatomic, strong) UISplitViewController *splitViewController;
+@property (nonatomic, strong) FeedCoordinator *feedCoordinator;
+@property (nonatomic, strong) ChannelsCoordinator *channelsCoordinator;
 @end
 
 @implementation SplitCoordinator
@@ -25,14 +25,7 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 #pragma mark - Object Lifecycle
 
 + (instancetype)coordinator {
-    return [[SplitCoordinator new] autorelease];
-}
-
-- (void)dealloc {
-    [_feedCoordinator release];
-    [_channelsCoordinator release];
-    [_splitViewController release];
-    [super dealloc];
+    return [SplitCoordinator new];
 }
 
 #pragma mark - Lazy Properties
@@ -96,7 +89,7 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 
 - (void)didTapAddButton {
     SearchChannelsController *searchViewController = [self makeSearchChannelsController];
-    UINavigationController *searchNavigationController = [[[UINavigationController alloc] initWithRootViewController:searchViewController] autorelease];
+    UINavigationController *searchNavigationController = [[UINavigationController alloc] initWithRootViewController:searchViewController];
     [self.splitViewController presentViewController:searchNavigationController
                                            animated:true
                                          completion:nil];
@@ -105,10 +98,10 @@ static const CGFloat kPreferredPrimaryColumnWidthFraction = 0.5;
 #pragma mark - Factory
 
 - (SearchChannelsController *)makeSearchChannelsController {
-    AutodiscoveryRSS *service = [[AutodiscoveryRSS new] autorelease];
-    SearchChannelsPresenter *presenter = [[[SearchChannelsPresenter alloc] initWithSearchService:service
-                                                                                    localStorage:ChannelsLocalStorageService.shared] autorelease];
-    return [[[SearchChannelsController alloc] initWithPresenter:presenter] autorelease];
+    AutodiscoveryRSS *service = [AutodiscoveryRSS new];
+    SearchChannelsPresenter *presenter = [[SearchChannelsPresenter alloc] initWithSearchService:service
+                                                                                   localStorage:ChannelsLocalStorageService.shared];
+    return [[SearchChannelsController alloc] initWithPresenter:presenter];
 }
 
 @end

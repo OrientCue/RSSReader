@@ -8,11 +8,11 @@
 #import "DownloadOperation.h"
 
 @interface DownloadOperation ()
-@property (nonatomic, retain) NSURLSession *session;
-@property (nonatomic, retain) NSURLSessionDataTask *dataTask;
-@property (nonatomic, retain) NSURL *url;
-@property (nonatomic, retain) NSData *downloaded;
-@property (nonatomic, retain) NSError *error;
+@property (nonatomic, strong) NSURLSession *session;
+@property (nonatomic, strong) NSURLSessionDataTask *dataTask;
+@property (nonatomic, strong) NSURL *url;
+@property (nonatomic, strong) NSData *downloaded;
+@property (nonatomic, strong) NSError *error;
 @end
 
 @implementation DownloadOperation
@@ -21,8 +21,8 @@
 
 - (instancetype)initWithURLSession:(NSURLSession *)session url:(NSURL *)url {
     if (self = [super init]) {
-        _session = [session retain];
-        _url = [url retain];
+        _session = session;
+        _url = url;
     }
     return self;
 }
@@ -31,19 +31,10 @@
     return [self initWithURLSession:NSURLSession.sharedSession url:url];
 }
 
-- (void)dealloc {
-    [_session release];
-    [_dataTask release];
-    [_url release];
-    [_downloaded release];
-    [_error release];
-    [super dealloc];
-}
-
 #pragma mark - AsyncOperation
 
 - (void)main {
-    __block typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     self.dataTask = [self.session dataTaskWithURL:self.url
                                 completionHandler:^(NSData *data, NSURLResponse *response, NSError *error) {
         if (weakSelf.isCancelled) {

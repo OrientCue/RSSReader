@@ -17,7 +17,8 @@
 
 - (NSBundle *)bundle {
     if (!_bundle) {
-        _bundle = [[NSBundle bundleForClass:[self class]] retain];
+        id bundlePath = [[NSBundle bundleForClass:[self class]] pathForResource:@"html" ofType:@"bundle"];
+        _bundle = [[NSBundle bundleWithPath:bundlePath] retain];
     }
     return _bundle;
 }
@@ -48,8 +49,8 @@
 #pragma mark -
 
 - (NSData *)htmlData:(NSString *)filename {
-    NSURL *fileUrl = [self.bundle URLForResource:filename withExtension:@"html"];
-    NSData *data = [NSData dataWithContentsOfURL:fileUrl];
+    NSString *fileUrl = [self.bundle pathForResource:filename ofType:nil];
+    NSData *data = [NSData dataWithContentsOfFile:fileUrl];
     return data;
 }
 

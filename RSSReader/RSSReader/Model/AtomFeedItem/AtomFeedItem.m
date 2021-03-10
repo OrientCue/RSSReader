@@ -25,8 +25,8 @@ NSString *const kPubDateKey = @"pubDate";
     if (self = [super init]) {
         _title = [title copy];
         _articleDescription = [articleDescription copy];
-        _link = [link retain];
-        _pubDate = [pubDate retain];
+        _link = link;
+        _pubDate = pubDate;
     }
     return self;
 }
@@ -50,20 +50,10 @@ NSString *const kPubDateKey = @"pubDate";
         [NSException raise:NSInvalidArgumentException format:@"Dictionary parameter should not be empty!"];
         return nil;
     }
-    return [[[AtomFeedItem alloc] initWithTitle:dictionary[kTitleKey]
-                             articleDescription:dictionary[kDescriptionKey]
-                                     linkString:dictionary[kLinkKey]
-                                  pubDateString:dictionary[kPubDateKey]] autorelease];
-}
-
-#pragma mark - Lifecycle
-
-- (void)dealloc {
-    [_title release];
-    [_articleDescription release];
-    [_link release];
-    [_pubDate release];
-    [super dealloc];
+    return [[AtomFeedItem alloc] initWithTitle:dictionary[kTitleKey]
+                            articleDescription:dictionary[kDescriptionKey]
+                                    linkString:dictionary[kLinkKey]
+                                 pubDateString:dictionary[kPubDateKey]];
 }
 
 #pragma mark - NSObject

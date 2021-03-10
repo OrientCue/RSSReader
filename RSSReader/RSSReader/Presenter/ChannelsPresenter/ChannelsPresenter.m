@@ -11,7 +11,7 @@
 #import "SettingsStore.h"
 
 @interface ChannelsPresenter ()
-@property (nonatomic, retain) id<ChannelsLocalStorageServiceType> service;
+@property (nonatomic, strong) id<ChannelsLocalStorageServiceType> service;
 @end
 
 @implementation ChannelsPresenter
@@ -20,24 +20,21 @@
 
 - (instancetype)initWithLocalStorageService:(id<ChannelsLocalStorageServiceType>)service {
     if (self = [super init]) {
-        _service = [service retain];
+        _service = service;
     }
     return self;
 }
 
-- (void)dealloc {
-    [_service release];
-    [super dealloc];
-}
+#pragma mark -
 
 - (void)setup {
-    __block typeof(self) weakSelf = self;
+    __weak typeof(self) weakSelf = self;
     [self.service addListenerHandler:^{
         [weakSelf updateFromLocalStorage];
     }];
 }
 
-#pragma mark -
+#pragma mark - ChannelsPresenterType
 
 - (void)loadFromLocalStorage {
     NSError *error = nil;

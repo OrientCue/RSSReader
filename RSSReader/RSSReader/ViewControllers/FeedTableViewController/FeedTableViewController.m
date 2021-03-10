@@ -5,16 +5,16 @@
 //  Created by Arseniy Strakh on 17.11.2020.
 //
 
-#import "FeedTableViewController.h"
-#import "FeedPresenterType.h"
 #import "AtomFeedItem.h"
-#import "AtomItemTableViewCell.h"
-#import "UITableView+RegisterCell.h"
 #import "AtomItemCellDelegate.h"
+#import "AtomItemTableViewCell.h"
+#import "FeedPresenterType.h"
+#import "FeedTableViewController.h"
 #import "LoadingView.h"
 #import "RSSChannel.h"
 #import "UIAlertController+RRErrorAlert.h"
 #import "UIBarButtonItem+ASBlockInit.h"
+#import "UITableView+RegisterCell.h"
 
 CGFloat const kEstimatedRowHeight = 60.0;
 
@@ -126,6 +126,23 @@ CGFloat const kEstimatedRowHeight = 60.0;
     return _loadingView;
 }
 
+#pragma mark - Shake Gesture
+
+- (BOOL)canBecomeFirstResponder {
+    return true;
+}
+
+- (void)motionEnded:(UIEventSubtype)motion withEvent:(UIEvent *)event {
+    switch (motion) {
+        case UIEventSubtypeMotionShake:
+            [self.presenter fetchFeedFromURL:self.channel.link];
+            break;
+        default:
+            NSLog(@"UIEventSubtype %ld not handled.", motion);
+            break;
+    }
+}
+
 #pragma mark - Table view data source
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -196,4 +213,5 @@ CGFloat const kEstimatedRowHeight = 60.0;
     [self.tableView reloadRowsAtIndexPaths:@[[NSIndexPath indexPathForRow:row inSection:0]]
                           withRowAnimation:UITableViewRowAnimationAutomatic];
 }
+
 @end

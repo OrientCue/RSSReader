@@ -12,7 +12,7 @@
 #import "ChannelsLocalStorageService.h"
 
 @interface SearchChannelsPresenter : NSObject <SearchChannelsPresenterType>
-@property (nonatomic, assign) id<SearchChannelsViewType> view;
+@property (nonatomic, weak) id<SearchChannelsViewType> view;
 - (instancetype)initWithSearchService:(id<SearchChannelsServiceType>)searchService
                          localStorage:(id<ChannelsLocalStorageServiceType>)localStorage;
 @end

@@ -8,7 +8,7 @@
 #import "ChannelTableViewCell.h"
 
 @interface ChannelTableViewCell ()
-@property (nonatomic, retain) RSSChannel *channel;
+@property (nonatomic, strong) RSSChannel *channel;
 @end
 
 @implementation ChannelTableViewCell
@@ -18,11 +18,6 @@
         self.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     }
     return self;
-}
-
-- (void)dealloc {
-    [_channel release];
-    [super dealloc];
 }
 
 #pragma mark - Interface
